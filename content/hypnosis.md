@@ -1,0 +1,20 @@
+---
+title: "What is hypnosis like?"
+creator: "admin"
+post_id: "7"
+excerpt: ""
+published: 2007-05-27-0033
+slug: hypnosis
+embargo: '02/02/2017'
+
+---
+<h3>What Will I feel? How is it like a daydream?</h3>
+Hypnosis feels like a daydream.  Any fantasy that takes you out of the here-and-now is very much like the hypnotic state.
+
+When you take charge of your daydreams, you can do wonders.  Architects build buildings first in their minds.  Computer programmers build entire systems in their minds.  In that daydream state, you can change your values, likes and dislikes, and your emotional responses.
+
+At the Celarien Experience, hypnosis is a controlled daydream that Jim Hinds guides in a wise and careful manner, specifically tailored to your needs.
+
+It can result in changes at the most important levels of your own being.  If the change doesn’t fit in your life, your behavior will change back, but more likely, you will like your new attitudes and values, and you will keep the change.
+
+Why does hypnosis work?  Because, as humans we have been given the most noble ability: we can take charge of our emotional system, in much the same way as we train our bodies or our intellect.  And all for your own good.
