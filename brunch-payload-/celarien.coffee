@@ -1,8 +1,7 @@
 ###
 styling: "Lookand Feel"
 ###
-ST = require "teact"
-T = require "teacup"
+T = Pylon.Teact
 
 try
   $ ->
