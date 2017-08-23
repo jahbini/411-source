@@ -27,11 +27,17 @@ module.exports = T.bless class BodyFormatter extends React.Component
             T.h1 story.title
             T.hr()
             T.crel "Bloviation", ".contents", dangerouslySetInnerHTML: __html: final
-          T.nav '#sidebar.order-0.bg-darken-2.flex-auto.col-3', style: 'min-width':'22rem'
-          if false
-            T.aside '#sidebar2.p2.border-left.order-3.col-2', style: 'min-width':'8rem', ->
-              T.h1 "Sidebar2"
-              T.p 'Sidebar2'
+          T.div "#sidecar",()->
+              T.div ".fb-login-button.bg-gray", height:48,
+                width: 300
+                'data-width': "33rem"
+                'data-max-rows': "1"
+                'data-size': "large"
+                'data-button-type': "login_with"
+                'data-show-faces': "true"
+                'data-auto-logout-link': "true"
+                'data-use-continue-as': "true"
+              T.aside "#sidebar"
         Footer '.p2.border-top.bg-silver'
 
       T.div "#cover",

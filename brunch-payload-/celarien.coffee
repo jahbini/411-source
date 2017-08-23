@@ -39,17 +39,18 @@ module.exports = class CelarienLook
   constructor: (@T=T)->
     return this
  
-widgetWrap: ->
-  {attrs,contents} = T.normalizeArgs arguments
-  id = attrs.id
-  delete attrs.id
-  title = attrs.title
-  delete attrs.title
-  if attrs.class?
-    attrs.class.push "widget-wrap"
-  else
-    attrs.class = [ "widget-wrap"]
-  T.div attrs , ->
-    T.h3 ".widget-title.white", title unless !title
-    T.div ".widget.white", contents
-
+  widgetWrap: ->
+    {attrs,contents} = T.normalizeArgs arguments
+    id = attrs.id
+    delete attrs.id
+    title = attrs.title
+    delete attrs.title
+    if attrs.class?
+      attrs.class.push "widget-wrap"
+    else
+      attrs.class = [ "widget-wrap"]
+    T.Container attrs , ->
+    T.Border bottom: true, ()->
+      T.Text f:3, color: 'black', bg: '#c5a317', title unless !title
+      T.div contents
+  

@@ -16,6 +16,5 @@ module.exports = T.bless class HeaderLogoNav extends React.Component
       T.a ".header-right-picture", href:"/#about",->
         T.img ".header-picture",
          src:"http://www.gravatar.com/avatar/c105eda1978979dfb13059b8878ef95d?s=90"
-      T.crel 'fb:login-button', scope: "public_profile,email", onlogin: "checkLoginState();"
       
   
