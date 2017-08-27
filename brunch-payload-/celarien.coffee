@@ -3,15 +3,16 @@ styling: "Lookand Feel"
 ###
 T = Pylon.Teact
 
-try
-  $ ->
+
+$ ->
+  try
     FontFaceObserver = require 'font-face-observer'
     observeTeamSpirit = new FontFaceObserver "TeamSpirit",
       weight: 400
     observeTeamSpirit.check(null, 10000)
       .then(
         ()-> document.documentElement.className += " team-spirit-loaded"
-        ()->  alert "TeamSpirit Font Problem?!"
+        ()->  console.warn "TeamSpirit Font Problem?!"
         )
 
     observeVidaLoca = new FontFaceObserver "vidaloka",
@@ -19,19 +20,19 @@ try
     observeVidaLoca.check(null, 10000)
       .then(
         ()->  document.documentElement.className += " vidaloka-loaded"
-        ()->  alert "Vida Loka Font Problem?!"
+        ()->  console.warn "Vida Loka Font Problem?!"
         )
     observeVastShadow = new FontFaceObserver "vastshadow",
       weight: 400
     observeVastShadow.check(null, 10000)
       .then(
         ()->  document.documentElement.className += " vastshadow-loaded"
-        ()->  alert "vastshadow Font Problem?!"
+        ()->  console.warn "vastshadow Font Problem?!"
         )
 
-catch badDog
-  console.log "Font Loader Error-- OK for site-master build phase"
-  console.log badDog
+  catch badDog
+    console.log "Font Loader Error-- OK for site-master build phase"
+    console.log badDog
   
 console.log "Proceeding after font load"  
 
