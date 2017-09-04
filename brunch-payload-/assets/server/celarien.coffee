@@ -19,7 +19,7 @@ module.exports = T.bless class BodyFormatter extends React.Component
     final = @props.page.final
     story = @.props.story
 
-    T.body ->
+    T.div '#celarien-body', ->
       T.div '.flex.flex-column', style: 'min-height':'100vh', ->
         HeaderLogoNav @props
         T.div '.flex-auto.md-flex', ->
@@ -27,17 +27,7 @@ module.exports = T.bless class BodyFormatter extends React.Component
             T.h1 story.title
             T.hr()
             T.crel "Bloviation", ".contents", dangerouslySetInnerHTML: __html: final
-          T.div "#sidecar",()->
-              T.div ".fb-login-button.bg-gray", height:48,
-                width: 300
-                'data-width': "33rem"
-                'data-max-rows': "1"
-                'data-size': "large"
-                'data-button-type': "login_with"
-                'data-show-faces': "true"
-                'data-auto-logout-link': "true"
-                'data-use-continue-as': "true"
-              T.aside "#sidebar"
+          T.aside "#sidebar"
         Footer '.p2.border-top.bg-silver'
 
       T.div "#cover",
