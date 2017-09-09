@@ -4,49 +4,49 @@
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 300;
-  src: local("Merriweather Light"), local("Merriweather-Light"), url(../fonts/merriweather-light.ttf) format("truetype"); }
+  src: url(/common/fonts/merriweather-light.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 400;
-  src: local("Merriweather"), url(../fonts/merriweather-normal.ttf) format("truetype"); }
+  src: url(/common/fonts/merriweather-normal.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 700;
-  src: local("Merriweather Bold"), local("Merriweather-Bold"), url(../fonts/merriweather-bold.ttf) format("truetype"); }
+  src: url(/common/fonts/merriweather-bold.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
   font-style: italic;
   font-weight: 300;
-  src: local("Merriweather Light Italic"), local("Merriweather-LightItalic"), url(https://fonts.gstatic.com/s/merriweather/v8/EYh7Vl4ywhowqULgRdYwIGrKw6K5wsYdxr6rUL2ZGaM.ttf) format("truetype"); }
+  src: url(https://fonts.gstatic.com/s/merriweather/v8/EYh7Vl4ywhowqULgRdYwIGrKw6K5wsYdxr6rUL2ZGaM.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
   font-style: italic;
   font-weight: 700;
-  src: local("Merriweather Bold Italic"), local("Merriweather-BoldItalic"), url(https://fonts.gstatic.com/s/merriweather/v8/EYh7Vl4ywhowqULgRdYwII1kRdeHIFWYEsp6A2f99b0.ttf) format("truetype"); }
+  src: url(https://fonts.gstatic.com/s/merriweather/v8/EYh7Vl4ywhowqULgRdYwII1kRdeHIFWYEsp6A2f99b0.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'TeamSpirit';
   font-style: normal;
   font-weight: 400;
-  src: local("Team Spirit"), url(../fonts/team-spirit-nf.ttf) format("truetype"); }
+  src: url(/common/fonts/team-spirit-nf.ttf) format("truetype"); }
 
   @font-face {
     font-family: 'VastShadow';
     font-style: normal;
     font-weight: 400;
-    src: local('Vast Shadow Regular'), local('VastShadow-Regular'), url(../fonts/vastshadow.woff) format('woff');
+    src: url(/common/fonts/vastshadow.woff) format('woff');
   }
   @font-face {
     font-family: 'Vidaloka';
     font-style: normal;
     font-weight: 400;
-    src: local('Vidaloka '), local('Vidaloka-Regular'), url(../fonts/vidaloka.woff) format('woff');
+    src: url(/common/fonts/vidaloka.woff) format('woff');
   }
 
 .team-spirit-loaded .adv-head {

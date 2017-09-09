@@ -27,7 +27,7 @@ module.exports = T.bless class BodyFormatter extends React.Component
             T.h1 story.title
             T.hr()
             T.crel "Bloviation", ".contents", dangerouslySetInnerHTML: __html: final
-          T.aside "#sidebar"
+          T.aside "#sidebar",style: 'min-width':240
         Footer '.p2.border-top.bg-silver'
 
       T.div "#cover",
