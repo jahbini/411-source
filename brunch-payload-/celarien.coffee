@@ -1,7 +1,10 @@
 ###
-styling: "Lookand Feel"
+#global Pylon
 ###
 T = Pylon.Teact
+
+Backbone = require 'backbone'
+_= require 'underscore'
 
 
 $ ->
@@ -36,7 +39,7 @@ $ ->
   
 console.log "Proceeding after font load"  
 
-module.exports = class CelarienLook
+module.exports =  class CelarienLook
   constructor: (@T=T)->
     return this
  
@@ -46,12 +49,7 @@ module.exports = class CelarienLook
     delete attrs.id
     title = attrs.title
     delete attrs.title
-    if attrs.class?
-      attrs.class.push "widget-wrap"
-    else
-      attrs.class = [ "widget-wrap"]
-    T.Container attrs , ->
-    T.Border bottom: true, ()->
-      T.Text f:3, color: 'black', bg: '#c5a317', title unless !title
-      T.div contents
+    T.div '.Container.widget-wrap.p1.m1.border-bottom',attrs , ->
+      T.h3 title unless !title
+      T.p '.pl2',contents
   

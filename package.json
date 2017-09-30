@@ -14,7 +14,6 @@
   "author": "James A. Hinds",
   "license": "ISC",
   "dependencies": {
-    "teacup": "^2.0.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
