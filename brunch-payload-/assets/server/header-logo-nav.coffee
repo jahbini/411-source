@@ -3,19 +3,14 @@ styling: "skeleton"
 _options:
 
 ###
-React = require 'react'
-T = require "teact"
+T = require "halvalla"
 
-module.exports = T.bless class HeaderLogoNav extends React.Component
-  constructor: (props)->
-    super()
-    @props=props
-    @
+module.exports = T.bless class HeaderLogoNav extends T.Component
     
-  render: ()=>
-    story = @props.story
-    navLinks =@props.navLinks
-    id = @props.id || 'header'
+  view: (props)=>
+    story = props.story
+    navLinks =props.navLinks
+    id = props.id || 'header'
     avatarStyle =
       #'backgroundImage':'url(/assets/images/hooray-fade2.jpg)'
       'MozTransform':'scaleX(-1)'

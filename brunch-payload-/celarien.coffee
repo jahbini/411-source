@@ -1,10 +1,8 @@
 ###
 #global Pylon
 ###
-T = Pylon.Teact
-
-Backbone = require 'backbone'
-_= require 'underscore'
+T = Pylon.Halvalla
+_= Pylon.underscore
 
 
 $ ->
@@ -37,11 +35,7 @@ $ ->
     console.log "Font Loader Error-- OK for site-master build phase"
     console.log badDog
   
-console.log "Proceeding after font load"  
-
 module.exports =  class CelarienLook
-  constructor: (@T=T)->
-    return this
  
   widgetWrap: ->
     {attrs,contents} = T.normalizeArgs arguments
@@ -51,5 +45,5 @@ module.exports =  class CelarienLook
     delete attrs.title
     T.div '.Container.widget-wrap.p1.m1.border-bottom',attrs , ->
       T.h3 title unless !title
-      T.p '.pl2',contents
+      T.div '.pl2',->contents
   
