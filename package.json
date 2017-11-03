@@ -1,6 +1,6 @@
 {
   "name": "celarien",
-  "version": "0.1.0",
+  "version": "1.7.1",
   "description": "Conversion of celarien.com wp blog",
   "main": "site.coffee",
   "scripts": {
