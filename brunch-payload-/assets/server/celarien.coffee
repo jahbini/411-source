@@ -27,15 +27,15 @@ module.exports = T.bless class BodyFormatter extends T.Component
     headerOptions = _.pick props, ['navLinks','story','page']
     #console.log "CELARIEN SERVERSIDE headerOptions", headerOptions
     T.div '#celarien-body.c-text.o-grid.o-grid--full', ->
-      T.tag 'style', '',".c-hero { border-bottom: 1px solid #333; }"
+      T.div '.style.c-hero',style:"{ border-bottom: 1px solid #333; }"
       T.div '.c-hero.o-grid__cell.u-higher', ()->
-        HeaderLogoNav '#myheader', headerOptions 
+        HeaderLogoNav  headerOptions 
       T.div '.o-grid__cell', style: 'minHeight':'100vh', ->
         T.div '.o-grid', ->
-          T.tag "main", '#storybar.o-grid__cell.order-2.bg-lighten-2', ->
+          T.div '#storybar.o-grid__cell.order-2.bg-lighten-2', ->
             T.h1 story.title
             T.hr()
-            T.tag "Bloviation", ".contents", dangerouslySetInnerHTML: __html: final
+            T.div "#bloviation.contents", dangerouslySetInnerHTML: __html: final
           T.aside "#sidebar.o-grid__cell.o-grid__cell--width-20.p2.bg-darken-2",style: 'minWidth':240
           T.div "#sidecar.o-grid__cell.o-grid__cell--width-fixed.order-last.bg-darken-2", style: 'minWidth':240,()->
             T.div ".fb-login-button", height:48,
