@@ -1,5 +1,5 @@
-# 
-class healing_from_abuse_how_wakeful_rest_can_heal_and_enhance_health_for_domestic_violence_survivors extends celarientemplate
+# #-------- class start
+class  healing_from_abuse_how_wakeful_rest_can_heal_and_enhance_health_for_domestic_violence_survivors extends celarientemplate
   # 
   # section html
   # 
@@ -87,5 +87,31 @@ psychotherapy practice and here’s what I see:
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
+#-------- class end
 page = new healing_from_abuse_how_wakeful_rest_can_heal_and_enhance_health_for_domestic_violence_survivors
-console.log T.render page.html
+rendered =  T.render page.html
+# ------- db start
+db = {} unless db
+db[id="597b839bd3cfff7cc5f926fb"] =
+  title: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
+  slug: "healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2008-09-08-0446-healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.298Z"
+  lastEdited: "2017-07-28T18:34:03.298Z"
+  published: "2017-07-28T18:34:03.298Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.298Z"
+  TimeStamp: "1501266843298"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f926fb"
+  name: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
+#

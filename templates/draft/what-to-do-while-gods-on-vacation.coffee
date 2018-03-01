@@ -1,5 +1,5 @@
-# 
-class what_to_do_while_gods_on_vacation extends celarientemplate
+# #-------- class start
+class  what_to_do_while_gods_on_vacation extends celarientemplate
   # 
   # section html
   # 
@@ -59,5 +59,31 @@ If one particular person can get a vision of his bliss, clean up his values so t
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
+#-------- class end
 page = new what_to_do_while_gods_on_vacation
-console.log T.render page.html
+rendered =  T.render page.html
+# ------- db start
+db = {} unless db
+db[id="597b839bd3cfff7cc5f9271b"] =
+  title: "What to do while God's on Vacation"
+  slug: "what-to-do-while-gods-on-vacation"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2010-07-12-0612-what-to-do-while-gods-on-vacation.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.630Z"
+  lastEdited: "2017-07-28T18:34:03.630Z"
+  published: "2017-07-28T18:34:03.630Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.630Z"
+  TimeStamp: "1501266843630"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f9271b"
+  name: "What to do while God's on Vacation"
+#

@@ -1,5 +1,5 @@
-# 
-class the_myth_of_a_christian_soul_mate extends celarientemplate
+# #-------- class start
+class  the_myth_of_a_christian_soul_mate extends celarientemplate
   # 
   # section html
   # 
@@ -90,5 +90,31 @@ But there’s a term that was introduced years ago and still hasn’t dropped fr
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
+#-------- class end
 page = new the_myth_of_a_christian_soul_mate
-console.log T.render page.html
+rendered =  T.render page.html
+# ------- db start
+db = {} unless db
+db[id="597b839bd3cfff7cc5f92714"] =
+  title: "The Myth Of A Christian Soul Mate"
+  slug: "the-myth-of-a-christian-soul-mate"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2008-09-20-1117-the-myth-of-a-christian-soul-mate.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.629Z"
+  lastEdited: "2017-07-28T18:34:03.629Z"
+  published: "2017-07-28T18:34:03.629Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.629Z"
+  TimeStamp: "1501266843629"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92714"
+  name: "The Myth Of A Christian Soul Mate"
+#

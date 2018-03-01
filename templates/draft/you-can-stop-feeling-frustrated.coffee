@@ -1,5 +1,5 @@
-# 
-class you_can_stop_feeling_frustrated extends celarientemplate
+# #-------- class start
+class  you_can_stop_feeling_frustrated extends celarientemplate
   # 
   # section html
   # 
@@ -80,5 +80,31 @@ Find more articles and information about living a meaningful life and maximizing
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
+#-------- class end
 page = new you_can_stop_feeling_frustrated
-console.log T.render page.html
+rendered =  T.render page.html
+# ------- db start
+db = {} unless db
+db[id="597b839bd3cfff7cc5f92707"] =
+  title: "You Can Stop Feeling Frustrated"
+  slug: "you-can-stop-feeling-frustrated"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2008-09-10-0524-you-can-stop-feeling-frustrated.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.324Z"
+  lastEdited: "2017-07-28T18:34:03.324Z"
+  published: "2017-07-28T18:34:03.324Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.324Z"
+  TimeStamp: "1501266843324"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92707"
+  name: "You Can Stop Feeling Frustrated"
+#

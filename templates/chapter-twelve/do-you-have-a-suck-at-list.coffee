@@ -1,5 +1,5 @@
-# 
-class do_you_have_a_suck_at_list extends celarientemplate
+# #-------- class start
+class  do_you_have_a_suck_at_list extends celarientemplate
   # 
   # section html
   # 
@@ -73,5 +73,36 @@ class do_you_have_a_suck_at_list extends celarientemplate
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
+#-------- class end
 page = new do_you_have_a_suck_at_list
-console.log T.render page.html
+rendered =  T.render page.html
+# ------- db start
+db = {} unless db
+db[id="599f58b8d65fa400d0fbaaea"] =
+  title: "Do You Have a Suck-At List?"
+  slug: "do-you-have-a-suck-at-list"
+  category: "chapter-twelve"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: ""
+  headlines: [
+    "What's the English word for Italian Suppository?"
+    "Stop Being Your Own Worst Enemy"
+  ]
+  tags: [
+    "599f806dd65fa400d0fbaaec"
+  ]
+  snippets: "{\"first name\":\"first name\"}"
+  memberOf: []
+  created: "2017-08-24T22:52:40.000Z"
+  lastEdited: "2017-08-24T22:52:40.000Z"
+  published: "2017-08-24T22:52:40.000Z"
+  embargo: "2017-08-24T22:52:40.000Z"
+  captureDate: "2017-08-24T22:52:40.000Z"
+  TimeStamp: "1503615160000"
+  debug: ""
+  author: ""
+  id: "599f58b8d65fa400d0fbaaea"
+  name: "Do You Have a Suck-At List?"
+#

@@ -1,5 +1,5 @@
-# 
-class can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions extends celarientemplate
+# #-------- class start
+class  can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions extends celarientemplate
   # 
   # section html
   # 
@@ -42,5 +42,31 @@ class can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions extends celar
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
+#-------- class end
 page = new can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions
-console.log T.render page.html
+rendered =  T.render page.html
+# ------- db start
+db = {} unless db
+db[id="597b839bd3cfff7cc5f9270b"] =
+  title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
+  slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2007-05-27-0054-addictions.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.557Z"
+  lastEdited: "2017-07-28T18:34:03.557Z"
+  published: "2017-07-28T18:34:03.557Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.557Z"
+  TimeStamp: "1501266843557"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f9270b"
+  name: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
+#
