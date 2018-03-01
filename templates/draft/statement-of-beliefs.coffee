@@ -265,4 +265,119 @@ db[id="597b839bd3cfff7cc5f92718"] =
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92718"
   name: "Statement of Beliefs"
+##
+db[id="597b839bd3cfff7cc5f92718"] =
+  title: "Statement of Beliefs"
+  slug: "statement-of-beliefs"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2010-06-26-0922-statement-of-beliefs.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.625Z"
+  lastEdited: "2017-07-28T18:34:03.625Z"
+  published: "2017-07-28T18:34:03.625Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.625Z"
+  TimeStamp: "1501266843625"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92718"
+  name: "Statement of Beliefs"
+##
+db[id="597b839bd3cfff7cc5f92718"] =
+  title: "Statement of Beliefs"
+  slug: "statement-of-beliefs"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2010-06-26-0922-statement-of-beliefs.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.625Z"
+  lastEdited: "2017-07-28T18:34:03.625Z"
+  published: "2017-07-28T18:34:03.625Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.625Z"
+  TimeStamp: "1501266843625"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92718"
+  name: "Statement of Beliefs"
+##
+db[id="597b839bd3cfff7cc5f92718"] =
+  title: "Statement of Beliefs"
+  slug: "statement-of-beliefs"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2010-06-26-0922-statement-of-beliefs.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.625Z"
+  lastEdited: "2017-07-28T18:34:03.625Z"
+  published: "2017-07-28T18:34:03.625Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.625Z"
+  TimeStamp: "1501266843625"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92718"
+  name: "Statement of Beliefs"
+##
+db[id="597b839bd3cfff7cc5f92718"] =
+  title: "Statement of Beliefs"
+  slug: "statement-of-beliefs"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2010-06-26-0922-statement-of-beliefs.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.625Z"
+  lastEdited: "2017-07-28T18:34:03.625Z"
+  published: "2017-07-28T18:34:03.625Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.625Z"
+  TimeStamp: "1501266843625"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92718"
+  name: "Statement of Beliefs"
+##
+db[id="597b839bd3cfff7cc5f92718"] =
+  title: "Statement of Beliefs"
+  slug: "statement-of-beliefs"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  sourcePath: "celarien/contents/old-contents/2010-06-26-0922-statement-of-beliefs.md"
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.625Z"
+  lastEdited: "2017-07-28T18:34:03.625Z"
+  published: "2017-07-28T18:34:03.625Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.625Z"
+  TimeStamp: "1501266843625"
+  author: ""
+  debug: ""
+  snippets: "{}"
+  id: "597b839bd3cfff7cc5f92718"
+  name: "Statement of Beliefs"
 #

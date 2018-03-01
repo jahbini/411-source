@@ -1,5 +1,5 @@
 # #-------- class start
-class  lifes_secret_meaning extends celarientemplate
+class  index extends celarientemplate
   # 
   # section html
   # 
@@ -28,7 +28,7 @@ class  lifes_secret_meaning extends celarientemplate
   # 
   storybar: =>
     T.div "#storybar.o-grid__cell.order-2.bg-lighten-2", =>
-      T.h1 => T.raw "Not Found"
+      T.h1 => T.raw "Celarien -- The tools of the spiritual bodyguard"
       T.hr()
       @bloviation()
   # 
@@ -36,62 +36,15 @@ class  lifes_secret_meaning extends celarientemplate
   # 
   bloviation: =>
     T.div "#bloviation.contents", "dangerously-set-inner-h-t-m-l": "[object Object]", =>
-      T.div =>
-        T.body =>
-          T.div => T.raw "This Page really does exist: As they say on Saipan, &quot;No Nawthing Thursday&quot;"
+      T.p => T.raw "How’s life working out for you?  What is your coping style?"
+      T.p => T.raw "If you want the spiritual tools to guard yourself against the lies that are keeping you stressed out, afraid, demoralized or angry, keep reading."
   # 
   # section header
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
 #-------- class end
-page = new lifes_secret_meaning
+page = new index
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
-db[id="59ffe5053a4b7b001549ce4f"] =
-  title: "Life's Secret Meaning"
-  slug: "lifes-secret-meaning"
-  category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
-  accepted: true
-  index: false
-  sourcePath: ""
-  headlines: []
-  tags: []
-  snippets: "{\"first name\":\"first name\"}"
-  memberOf: []
-  created: "2017-11-06T04:28:53.000Z"
-  lastEdited: "2017-11-06T04:28:53.000Z"
-  published: "2017-11-06T04:28:53.000Z"
-  embargo: "2017-11-06T04:28:53.000Z"
-  captureDate: "2017-11-06T04:28:53.000Z"
-  TimeStamp: "1509942533000"
-  debug: ""
-  author: ""
-  id: "59ffe5053a4b7b001549ce4f"
-  name: "Life's Secret Meaning"
-##
-db[id="59ffe5053a4b7b001549ce4f"] =
-  title: "Life's Secret Meaning"
-  slug: "lifes-secret-meaning"
-  category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
-  accepted: true
-  index: false
-  sourcePath: ""
-  headlines: []
-  tags: []
-  snippets: "{\"first name\":\"first name\"}"
-  memberOf: []
-  created: "2017-11-06T04:28:53.000Z"
-  lastEdited: "2017-11-06T04:28:53.000Z"
-  published: "2017-11-06T04:28:53.000Z"
-  embargo: "2017-11-06T04:28:53.000Z"
-  captureDate: "2017-11-06T04:28:53.000Z"
-  TimeStamp: "1509942533000"
-  debug: ""
-  author: ""
-  id: "59ffe5053a4b7b001549ce4f"
-  name: "Life's Secret Meaning"
-#
