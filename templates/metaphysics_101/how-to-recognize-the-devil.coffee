@@ -35,8 +35,8 @@ class  how_to_recognize_the_devil extends celarientemplate
   # section bloviation
   # 
   bloviation: =>
-    T.div "#bloviation.contents", "dangerously-set-inner-h-t-m-l": "[object Object]", =>
-      @a_devil_i_m_the_only_one_who_can_fix_america_s_problems_http_res_cloudinary_com_bamboo_snow_image_upload_c_fit_h_60_q_80_w_90_ngcpxsylducta96r9erb_quot_the_devil_will_take_charge_quot_()
+    T.div "#bloviation.contents",  =>
+      @a_devil()
       T.p => T.raw "&gt; The Celarien sez: A Devil is any one or anything that offers you something you want in exchange for something you need.  You end up with a craving for what you lost, and now the devil controls it."
       @roboquestor_wants_to_know_what_s_the_difference_and_how_does_that_make_a_craving_()
       T.p => T.raw "Well, there are things you want, like chocolate instead of vanilla, or a newer car, or for Christmas to come the day after Thanksgiving."
@@ -55,12 +55,12 @@ class  how_to_recognize_the_devil extends celarientemplate
   roboquestor_wants_to_know_what_s_the_difference_and_how_does_that_make_a_craving_: =>
     T.h3 "#roboquestor-wants-to-know-what-s-the-difference-and-how-does-that-make-a-craving-", => T.raw "RoboQuestor Wants to know:  What’s the difference? and how does that make a craving?"
   # 
-  # section a_devil_i_m_the_only_one_who_can_fix_america_s_problems_http_res_cloudinary_com_bamboo_snow_image_upload_c_fit_h_60_q_80_w_90_ngcpxsylducta96r9erb_quot_the_devil_will_take_charge_quot_
+  # section a_devil
   # 
-  a_devil_i_m_the_only_one_who_can_fix_america_s_problems_http_res_cloudinary_com_bamboo_snow_image_upload_c_fit_h_60_q_80_w_90_ngcpxsylducta96r9erb_quot_the_devil_will_take_charge_quot_: =>
-    T.h1 "#a-devil-i-m-the-only-one-who-can-fix-america-s-problems-http-res-cloudinary-com-bamboo-snow-image-upload-c_fit-h_60-q_80-w_90-ngcpxsylducta96r9erb-quot-the-devil-will-take-charge-quot-", =>
+  a_devil: =>
+    T.h1 "#a-devil", =>
       T.raw "A devil"
-      T.img src: "http://res.cloudinary.com/bamboo-snow/image/upload/c_fit,h_60,q_80,w_90/ngcpxsylducta96r9erb &amp;quot;The Devil will take charge.&amp;quot;", alt: "I&amp;#39;m the only one who can fix America&amp;#39;s Problems"
+      T.img src: "http://res.cloudinary.com/bamboo-snow/image/upload/c_fit,h_60,q_80,w_90/ngcpxsylducta96r9erb", alt: "I'm the only one who can fix America's Problems"
   # 
   # section header
   # 

@@ -4,19 +4,19 @@
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 300;
-  src: url(/common/fonts/merriweather-light.ttf) format("truetype"); }
+  src: url(/assets/fonts/merriweather-light.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 400;
-  src: url(/common/fonts/merriweather-normal.ttf) format("truetype"); }
+  src: url(/assets/fonts/merriweather-normal.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
   font-style: normal;
   font-weight: 700;
-  src: url(/common/fonts/merriweather-bold.ttf) format("truetype"); }
+  src: url(/assets/fonts/merriweather-bold.ttf) format("truetype"); }
 
 @font-face {
   font-family: 'Merriweather';
@@ -34,19 +34,19 @@
   font-family: 'TeamSpirit';
   font-style: normal;
   font-weight: 400;
-  src: url(/common/fonts/team-spirit-nf.ttf) format("truetype"); }
+  src: url(/assets/fonts/team-spirit-nf.ttf) format("truetype"); }
 
   @font-face {
     font-family: 'VastShadow';
     font-style: normal;
     font-weight: 400;
-    src: url(/common/fonts/vastshadow.woff) format('woff');
+    src: url(/assets/fonts/vastshadow.woff) format('woff');
   }
   @font-face {
     font-family: 'Vidaloka';
     font-style: normal;
     font-weight: 400;
-    src: url(/common/fonts/vidaloka.woff) format('woff');
+    src: url(/assets/fonts/vidaloka.woff) format('woff');
   }
 
 .team-spirit-loaded .adv-head {
