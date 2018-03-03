@@ -54,7 +54,7 @@ db[id="59ffe5053a4b7b001549ce4f"] =
   slug: "lifes-secret-meaning"
   category: "metaphysics_101"
   site: "597aea40d3cfff7cc5f926f0"
-  accepted: true
+  accepted: false
   index: false
   sourcePath: ""
   headlines: []
@@ -77,7 +77,7 @@ db[id="59ffe5053a4b7b001549ce4f"] =
   slug: "lifes-secret-meaning"
   category: "metaphysics_101"
   site: "597aea40d3cfff7cc5f926f0"
-  accepted: true
+  accepted: false
   index: false
   sourcePath: ""
   headlines: []
