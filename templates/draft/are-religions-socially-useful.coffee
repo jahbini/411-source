@@ -64,6 +64,8 @@ page = new are_religions_socially_useful
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f926f2"] =
   title: "Are Religions Socially Useful?"
   slug: "are-religions-socially-useful"
@@ -71,7 +73,6 @@ db[id="597b839bd3cfff7cc5f926f2"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2010-08-18-0535-are-religions-socially-useful.md"
   headlines: []
   tags: []
   snippets: "{}"
@@ -82,7 +83,7 @@ db[id="597b839bd3cfff7cc5f926f2"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.000Z"
   TimeStamp: "1501266843000"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   id: "597b839bd3cfff7cc5f926f2"
   name: "Are Religions Socially Useful?"

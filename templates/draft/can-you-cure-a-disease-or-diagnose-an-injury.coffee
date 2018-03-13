@@ -52,6 +52,8 @@ page = new can_you_cure_a_disease_or_diagnose_an_injury
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f926fa"] =
   title: "Can you cure a disease or diagnose an injury?"
   slug: "can-you-cure-a-disease-or-diagnose-an-injury"
@@ -59,7 +61,6 @@ db[id="597b839bd3cfff7cc5f926fa"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2007-05-27-0049-disease.md"
   headlines: []
   tags: []
   memberOf: []
@@ -69,7 +70,7 @@ db[id="597b839bd3cfff7cc5f926fa"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.296Z"
   TimeStamp: "1501266843296"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f926fa"

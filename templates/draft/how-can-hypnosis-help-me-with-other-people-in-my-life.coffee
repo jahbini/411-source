@@ -49,6 +49,8 @@ page = new how_can_hypnosis_help_me_with_other_people_in_my_life
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f926f5"] =
   title: "How can hypnosis help me with other people in my life?"
   slug: "how-can-hypnosis-help-me-with-other-people-in-my-life"
@@ -56,7 +58,6 @@ db[id="597b839bd3cfff7cc5f926f5"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
   index: false
-  sourcePath: "celarien/contents/old-contents/2007-05-27-0041-others.md"
   headlines: []
   tags: []
   snippets: "{}"
@@ -67,7 +68,7 @@ db[id="597b839bd3cfff7cc5f926f5"] =
   embargo: "2030-01-01T00:00:00.000Z"
   captureDate: "2017-07-28T18:34:03.000Z"
   TimeStamp: "1501266843000"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   id: "597b839bd3cfff7cc5f926f5"
   name: "How can hypnosis help me with other people in my life?"

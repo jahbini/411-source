@@ -47,6 +47,8 @@ page = new can_hypnosis_help_in_sports_and_athletic_performance
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f926f3"] =
   title: "Can hypnosis help in sports and athletic performance?"
   slug: "can-hypnosis-help-in-sports-and-athletic-performance"
@@ -54,7 +56,6 @@ db[id="597b839bd3cfff7cc5f926f3"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
   index: false
-  sourcePath: "celarien/contents/old-contents/2007-05-27-0050-sports.md"
   headlines: []
   tags: []
   snippets: "{}"
@@ -65,7 +66,7 @@ db[id="597b839bd3cfff7cc5f926f3"] =
   embargo: "2030-01-01T00:00:00.000Z"
   captureDate: "2017-07-28T18:34:03.000Z"
   TimeStamp: "1501266843000"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   id: "597b839bd3cfff7cc5f926f3"
   name: "Can hypnosis help in sports and athletic performance?"

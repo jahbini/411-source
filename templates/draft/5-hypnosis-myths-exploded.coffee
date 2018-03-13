@@ -88,6 +88,8 @@ page = new _5_hypnosis_myths_exploded
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f926f8"] =
   title: "5 Hypnosis Myths Exploded"
   slug: "5-hypnosis-myths-exploded"
@@ -95,7 +97,6 @@ db[id="597b839bd3cfff7cc5f926f8"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-09-08-1125-5-hypnosis-myths-exploded.md"
   headlines: []
   tags: []
   snippets: "{}"
@@ -106,7 +107,7 @@ db[id="597b839bd3cfff7cc5f926f8"] =
   embargo: "2030-01-01T00:00:00.000Z"
   captureDate: "2017-07-28T18:34:03.000Z"
   TimeStamp: "1501266843000"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   id: "597b839bd3cfff7cc5f926f8"
   name: "5 Hypnosis Myths Exploded"

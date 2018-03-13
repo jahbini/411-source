@@ -80,6 +80,8 @@ page = new my_past_doesnt_have_to_be_my_future
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f92701"] =
   title: "My Past Doesn't Have to Be My Future"
   slug: "my-past-doesnt-have-to-be-my-future"
@@ -87,7 +89,6 @@ db[id="597b839bd3cfff7cc5f92701"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-09-21-2145-my-past-doesnt-have-to-be-my-future.md"
   headlines: []
   tags: []
   memberOf: []
@@ -97,7 +98,7 @@ db[id="597b839bd3cfff7cc5f92701"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.308Z"
   TimeStamp: "1501266843308"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92701"

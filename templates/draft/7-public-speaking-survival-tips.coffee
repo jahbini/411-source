@@ -95,6 +95,8 @@ page = new _7_public_speaking_survival_tips
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f9270a"] =
   title: "7 Public Speaking Survival Tips"
   slug: "7-public-speaking-survival-tips"
@@ -102,7 +104,6 @@ db[id="597b839bd3cfff7cc5f9270a"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-09-08-1133-7-public-speaking-survival-tips.md"
   headlines: []
   tags: []
   snippets: "{}"
@@ -113,7 +114,7 @@ db[id="597b839bd3cfff7cc5f9270a"] =
   embargo: "2030-01-01T00:00:00.000Z"
   captureDate: "2017-07-28T18:34:03.000Z"
   TimeStamp: "1501266843000"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   id: "597b839bd3cfff7cc5f9270a"
   name: "7 Public Speaking Survival Tips"

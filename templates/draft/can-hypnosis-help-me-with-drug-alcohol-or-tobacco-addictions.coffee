@@ -47,6 +47,8 @@ page = new can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f9270b"] =
   title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
   slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
@@ -54,7 +56,6 @@ db[id="597b839bd3cfff7cc5f9270b"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2007-05-27-0054-addictions.md"
   headlines: []
   tags: []
   memberOf: []
@@ -64,7 +65,7 @@ db[id="597b839bd3cfff7cc5f9270b"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.557Z"
   TimeStamp: "1501266843557"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f9270b"

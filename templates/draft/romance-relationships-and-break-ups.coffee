@@ -72,6 +72,8 @@ page = new romance_relationships_and_break_ups
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f92704"] =
   title: "Romance, Relationships and Break-ups"
   slug: "romance-relationships-and-break-ups"
@@ -79,7 +81,6 @@ db[id="597b839bd3cfff7cc5f92704"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-04-22-0858-romance-relationships-and-break-ups.md"
   headlines: []
   tags: []
   memberOf: []
@@ -89,7 +90,7 @@ db[id="597b839bd3cfff7cc5f92704"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.315Z"
   TimeStamp: "1501266843315"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92704"

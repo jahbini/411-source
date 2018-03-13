@@ -86,6 +86,8 @@ page = new i_finally_got_my_revenge
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f926fd"] =
   title: "I Finally Got My Revenge!"
   slug: "i-finally-got-my-revenge"
@@ -93,7 +95,6 @@ db[id="597b839bd3cfff7cc5f926fd"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-09-18-0719-i-finally-got-my-revenge.md"
   headlines: []
   tags: []
   memberOf: []
@@ -103,7 +104,7 @@ db[id="597b839bd3cfff7cc5f926fd"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.301Z"
   TimeStamp: "1501266843301"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f926fd"

@@ -59,6 +59,8 @@ page = new how_can_hypnosis_help_me_with_romance_or_my_relationship
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f9270c"] =
   title: "How can hypnosis help me with romance or my relationship?"
   slug: "how-can-hypnosis-help-me-with-romance-or-my-relationship"
@@ -66,7 +68,6 @@ db[id="597b839bd3cfff7cc5f9270c"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2007-05-27-0100-romance.md"
   headlines: []
   tags: []
   memberOf: []
@@ -76,7 +77,7 @@ db[id="597b839bd3cfff7cc5f9270c"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.573Z"
   TimeStamp: "1501266843573"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f9270c"

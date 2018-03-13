@@ -78,6 +78,8 @@ page = new do_you_have_a_suck_at_list
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="599f58b8d65fa400d0fbaaea"] =
   title: "Do You Have a Suck-At List?"
   slug: "do-you-have-a-suck-at-list"
@@ -85,7 +87,6 @@ db[id="599f58b8d65fa400d0fbaaea"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: ""
   headlines: [
     "What's the English word for Italian Suppository?"
     "Stop Being Your Own Worst Enemy"
@@ -102,7 +103,7 @@ db[id="599f58b8d65fa400d0fbaaea"] =
   captureDate: "2017-08-24T22:52:40.000Z"
   TimeStamp: "1503615160000"
   debug: ""
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   id: "599f58b8d65fa400d0fbaaea"
   name: "Do You Have a Suck-At List?"
 #

@@ -64,6 +64,8 @@ page = new what_to_do_while_gods_on_vacation
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f9271b"] =
   title: "What to do while God's on Vacation"
   slug: "what-to-do-while-gods-on-vacation"
@@ -71,7 +73,6 @@ db[id="597b839bd3cfff7cc5f9271b"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2010-07-12-0612-what-to-do-while-gods-on-vacation.md"
   headlines: []
   tags: []
   memberOf: []
@@ -81,7 +82,7 @@ db[id="597b839bd3cfff7cc5f9271b"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.630Z"
   TimeStamp: "1501266843630"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f9271b"

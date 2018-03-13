@@ -164,6 +164,8 @@ page = new laboratory_experiments_with_subliminal_messages
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f92700"] =
   title: "Laboratory Experiments With Subliminal Messages"
   slug: "laboratory-experiments-with-subliminal-messages"
@@ -171,7 +173,6 @@ db[id="597b839bd3cfff7cc5f92700"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-09-09-0425-laboratory-experiments-with-subliminal-messages.md"
   headlines: []
   tags: []
   memberOf: []
@@ -181,7 +182,7 @@ db[id="597b839bd3cfff7cc5f92700"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.307Z"
   TimeStamp: "1501266843307"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92700"

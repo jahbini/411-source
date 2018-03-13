@@ -68,6 +68,8 @@ page = new the_birth_of_st_johns_jim
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f92719"] =
   title: "The Birth of St. John's Jim"
   slug: "the-birth-of-st-johns-jim"
@@ -75,7 +77,6 @@ db[id="597b839bd3cfff7cc5f92719"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2010-06-26-0935-the-birth-of-st-johns-jim.md"
   headlines: []
   tags: []
   memberOf: []
@@ -85,7 +86,7 @@ db[id="597b839bd3cfff7cc5f92719"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.626Z"
   TimeStamp: "1501266843626"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92719"

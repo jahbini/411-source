@@ -51,6 +51,8 @@ db = {} unless db
 
 
 #end of story#
+
+
 db[id="celarienerror404"] =
   title: "404"
   slug: "404"
@@ -58,7 +60,6 @@ db[id="celarienerror404"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: ""
   headlines: []
   tags: []
   snippets: "{\"first name\":\"first name\"}"
@@ -70,7 +71,7 @@ db[id="celarienerror404"] =
   captureDate: "2018-03-05T04:47:09.129Z"
   TimeStamp: 1520225229129
   debug: ""
-  author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   id: "celarienerror404"
   name: "404"
 #

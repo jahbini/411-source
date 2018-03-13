@@ -95,6 +95,8 @@ page = new the_myth_of_a_christian_soul_mate
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f92714"] =
   title: "The Myth Of A Christian Soul Mate"
   slug: "the-myth-of-a-christian-soul-mate"
@@ -102,7 +104,6 @@ db[id="597b839bd3cfff7cc5f92714"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-09-20-1117-the-myth-of-a-christian-soul-mate.md"
   headlines: []
   tags: []
   memberOf: []
@@ -112,7 +113,7 @@ db[id="597b839bd3cfff7cc5f92714"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.629Z"
   TimeStamp: "1501266843629"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92714"

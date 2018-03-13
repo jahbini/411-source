@@ -49,6 +49,8 @@ page = new lifes_secret_meaning
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="59ffe5053a4b7b001549ce4f"] =
   title: "Life's Secret Meaning"
   slug: "lifes-secret-meaning"
@@ -56,7 +58,6 @@ db[id="59ffe5053a4b7b001549ce4f"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
   index: false
-  sourcePath: ""
   headlines: []
   tags: []
   snippets: "{\"first name\":\"first name\"}"
@@ -68,30 +69,7 @@ db[id="59ffe5053a4b7b001549ce4f"] =
   captureDate: "2017-11-06T04:28:53.000Z"
   TimeStamp: "1509942533000"
   debug: ""
-  author: ""
-  id: "59ffe5053a4b7b001549ce4f"
-  name: "Life's Secret Meaning"
-##
-db[id="59ffe5053a4b7b001549ce4f"] =
-  title: "Life's Secret Meaning"
-  slug: "lifes-secret-meaning"
-  category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
-  accepted: false
-  index: false
-  sourcePath: ""
-  headlines: []
-  tags: []
-  snippets: "{\"first name\":\"first name\"}"
-  memberOf: []
-  created: "2017-11-06T04:28:53.000Z"
-  lastEdited: "2017-11-06T04:28:53.000Z"
-  published: "2017-11-06T04:28:53.000Z"
-  embargo: "2017-11-06T04:28:53.000Z"
-  captureDate: "2017-11-06T04:28:53.000Z"
-  TimeStamp: "1509942533000"
-  debug: ""
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   id: "59ffe5053a4b7b001549ce4f"
   name: "Life's Secret Meaning"
 #

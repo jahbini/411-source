@@ -50,6 +50,8 @@ page = new st_johns_jim_meets_st_johns_johnny
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
+
 db[id="597b839bd3cfff7cc5f92706"] =
   title: "St. John's Jim Meets St. John's Johnny"
   slug: "st-johns-jim-meets-st-johns-johnny"
@@ -57,7 +59,6 @@ db[id="597b839bd3cfff7cc5f92706"] =
   site: "597aea40d3cfff7cc5f926f0"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2010-08-15-0850-st-johns-jim-meets-st-johns-johnny.md"
   headlines: []
   tags: []
   memberOf: []
@@ -67,7 +68,7 @@ db[id="597b839bd3cfff7cc5f92706"] =
   embargo: "2017-12-31T23:59:59.000Z"
   captureDate: "2017-07-28T18:34:03.319Z"
   TimeStamp: "1501266843319"
-  author: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
   id: "597b839bd3cfff7cc5f92706"
