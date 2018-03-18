@@ -37,13 +37,13 @@ class  do_you_have_a_suck_at_list extends celarientemplate
   bloviation: =>
     T.div "#bloviation.contents", "dangerously-set-inner-h-t-m-l": "[object Object]", =>
       @why_would_anyone_have_one_()
-      T.p =>
+      T.p ".drop-cap", =>
         T.raw "Why?"
         T.span ".FBname", => T.raw "Friend"
         T.raw ", Burn Out protection. More than half of life’s learnings come from failure, not success."
       T.blockquote =>
         T.p => T.raw "Remember that we have two sets of values – those values that motivate us to DO something, and a completely different set of values that make us feel about what we did."
-      T.p => T.raw "It’s kind of like a Bucket List, but instead of things that you really want to do, it is a list of things where you are your own worst enemy.  You do so badly that you have decided to just say ‘That’s not for me’"
+      T.p "It’s kind of like a Bucket List, but instead of things that you really want to do, it is a list of things where you are your own worst enemy.  You do so badly that you have decided to just say ‘That’s not for me’"
       T.p => T.raw "Like maybe you took a class in English Literature, but can’t tell the difference between an innuendo and an Italian suppository."
       T.p => T.raw "Like maybe your family are all great glass blowers, but you are allergic to glass."
       T.p => T.raw "Or maybe you want to change the world in politics, but hate to lie."

@@ -175,12 +175,10 @@ FB.api('/me', 'get', {'fields':'first_name,gender'}, function(response) {
   # 
   header: =>
     T.header "#header.o-grid.o-grid--bottom", style: "height:250px", =>
+      T.div ".c-avatar.u-super", =>
+        T.img ".c-avatar__img", style: "-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH", src: "http://www.gravatar.com/avatar/c105eda1978979dfb13059b8878ef95d?s=90"
       T.div ".o-grid__cell.o-grid__cell--width-30", =>
         T.h3 =>
           T.a ".fa.fa-home", href: "/", => T.raw "Home"
-        T.h3 =>
-          T.a ".fa.fa-join", href: "/join", => T.raw "Join"
-        T.div ".c-avatar.u-super", =>
-          T.img ".c-avatar__img", style: "-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH", src: "http://www.gravatar.com/avatar/c105eda1978979dfb13059b8878ef95d?s=90"
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
