@@ -1,6 +1,11 @@
 # 
 T = require 'halvalla'
 module.exports = class celarientemplate
+  #
+  # section storyHeadMatter
+  #
+  storyHeadMatter: =>
+    return
   # 
   # section html
   # 
@@ -120,6 +125,7 @@ FB.api('/me', 'get', {'fields':'first_name,gender'}, function(response) {
         T.script src: "assets/js/vendor.js", "-content--type": "text/javascript", "-content--encoding": "gzip"
         T.script src: "assets/js/app.js", "-content--type": "text/javascript", "-content--encoding": "gzip"
         T.script "siteHandle = 'celarien'; topDomain = 'celarien.com'; require('initialize');"
+        @storyHeadMatter()
       T.body =>
         @celarien_body()
   # 

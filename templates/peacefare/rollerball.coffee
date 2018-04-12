@@ -14,13 +14,13 @@ Gravitas = ->
       [3, 2, 0]
       [1, 2, 3]
     ]
-  
+    tetrahedronPoints = [
+      seen.P( 1,  1,  1).normalize()
+      seen.P(-1, -1,  1).normalize()
+      seen.P(-1,  1, -1).normalize()
+      seen.P( 1, -1, -1).normalize()] 
+        
     tetrahedralSphere =  (subdivisions = 2) ->
-      tetrahedronPoints = [
-        seen.P( 1,  1,  1).normalize()
-        seen.P(-1, -1,  1).normalize()
-        seen.P(-1,  1, -1).normalize()
-        seen.P( 1, -1, -1).normalize()]
       triangles = TETRAHEDRON_COORDINATE_MAP.map (coords) -> coords.map (c) -> tetrahedronPoints[c]
       for i in [0...subdivisions]
         triangles = seen.Shapes._subdivideTriangles(triangles)
@@ -70,7 +70,7 @@ Gravitas = ->
       @world.addBody @outerSphere
       
       @.add @.outerHull=tetrahedralSphere(4).scale(@radius).fill new seen.Material seen.C 200,200,20,200
-      @.add @.innerHull=tetrahedralSphere(2).scale(@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
+      @.add @.innerHull = tetrahedralSphere(2).scale(@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
       for i in [0..3]
         pInner = tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
         pOuter = tetrahedronPoints[i].copy().multiply @radius
@@ -80,31 +80,18 @@ Gravitas = ->
       return @
     
     update: ()->
-      ip = @.innerSphere.position
-      iq = @.innerSphere.quaternion
-      op = @.outerSphere.position
-      oq = @.outerSphere.quaternion
-      @.reset()
-      console.log "combo",pp=@.outerSphere.position,@.innerSphere.position
-      debugger
-      @.outerHull.translate(op.x,op.y,op.z)
-      #@.outerHull.matrix seen.Quaternion.axisAngle(oq.x,oq.y,oq.z,oq.w).toMatrix().m
-      @.innerHull.translate(ip.x,ip.y,ip.z)
-      #@.innerHull.matrix seen.Quaternion.axisAngle(iq.x,iq.y,iq.z,iq.w).toMatrix().m
+      # map the physics simulation objects to seen's visual toolkit
+      console.log "outie",po=@.outerSphere.position
+      console.log "innie",pi=@.innerSphere.position
+      @.reset().translate po.x,po.y,po.z
+      @.innerHull.reset().translate pi.x-po.x,pi.y-po.y,pi.z-po.z
+      return
       
   # Setup our world
   world = new (CANNON.World)
   world.gravity.set 0, 0, -9.82
   # m/s²
-  # Create a sphere
-  radius = 100
-  # m
-  bouncingSphere = new (CANNON.Body)(
-    mass: 5
-    position: new (CANNON.Vec3)(0, 0, 200)
-    shape: new (CANNON.Sphere)(radius))
-  bouncingSphere.aName = "fallGuy"
-  #world.addBody bouncingSphere
+
   # Create a plane
   groundBody = new (CANNON.Body)(mass: 0)
   groundShape = new (CANNON.Plane)
@@ -114,42 +101,12 @@ Gravitas = ->
 
   width = 400
   height = 400
-  TETRAHEDRON_COORDINATE_MAP = [
-    [0, 2, 1]
-    [0, 1, 3]
-    [3, 2, 0]
-    [1, 2, 3]
-  ]
-
-  tetrahedronPoints = [
-    seen.P( 1,  1,  1).normalize()
-    seen.P(-1, -1,  1).normalize()
-    seen.P(-1,  1, -1).normalize()
-    seen.P( 1, -1, -1).normalize()]
-  tetrahedralSphere =  (subdivisions = 2) ->
-    triangles = TETRAHEDRON_COORDINATE_MAP.map (coords) -> coords.map (c) -> tetrahedronPoints[c]
-    for i in [0...subdivisions]
-      triangles = seen.Shapes._subdivideTriangles(triangles)
-      for triangle in triangles
-        for p in triangle
-          p.normalize()
-          #console.log p, p.
-    return new seen.Shape('tetrahedralSphere', triangles.map (triangle) -> new seen.Surface(triangle.map (v) -> v.copy()))
-  createRollerBall= ()->
-    m = new seen.Model() # empty model
-    m.add tetrahedralSphere(4).scale(10).fill new seen.Material seen.C 200,20,20,200
-    m.add tetrahedralSphere(2).fill new seen.Material seen.C 20,200,20,200
-    for i in [0..3]
-      p = tetrahedronPoints[i]
-      pipe = seen.Shapes.pipe p,p.copy().multiply(10)
-      m.add pipe.fill new seen.Material seen.C 20,20,20,100
-    return m.bake()
-  ball1 = createRollerBall().translate 0,0,100
-  ball2=createRollerBall().scale(10).bake()
-  rBall = new RollerBall world,100,10, position:seen.P 5,0,20
+ 
+  rBall = new RollerBall world,100,30, position:seen.P 5,0,100
+  rBall2 = new RollerBall world,10,20, position:seen.P 5,5,50
   # Create scene and add shape to model
   scene = new seen.Scene
-    model    : seen.Models.default().add(rBall)
+    model    : seen.Models.default().add(rBall).add rBall2
     viewport : seen.Viewports.center(width, height)
   
   floor = seen.Shapes.patch 50,50
@@ -161,7 +118,7 @@ Gravitas = ->
   #put some easily recognizable grid elements
   for x in [-5..5]
     for y in [-5..5]
-      scene.model.add seen.Shapes.pipe seen.P(10*x,10*y,x*y),seen.P(10*x,10*y,-x*y/2)
+      scene.model.add seen.Shapes.pipe seen.P(10*x,10*y,x*y),seen.P(10*x,10*y,0)
   
   # Create render context from canvas
   context = seen.Context('seen-canvas', scene).render()
@@ -176,20 +133,11 @@ Gravitas = ->
             0, 1, 0, 0,
             0, 0, 0, 1]
   scene.model.transform FLIPYZ
-  scene.model.rotx 20
+  scene.model.rotx Math.PI*20/360
   scene.model.bake()
-  # Slowly rotate sphere
-  rotation = seen.Matrices.identity()
-  translation = seen.Matrices.identity()
+
   timeStamp = 0
-  restartCurrentScene= ->
-    b = bouncingSphere
-    b.position.copy b.initPosition
-    b.velocity.copy b.initVelocity
-    if b.initAngularVelocity
-        b.angularVelocity.copy b.initAngularVelocity
-        b.quaternion.copy b.initQuaternion
-  maxVelocity = bouncingSphere.velocity.clone()      
+  
   rotateThem=(t, dt) ->
     fixedTimeStep = 1.0 / 60.0
     # seconds
@@ -200,14 +148,9 @@ Gravitas = ->
     #console.log 'Sphere z position: ' + bouncingSphere.position.z, 'max',maxVelocity
     timeStamp += dt*1e-2
     
-    #ball2.reset().translate bouncingSphere.position.x,bouncingSphere.position.y, bouncingSphere.position.z
     rBall.update()
-    #if bouncingSphere.velocity.norm2() > maxVelocity.norm2()
-    #  maxVelocity.copy  bouncingSphere.velocity
-    #if bouncingSphere.position.z <= 10
-    #  bouncingSphere.velocity.copy maxVelocity.scale -1
-    scene.model.reset().transform rotation
-    #scene.model.transform translation
+    rBall2.update()
+  
     return
 
 
