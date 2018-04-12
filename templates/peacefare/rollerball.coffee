@@ -71,19 +71,31 @@ Gravitas = ->
       
       @.add @.outerHull=tetrahedralSphere(4).scale(@radius).fill new seen.Material seen.C 200,200,20,200
       @.add @.innerHull = tetrahedralSphere(2).scale(@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
+      @.contolPairs=[]
+      @.springs=[]
       for i in [0..3]
         pInner = tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
         pOuter = tetrahedronPoints[i].copy().multiply @radius
         pipe = seen.Shapes.pipe pInner,pOuter
         @.add pipe.fill new seen.Material seen.C 20,20,20,100
+        @.contolPairs.push [pInner,pOuter]
+        @.springs.push new (CANNON.Spring) @innerSphere,@outerSphere,
+          restLength: @radius*50
+          localAnchorA: toVec3(pInner)
+          localAnchorB:toVec3 pOuter
+        world.addEventListener "postStep",(event)=>
+         s.applyForce() for s in @.springs
+         return
       @.bake()
       return @
     
     update: ()->
       # map the physics simulation objects to seen's visual toolkit
-      console.log "outie",po=@.outerSphere.position
+      console.log "outie",po=@.outerSphere.position,pr=@outerSphere.quaternion
       console.log "innie",pi=@.innerSphere.position
-      @.reset().translate po.x,po.y,po.z
+      rotation = new seen.Quaternion pr.x,pr.y,pr.z,pr.w
+      @.reset().transform rotation.toMatrix()
+      @.translate po.x,po.y,po.z
       @.innerHull.reset().translate pi.x-po.x,pi.y-po.y,pi.z-po.z
       return
       
