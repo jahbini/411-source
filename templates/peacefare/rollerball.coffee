@@ -43,7 +43,7 @@ Gravitas = ->
     toPoint = (v) -> seen.P v.x*10,v.y*10,v.z*10
     setPursuit: (x,y)->
       @pursuit = new CANNON.Vec3 x, y, 1
-      
+    C = (x=0,y=0,z=0)-> new CANNON.Vec3 x,y,z
     # mass in kg, distance in meters
     constructor: (name,world, mass=1,radius=0.2, options={}) ->
       super()
@@ -84,36 +84,31 @@ Gravitas = ->
       @.outerHull.bake()
       @.innerHull.bake()
       @.contolPairs=[]
-      @.springs=[]
+      # set displacement as 'center of mass' relative to outerSphere position
+      @.displacement= C()
+      @.centerOfGravity = new CANNON.PointToPointConstraint @outerSphere,@displacement,@innerSphere,C()
+      world.addConstraint @centerOfGravity
       for i in [0..3]
         pInner = toPoint tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
         pOuter = toPoint tetrahedronPoints[i].copy().multiply @radius
         pipe = seen.Shapes.pipe pInner,pOuter,0.1
         @.add pipe.fill new seen.Material seen.C 20,20,20,100
         @.contolPairs.push [pInner,pOuter]
-        @.springs.push new (CANNON.Spring) @innerSphere,@outerSphere,
-          stiffness: 90 * @mass
-          damping: 5
-          restLength: @radius*0.1
-          localAnchorA:toVec3 pInner
-          localAnchorB:toVec3 pOuter
       #
       @scene.model.add @
-      # set up simulation-step update routine for spring forces
-      @.mForceStrength = 0
+      # set up simulation-step update routine for feint and final position force
       world.addEventListener "preStep",(event)=>
         who=@A
+        deviationX = @radius*.7*Math.sin event.target.time/100
+        deviationY = @radius*.7*Math.cos event.target.time/100
+        # it seems that iForce during the preStep is zero, but...
         iForce = @innerSphere.force.clone()
-        s.applyForce() for s in @.springs
         seekerForce = @pursuit.vsub(@innerSphere.position).scale(@mass)
         @innerSphere.applyForce seekerForce,@innerSphere.position
-        mForce = iForce.vsub @innerSphere.force
-        strength = mForce.length()
-        if strength > @mForceStrength
-          @mForceStrength = strength
-          #console.log "inner forces",@A,strength, "f=",mForce.x,mForce.y,mForce.z
-          #if @A=="mannie"
-            #console.log "mannie -- pursuit position",seekerForce,@innerSphere.position
+        @displacement = C deviationX,deviationY,0
+        @centerOfGravity.pivotA = @displacement
+        @centerOfGravity.update()
+        
         @.innerSphere.velocity.scale .999,@.innerSphere.velocity
         @.outerSphere.velocity.scale .999,@.outerSphere.velocity
         return
@@ -164,10 +159,10 @@ Gravitas = ->
   allBall = (r)->
     r b for b in balls
   
-  balls.push rBall2 = new RollerBall "Biggie",world,100,0.50, position:new CANNON.Vec3 1,1,0.75
-  balls.push rBall = new RollerBall "mannie",world,10,0.30, position:new CANNON.Vec3 1,1.3,5
-  balls.push rBall3 = new RollerBall "moe",world,10,0.30, position:new CANNON.Vec3 0,1.3,4
-  balls.push rBall4 = new RollerBall "jack",world,10,0.30, position:new CANNON.Vec3 1.2,1.3,6
+  balls.push new RollerBall "Biggie",world,100,0.50, position:new CANNON.Vec3 1,1,0.75
+  #balls.push new RollerBall "mannie",world,10,0.30, position:new CANNON.Vec3 1,1.3,5
+  #balls.push new RollerBall "moe",world,10,0.30, position:new CANNON.Vec3 0,1.3,4
+  #balls.push new RollerBall "jack",world,10,0.30, position:new CANNON.Vec3 1.2,1.3,6
   
   xform = seen.M().scale(4)
   scene.camera.transform(xform).bake()
@@ -202,13 +197,13 @@ Gravitas = ->
   timeStamp = 0
   startStop = false
   onceStop = false
-  dropTime = 1000
+  dropTime = 10000
   simulateThem=(t, dt) ->
     fixedTimeStep = 1.0 / 60.0
     # seconds
     maxSubSteps = 3
     lastTime = undefined
-    if t>dropTime & balls.length <20
+    if t>dropTime & balls.length <10
       dropTime = t+fixedTimeStep*100000
       #console.log "pushing new ball",t
       balls.push new RollerBall "jack_#{dropTime}",world,10,0.30, position:new CANNON.Vec3 4,4,6
