@@ -39,12 +39,18 @@ Gravitas = ->
       p.copy() for p in tetrahedronPoints
     
     # utility to convert points to/from cannon from/to seen
-    toVec3 = (p) -> new CANNON.Vec3 p.x, p.y, p.z
-    toPoint = (v) -> seen.P v.x,v.y,v.z
-    
-    constructor: (world, mass=10,radius=100, options={}) ->
+    toVec3 = (p) -> new CANNON.Vec3 p.x/10, p.y/10, p.z/10
+    toPoint = (v) -> seen.P v.x*10,v.y*10,v.z*10
+    setPursuit: (x,y)->
+      @pursuit = new CANNON.Vec3 x, y, 1
+      
+    # mass in kg, distance in meters
+    constructor: (name,world, mass=1,radius=0.2, options={}) ->
       super()
+      @A = name
+      @setPursuit 0,0
       @world=world
+      @scene = world.scene
       @mass=mass
       @radius=radius
       
@@ -56,70 +62,115 @@ Gravitas = ->
       @config = Object.assign {},defaultOptions ,options
       @innerSphere = new (CANNON.Body)(
         mass: @mass * (1-@config.massRatio)
-        position: toVec3 @config.position
-        shape: new (CANNON.Sphere)(1))
+        position: @config.position
+        shape: new (CANNON.Sphere)(@radius * @config.innerRatio))
       @outerSphere = new (CANNON.Body)(
         mass: @mass * @config.massRatio
-        position: toVec3 @config.position
+        position: @config.position
         shape: new (CANNON.Sphere)(@radius))
       #debugger
-      @innerSphere.aName = "Innie"
-      @innerSphere.collisionResponse=false
-      @outerSphere.aName = "Outie"
+      @innerSphere.aName = "#{@A}.Innie"
+      #@innerSphere.collisionResponse=false
+      @innerSphere.collisionFilterGroup = 1
+      @innerSphere.collisionFilterMask = 1
+      @outerSphere.aName = "#{@A}.Outie"
+      @outerSphere.collisionFilterGroup = 2
+      @outerSphere.collisionFilterMask = 2
       @world.addBody @innerSphere
       @world.addBody @outerSphere
       
-      @.add @.outerHull=tetrahedralSphere(4).scale(@radius).fill new seen.Material seen.C 200,200,20,200
-      @.add @.innerHull = tetrahedralSphere(2).scale(@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
+      @.add @.outerHull = tetrahedralSphere(4).scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
+      @.add @.innerHull = tetrahedralSphere(2).scale(10*@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
+      @.outerHull.bake()
+      @.innerHull.bake()
       @.contolPairs=[]
       @.springs=[]
       for i in [0..3]
-        pInner = tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
-        pOuter = tetrahedronPoints[i].copy().multiply @radius
-        pipe = seen.Shapes.pipe pInner,pOuter
+        pInner = toPoint tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
+        pOuter = toPoint tetrahedronPoints[i].copy().multiply @radius
+        pipe = seen.Shapes.pipe pInner,pOuter,0.1
         @.add pipe.fill new seen.Material seen.C 20,20,20,100
         @.contolPairs.push [pInner,pOuter]
         @.springs.push new (CANNON.Spring) @innerSphere,@outerSphere,
-          restLength: @radius*50
-          localAnchorA: toVec3(pInner)
+          stiffness: 90 * @mass
+          damping: 5
+          restLength: @radius*0.1
+          localAnchorA:toVec3 pInner
           localAnchorB:toVec3 pOuter
-        world.addEventListener "postStep",(event)=>
-         s.applyForce() for s in @.springs
-         return
+      #
+      @scene.model.add @
+      # set up simulation-step update routine for spring forces
+      @.mForceStrength = 0
+      world.addEventListener "preStep",(event)=>
+        who=@A
+        iForce = @innerSphere.force.clone()
+        s.applyForce() for s in @.springs
+        seekerForce = @pursuit.vsub(@innerSphere.position).scale(@mass)
+        @innerSphere.applyForce seekerForce,@innerSphere.position
+        mForce = iForce.vsub @innerSphere.force
+        strength = mForce.length()
+        if strength > @mForceStrength
+          @mForceStrength = strength
+          #console.log "inner forces",@A,strength, "f=",mForce.x,mForce.y,mForce.z
+          #if @A=="mannie"
+            #console.log "mannie -- pursuit position",seekerForce,@innerSphere.position
+        @.innerSphere.velocity.scale .999,@.innerSphere.velocity
+        @.outerSphere.velocity.scale .999,@.outerSphere.velocity
+        return
       @.bake()
       return @
     
     update: ()->
+      who=@A
+      position = @.innerSphere.position
       # map the physics simulation objects to seen's visual toolkit
-      console.log "outie",po=@.outerSphere.position,pr=@outerSphere.quaternion
-      console.log "innie",pi=@.innerSphere.position
+      #console.log "outie",
+      po=toPoint @.outerSphere.position
+      pr=@outerSphere.quaternion
+      #console.log "innie",
+      pi=toPoint @.innerSphere.position
       rotation = new seen.Quaternion pr.x,pr.y,pr.z,pr.w
       @.reset().transform rotation.toMatrix()
       @.translate po.x,po.y,po.z
+      
       @.innerHull.reset().translate pi.x-po.x,pi.y-po.y,pi.z-po.z
       return
       
   # Setup our world
   world = new (CANNON.World)
-  world.gravity.set 0, 0, -9.82
   # m/s²
+  world.gravity.set 0, 0, -9.82
+  leather = new CANNON.Material friction: .3, restitution: 0.3
+  world.defaultMaterial.friction = 0.3
+  world.defaultMaterial.restitution = 0.3
 
   # Create a plane
   groundBody = new (CANNON.Body)(mass: 0)
   groundShape = new (CANNON.Plane)
   groundBody.addShape groundShape
   groundBody.aName = "floorie"
+  groundBody.collisionFilterGroup = -1
+  groundBody.collisionFilterMask = -1
   world.addBody groundBody
-
+  
   width = 400
   height = 400
- 
-  rBall = new RollerBall world,100,30, position:seen.P 5,0,100
-  rBall2 = new RollerBall world,10,20, position:seen.P 5,5,50
   # Create scene and add shape to model
-  scene = new seen.Scene
-    model    : seen.Models.default().add(rBall).add rBall2
+  world.scene = scene = new seen.Scene
+    model    : seen.Models.default()
     viewport : seen.Viewports.center(width, height)
+   
+  balls = []
+  allBall = (r)->
+    r b for b in balls
+  
+  balls.push rBall2 = new RollerBall "Biggie",world,100,0.50, position:new CANNON.Vec3 1,1,0.75
+  balls.push rBall = new RollerBall "mannie",world,10,0.30, position:new CANNON.Vec3 1,1.3,5
+  balls.push rBall3 = new RollerBall "moe",world,10,0.30, position:new CANNON.Vec3 0,1.3,4
+  balls.push rBall4 = new RollerBall "jack",world,10,0.30, position:new CANNON.Vec3 1.2,1.3,6
+  
+  xform = seen.M().scale(4)
+  scene.camera.transform(xform).bake()
   
   floor = seen.Shapes.patch 50,50
   floor.translate -25,-25,0
@@ -130,7 +181,7 @@ Gravitas = ->
   #put some easily recognizable grid elements
   for x in [-5..5]
     for y in [-5..5]
-      scene.model.add seen.Shapes.pipe seen.P(10*x,10*y,x*y),seen.P(10*x,10*y,0)
+      scene.model.add seen.Shapes.pipe seen.P(x*10,y*10,Math.abs x*y),seen.P(x*10,y*10,0),0.5
   
   # Create render context from canvas
   context = seen.Context('seen-canvas', scene).render()
@@ -149,19 +200,29 @@ Gravitas = ->
   scene.model.bake()
 
   timeStamp = 0
-  
-  rotateThem=(t, dt) ->
+  startStop = false
+  onceStop = false
+  dropTime = 1000
+  simulateThem=(t, dt) ->
     fixedTimeStep = 1.0 / 60.0
     # seconds
     maxSubSteps = 3
     lastTime = undefined
-    debugger
-    world.step fixedTimeStep, dt, maxSubSteps
-    #console.log 'Sphere z position: ' + bouncingSphere.position.z, 'max',maxVelocity
+    if t>dropTime & balls.length <20
+      dropTime = t+fixedTimeStep*100000
+      #console.log "pushing new ball",t
+      balls.push new RollerBall "jack_#{dropTime}",world,10,0.30, position:new CANNON.Vec3 4,4,6
+    if startStop
+      if onceStop
+        startStop = false
+        onceStop = false
+        #allBall (b)->console.log b.A,b.innerSphere.position
+        #debugger
+      world.step fixedTimeStep, dt, maxSubSteps
+    #
     timeStamp += dt*1e-2
     
-    rBall.update()
-    rBall2.update()
+    allBall (b)-> b.update()
   
     return
 
@@ -181,8 +242,29 @@ Gravitas = ->
     scene.camera.transform(xform)
   )
   context.animate()
-    .onBefore rotateThem
+    .onBefore simulateThem
     .start()
+  
+  window.onkeypress= (event)->
+    switch event.key
+      when "."
+        onceStop = true 
+        startStop = true 
+      when ' '
+        startStop = !startStop
+      when 'h'
+        allBall (b)->
+          b.setPursuit -5,0
+      when 'j'
+        allBall (b)->
+          b.setPursuit 4,4   
+      when 'k'
+        allBall (b)->
+          b.setPursuit -3,-3
+      when 'l'
+        allBall (b)->
+          b.setPursuit 0,0
+    return
   
   #
   # ## Apache 2.0 License
