@@ -2,12 +2,8 @@
 # rollerBall -- internally controlled sphere
 #
 
-#
-# rollerBall -- internally controlled sphere
-#
-
 Gravitas = ->
-  class RollerBall extends seen.Model
+  class RollerBall
   #
   # tetrasphere -- a spherical hull with tetrahedral attachment points
   #
@@ -47,16 +43,22 @@ Gravitas = ->
     toPoint = (v) -> seen.P v.x*10,v.y*10,v.z*10
     setPursuit: (x,y)->
       @pursuit = new CANNON.Vec3 x, y, 1
-      
+      p1 = toPoint @pursuit
+      p1.z=0
+      p2 = p1.copy().add seen.P 0,0,20
+      pipe=seen.Shapes.pipe p1,p2,0.3,6
+      @avatar.add pipe.fill new seen.Material seen.C 20,20,20
+      return
+    C = (x=0,y=0,z=0)-> new CANNON.Vec3 x,y,z
     # mass in kg, distance in meters
     constructor: (name,world, mass=1,radius=0.2, options={}) ->
-      super()
       @A = name
-      @setPursuit 0,0
       @world=world
       @scene = world.scene
+      @avatar = world.scene.model
       @mass=mass
       @radius=radius
+      @setPursuit 0,0
       
       defaultOptions = 
         massRatio: 0.1
@@ -82,62 +84,75 @@ Gravitas = ->
       @outerSphere.collisionFilterMask = 2
       @world.addBody @innerSphere
       @world.addBody @outerSphere
-      
-      @.add @.outerHull = tetrahedralSphere(4).scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
-      @.add @.innerHull = tetrahedralSphere(2).scale(10*@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
-      @.outerHull.bake()
+      # set displacement as 'center of mass' relative to outerSphere position
+      @.displacement= C()
+      @.centerOfGravity = new CANNON.PointToPointConstraint @outerSphere,@displacement,@innerSphere,C()
+      @world.addConstraint @centerOfGravity
+      #
+      # set up simulation-step update routine for feint and final position force
+      world.addEventListener "preStep",(event)=>
+        who=@A
+        deviationX = @radius*Math.sin event.target.time/500
+        deviationY = @radius*.1*Math.cos event.target.time/1000
+        # it seems that iForce during the preStep is zero, but...
+        #iForce = @innerSphere.force.clone()
+        #seekerForce = @pursuit.vsub(@innerSphere.position).scale(@mass)
+        #@innerSphere.applyForce seekerForce,@innerSphere.position
+        seekerVector = @pursuit.vsub(@outerSphere.position)
+        localSeekerVector= @outerSphere.vectorToLocalFrame(seekerVector).
+          vadd(C deviationX,deviationY).unit()
+        
+        distance = seekerVector.length() + 3
+        distance = .90-1.0/distance
+        
+        @displacement = localSeekerVector.scale(distance*@radius)
+        if @displacement.length() > @radius
+          boff toff,noff,roff
+        @centerOfGravity.pivotA = @displacement
+        #console.log "prestep",@outerSphere.position,@pursuit, seekerVector,@displacement
+        @centerOfGravity.update()
+        
+      world.addEventListener "postStep",(event)=>
+        @.innerSphere.velocity.scale .97,@.innerSphere.velocity
+        @.outerSphere.velocity.scale .98,@.outerSphere.velocity
+        return
+      # end of physical simulation stuf
+      #
+      #visual (avatar) stuff
+      # scene model for the control force tetrahedron 
+      @.avatar.add @.innerHull = seen.Shapes.tetrahedron().scale(10*@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
       @.innerHull.bake()
+      # create seen model for outerHull & it's decorations
+      @.outerHull = new seen.Model()
+      @.outerHull.add seen.Shapes.sphere().scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
+      @.outerHull.bake()
       @.contolPairs=[]
-      @.springs=[]
+      first = new seen.Material seen.C 200,20,20,100
+      rest = new seen.Material seen.C 20,20,20,100
       for i in [0..3]
         pInner = toPoint tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
         pOuter = toPoint tetrahedronPoints[i].copy().multiply @radius
-        pipe = seen.Shapes.pipe pInner,pOuter,0.1
-        @.add pipe.fill new seen.Material seen.C 20,20,20,100
+        pipe = seen.Shapes.pipe pInner,pOuter,0.1,3
+        @outerHull.add pipe.fill first
+        first = rest
         @.contolPairs.push [pInner,pOuter]
-        @.springs.push new (CANNON.Spring) @innerSphere,@outerSphere,
-          stiffness: 90 * @mass
-          damping: 5
-          restLength: @radius*0.1
-          localAnchorA:toVec3 pInner
-          localAnchorB:toVec3 pOuter
-      #
-      @scene.model.add @
-      # set up simulation-step update routine for spring forces
-      @.mForceStrength = 0
-      world.addEventListener "preStep",(event)=>
-        who=@A
-        iForce = @innerSphere.force.clone()
-        s.applyForce() for s in @.springs
-        seekerForce = @pursuit.vsub(@innerSphere.position).scale(@mass)
-        @innerSphere.applyForce seekerForce,@innerSphere.position
-        mForce = iForce.vsub @innerSphere.force
-        strength = mForce.length()
-        if strength > @mForceStrength
-          @mForceStrength = strength
-          #console.log "inner forces",@A,strength, "f=",mForce.x,mForce.y,mForce.z
-          #if @A=="mannie"
-            #console.log "mannie -- pursuit position",seekerForce,@innerSphere.position
-        @.innerSphere.velocity.scale .999,@.innerSphere.velocity
-        @.outerSphere.velocity.scale .999,@.outerSphere.velocity
-        return
-      @.bake()
-      return @
-    
+      @avatar.add @outerHull
+      return
+    # end setup
+    # visual updates for innie and outie
     update: ()->
       who=@A
-      position = @.innerSphere.position
       # map the physics simulation objects to seen's visual toolkit
-      #console.log "outie",
       po=toPoint @.outerSphere.position
+      #console.log "outie",po
       pr=@outerSphere.quaternion
-      #console.log "innie",
-      pi=toPoint @.innerSphere.position
       rotation = new seen.Quaternion pr.x,pr.y,pr.z,pr.w
-      @.reset().transform rotation.toMatrix()
-      @.translate po.x,po.y,po.z
-      
-      @.innerHull.reset().translate pi.x-po.x,pi.y-po.y,pi.z-po.z
+      pi=toPoint @.innerSphere.position
+      #console.log "innie",pi
+      @.innerHull.reset().transform rotation.toMatrix()
+      @.innerHull.translate pi.x,pi.y,pi.z
+      @.outerHull.reset().transform rotation.toMatrix()
+      @.outerHull.translate po.x,po.y,po.z
       return
       
   # Setup our world
@@ -163,17 +178,17 @@ Gravitas = ->
   world.scene = scene = new seen.Scene
     model    : seen.Models.default()
     viewport : seen.Viewports.center(width, height)
-   
+  avatar = world.scene.model 
   balls = []
   allBall = (r)->
     r b for b in balls
   
-  balls.push rBall2 = new RollerBall "Biggie",world,100,0.50, position:new CANNON.Vec3 1,1,0.75
-  balls.push rBall = new RollerBall "mannie",world,10,0.30, position:new CANNON.Vec3 1,1.3,5
-  balls.push rBall3 = new RollerBall "moe",world,10,0.30, position:new CANNON.Vec3 0,1.3,4
-  balls.push rBall4 = new RollerBall "jack",world,10,0.30, position:new CANNON.Vec3 1.2,1.3,6
+  balls.push new RollerBall "Biggie",world,100,0.50, position:new CANNON.Vec3 1,1,0.75
+  #balls.push new RollerBall "mannie",world,10,0.30, position:new CANNON.Vec3 1,1.3,5
+  #balls.push new RollerBall "moe",world,10,0.30, position:new CANNON.Vec3 0,1.3,4
+  #balls.push new RollerBall "jack",world,10,0.30, position:new CANNON.Vec3 1.2,1.3,6
   
-  xform = seen.M().scale(4)
+  xform = seen.M().rotx(.3).scale(3)
   scene.camera.transform(xform).bake()
   
   floor = seen.Shapes.patch 50,50
@@ -181,11 +196,11 @@ Gravitas = ->
   floor.roty Math.PI
   floor.fill new seen.Material seen.C 100,100,100,100
   floor.eachSurface (s)-> s.cullBackfaces = false
-  scene.model.add floor.scale -50
+  avatar.add floor.scale -50
   #put some easily recognizable grid elements
   for x in [-5..5]
     for y in [-5..5]
-      scene.model.add seen.Shapes.pipe seen.P(x*10,y*10,Math.abs x*y),seen.P(x*10,y*10,0),0.5
+      avatar.add seen.Shapes.pipe seen.P(x*10,y*10,Math.abs x*y),seen.P(x*10,y*10,0),0.5
   
   # Create render context from canvas
   context = seen.Context('seen-canvas', scene).render()
@@ -206,13 +221,13 @@ Gravitas = ->
   timeStamp = 0
   startStop = false
   onceStop = false
-  dropTime = 1000
+  dropTime = 10000
   simulateThem=(t, dt) ->
     fixedTimeStep = 1.0 / 60.0
     # seconds
     maxSubSteps = 3
     lastTime = undefined
-    if t>dropTime & balls.length <20
+    if t>dropTime & balls.length <10
       dropTime = t+fixedTimeStep*100000
       #console.log "pushing new ball",t
       balls.push new RollerBall "jack_#{dropTime}",world,10,0.30, position:new CANNON.Vec3 4,4,6
@@ -322,24 +337,40 @@ class  index extends celarientemplate
   # 
   # section sidebar
   # 
+  sidebar: =>
+    T.aside "#sidebarx.o-grid__cell.o-grid__cell--width-20.p2.bg-darken-2", style: "min-width:240"
   # 
   # section storybar
   # 
   storybar: =>
     T.div "#storybar.o-grid__cell.order-2.bg-lighten-2", =>
-      T.h1 => T.raw "Celarien -- The tools of the spiritual bodyguard"
+      T.h1 => T.raw "How to wage peace in a terrorized society."
+      T.h3 => "The celarien's tools of the spiritual bodyguard"
       T.hr()
       @bloviation()
   # 
   # section bloviation
   # 
   bloviation: =>
+    T.h3 "The LowRoller version of the RollerBall"
     T.div "#bloviation.contents", =>
-      T.p => T.raw "How’s life working out for you?  What is your coping style?"
+      T.p """Did you ever see a Samuri movie where the police take down a rampaging samuri?"""
+      T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
+      T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
+covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
+It can alter it's center of gravity to roll around.  that's it.
+"""
+      T.p  """Even with that limitation, it can gang up at the feet of a person causing a threat.
+The random motions of the balls will make the attacker lose balance and be unable to continue.
+"""
+      T.p  """Press the spacebar to start and stop the simulation.  The large ball is a meter in diameter.
+press '.' to single step the simulation.
+"""
       T.canvas "#seen-canvas",width:400, height:400 
       T.coffeescript Gravitas 
 
-      T.p => T.raw "If you want the spiritual tools to guard yourself against the lies that are keeping you stressed out, afraid, demoralized or angry, keep reading."
+      T.p => T.raw "Press hjkl to change where these rollerballs take down an attacker."
+      T.p => "Rotate the view with click and drag.  Zoom with fingers or mouse wheel."
   # 
   # section header
   # 
@@ -352,10 +383,12 @@ page = new index
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
 #
-db[id="celarienpeacefarerollerball"] =
-  title: "Rollerball Spring"
-  slug: "rollerball"
+
+db[id="celarienpeacefarerollerball-cog"] =
+  title: "rollerball"
+  slug: "rollerball-cog"
   category: "peacefare"
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
@@ -373,6 +406,6 @@ db[id="celarienpeacefarerollerball"] =
   TimeStamp: 1522876255085
   debug: ""
   author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarienpeacefarerollerball"
-  name: "Rollerball with Springs"
+  id: "celarienpeacefarerollerball-cog"
+  name: "Low Roller"
 #
