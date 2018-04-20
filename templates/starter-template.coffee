@@ -36,8 +36,8 @@ class  index extends celarientemplate
   # 
   bloviation: =>
     T.div "#bloviation.contents", "dangerously-set-inner-h-t-m-l": "[object Object]", =>
-      T.p => T.raw "How’s life working out for you?  What is your coping style?"
-      T.p => T.raw "If you want the spiritual tools to guard yourself against the lies that are keeping you stressed out, afraid, demoralized or angry, keep reading."
+      T.p => T.raw "How’s life working out for you?"
+      T.p => T.raw "If you want the spiritual tools to stay woke, keep reading."
   # 
   # section header
   # 

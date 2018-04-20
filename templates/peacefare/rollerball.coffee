@@ -334,12 +334,25 @@ class  index extends celarientemplate
   # section bloviation
   # 
   bloviation: =>
+    T.h3 "The LowRoller version of the RollerBall"
     T.div "#bloviation.contents", =>
-      T.p => T.raw "How’s life working out for you?  What is your coping style?"
+      T.p """Did you ever see a Samuri movie where the police take down a rampaging samuri?"""
+      T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
+      T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
+covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
+It can alter it's center of gravity to roll around.  that's it.
+"""
+      T.p  """Even with that limitation, it can gang up at the feet of a person causing a threat.
+The random motions of the balls will make the attacker lose balance and be unable to continue.
+"""
+      T.p  """Press the spacebar to start and stop the simulation.  The large ball is a meter in diameter.
+press '.' to single step the simulation.
+"""
       T.canvas "#seen-canvas",width:400, height:400 
       T.coffeescript Gravitas 
 
-      T.p => T.raw "If you want the spiritual tools to guard yourself against the lies that are keeping you stressed out, afraid, demoralized or angry, keep reading."
+      T.p => T.raw "Press hjkl to change where these rollerballs take down an attacker."
+      T.p => "Rotate the view with click and drag.  Zoom with fingers or mouse wheel."
   # 
   # section header
   # 
