@@ -166,6 +166,8 @@ Gravitas = ->
         cd: (s) ->
           scope = s
           return
+        setDepth: (d)=>
+          @depth = d
         log: ->
           @info.apply this, arguments
           return
@@ -264,8 +266,8 @@ Gravitas = ->
         'element'
       else
         typeof obj
-  
-    output = (result, deep) ->
+        
+    output = (result, deep=@depth) ->
       `var val`
       `var i`
       type = typeOf(result)
@@ -276,13 +278,13 @@ Gravitas = ->
           arr = create('ol', 'class': type)
           for i of result
             val = result[i]
-            arr.appendChild create('li', null, output(val))
+            arr.appendChild create('li', null, output(val,deep-1))
           return arr
         when 'object'
           obj = create('dl', 'class': type)
           for k of result
             if !(k of result.__proto__)
-              val = if deep == false then text(k) else output(result[k], false)
+              val = if deep == 0 then text(k) else output(result[k], deep-1)
               obj.appendChild create('dt', null, text(k))
               obj.appendChild create('dd', null, val)
           return obj
@@ -312,9 +314,10 @@ Gravitas = ->
     return
 
   class RollerBall
-  #
-  # tetrasphere -- a spherical hull with tetrahedral attachment points
-  #
+    
+    # utility to convert points to/from cannon from/to seen
+    toVec3 = (p) -> new CANNON.Vec3 p.x/10, p.y/10, p.z/10
+    toPoint = (v) -> seen.P v.x*10,v.y*10,v.z*10
 
     TETRAHEDRON_COORDINATE_MAP = [
       [0, 2, 1]
@@ -328,6 +331,9 @@ Gravitas = ->
       seen.P(-1,  1, -1).normalize()
       seen.P( 1, -1, -1).normalize()] 
         
+    #
+    # tetrasphere -- a spherical hull with tetrahedral attachment points
+    #
     tetrahedralSphere =  (subdivisions = 2) ->
       triangles = TETRAHEDRON_COORDINATE_MAP.map (coords) -> coords.map (c) -> tetrahedronPoints[c]
       for i in [0...subdivisions]
@@ -343,14 +349,11 @@ Gravitas = ->
     # create a seen Model of inner and outer seen sphereish shapes decorated
     # with cannon mass objects connected by tetrahedral force positions
     
-    controlPoints: ()->  #return a seen copy of the four normalized tetrahedral points
-      p.copy() for p in tetrahedronPoints
+    controlPoints: ()->  #return a CANNON world copy of the four normalized tetrahedral points
+      toVec3 p.copy().multiply 10 for p in tetrahedronPoints
     
-    # utility to convert points to/from cannon from/to seen
-    toVec3 = (p) -> new CANNON.Vec3 p.x/10, p.y/10, p.z/10
-    toPoint = (v) -> seen.P v.x*10,v.y*10,v.z*10
     setPursuit: (x,y)->
-      @pursuit = new CANNON.Vec3 x, y, 1
+      @pursuit = new CANNON.Vec3 x, y,-10
       p1 = toPoint @pursuit
       p1.z=0
       p2 = p1.copy().add seen.P 0,0,20
@@ -380,6 +383,7 @@ Gravitas = ->
         shape: new (CANNON.Sphere)(@radius * @config.innerRatio))
       @outerSphere = new (CANNON.Body)(
         mass: @mass * @config.massRatio
+        angularDamping: 0.5
         position: @config.position
         shape: new (CANNON.Sphere)(@radius))
       #debugger
@@ -394,12 +398,39 @@ Gravitas = ->
       @world.addBody @outerSphere
       # set displacement as 'center of mass' relative to outerSphere position
       @.displacement= C()
-      @.centerOfGravity = new CANNON.PointToPointConstraint @outerSphere,@displacement,@innerSphere,C()
+      @.centerOfGravity = new CANNON.PointToPointConstraint @outerSphere,C(),@innerSphere,C(@radius*.8,0,0)
       @world.addConstraint @centerOfGravity
       #
+      makeTetraForce = (centerBody,vertices,destination,cogBody)->
+        # centerBody is the CANNON outer body
+        # vertex is the normalized vector to the tetrahedron point in local space
+        # destination Point in the CANNON world
+        cogVector = destination.vsub cogBody.position
+        allFour = for vertex in vertices
+          realVertex = centerBody.pointToWorldFrame vertex
+          seekerVector = destination.vsub realVertex
+          inVector = realVertex.vsub cogBody.position
+          #console.log {seekerVector,cogVector,inVector,vertex,realVertex}
+          #[
+          trialForce = ((cogVector.length()/seekerVector.length())-1)*cogVector.length()
+          if trialForce >0
+            forceApplied = inVector.scale trialForce*13500
+            cogBody.applyForce forceApplied,cogBody.position
+            centerBody.applyForce forceApplied.scale(-1),realVertex
+          else
+            trialForce = 0
+          #,cogVector.length(), seekerVector.length(), inVector.length() ]
+          trialForce
+        return allFour
+        
       # set up simulation-step update routine for feint and final position force
       world.addEventListener "preStep",(event)=>
         who=@A
+        
+        tetraForce = makeTetraForce @outerSphere, @controlPoints(), @pursuit,@innerSphere
+        console.log {tetraForce}
+        gravityForce = makeTetraForce @outerSphere, @controlPoints(), C(0,0,100),@innerSphere
+        console.log {gravityForce}
         deviationX = @radius*Math.sin event.target.time/500
         deviationY = @radius*.1*Math.cos event.target.time/1000
         # it seems that iForce during the preStep is zero, but...
@@ -409,16 +440,16 @@ Gravitas = ->
         seekerVector = @pursuit.vsub(@outerSphere.position)
         localSeekerVector= @outerSphere.vectorToLocalFrame(seekerVector).
           vadd(C deviationX,deviationY).unit()
-        
+        console.log 'Seeker',seekerVector, localSeekerVector
         distance = seekerVector.length() + 3
         distance = .90-1.0/distance
         
         @displacement = localSeekerVector.scale(distance*@radius)
         if @displacement.length() > @radius
           boff toff,noff,roff
-        @centerOfGravity.pivotA = @displacement
+        #@centerOfGravity.pivotA = @displacement
         #console.log "prestep",@outerSphere.position,@pursuit, seekerVector,@displacement
-        @centerOfGravity.update()
+        #@centerOfGravity.update()
         
       world.addEventListener "postStep",(event)=>
         @.innerSphere.velocity.scale .97,@.innerSphere.velocity
@@ -430,6 +461,12 @@ Gravitas = ->
       # scene model for the control force tetrahedron 
       @.avatar.add @.innerHull = seen.Shapes.tetrahedron().scale(10*@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
       @.innerHull.bake()
+      @innerPointer = seen.Shapes.pipe seen.P(), seen.P(0,2,0),0.1,3
+      @innerPointer.fill new seen.Material seen.C 255,20,255
+      @.avatar.add @innerPointer
+      @outerPointer = seen.Shapes.pipe seen.P(), seen.P(10,0,0),0.2,3
+      @outerPointer.fill new seen.Material seen.C 128,128,128
+      @.avatar.add @outerPointer
       # create seen model for outerHull & it's decorations
       @.outerHull = new seen.Model()
       @.outerHull.add seen.Shapes.sphere().scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
@@ -452,20 +489,24 @@ Gravitas = ->
       who=@A
       # map the physics simulation objects to seen's visual toolkit
       po=toPoint @.outerSphere.position
-      #console.log "outie",po
       pr=@outerSphere.quaternion
       rotation = new seen.Quaternion pr.x,pr.y,pr.z,pr.w
+      #console.log "outie",po
+      @outerPointer.reset().translate po.x,po.y,po.z
+      
       pi=toPoint @.innerSphere.position
+      @innerPointer.reset().translate pi.x,pi.y,pi.z
+      
+      @innerPointer.translate po.x,po.y,po.z
       #console.log "innie",pi
       @.innerHull.reset().transform rotation.toMatrix()
       @.innerHull.translate pi.x,pi.y,pi.z
       @.outerHull.reset().transform rotation.toMatrix()
       @.outerHull.translate po.x,po.y,po.z
+      
       return
   
   console=Console "console0",window
-  debugger
-  console.log 1,2,{wow:'lolo'},4,5
   # Setup our world
   world = new (CANNON.World)
   # m/s²
@@ -512,7 +553,7 @@ Gravitas = ->
   #put some easily recognizable grid elements
   for x in [-5..5]
     for y in [-5..5]
-      avatar.add seen.Shapes.pipe seen.P(x*10,y*10,Math.abs x*y),seen.P(x*10,y*10,0),0.5
+      avatar.add seen.Shapes.pipe seen.P(x*10,y*10,1),seen.P(x*10,y*10,0),0.5
   
   # Create render context from canvas
   context = seen.Context('seen-canvas', scene).render()
@@ -669,6 +710,9 @@ class  index extends celarientemplate
 .console-container span.undefined {
   color: #999;
 }
+.console-container ol.array {
+ display: inline-block;
+}
 .console-container ol.array::before {
   color: #999;
   content: '[';
@@ -689,7 +733,7 @@ class  index extends celarientemplate
 }
 .console-container dl.object::before {
   color: #000;
-  content: 'Object {';
+  content: '{';
 }
 .console-container dl.object::after {
   color: #000;
