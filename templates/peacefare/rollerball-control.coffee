@@ -1,6 +1,7 @@
 #
 # rollerBall -- internally controlled sphere
 #
+
 ###! for Console redirection
 Copyright (C) 2011 by Marty Zalega
 
@@ -601,7 +602,7 @@ Gravitas = ->
         e.tetraForcer.jamming=false
         return
   
-  #console=Console "console0",window
+  console=Console "console0",window
   # Setup our world
   world = new (CANNON.World)
   # m/s²
@@ -963,20 +964,9 @@ class  index extends celarientemplate
   # section bloviation
   # 
   bloviation: =>
-    T.h3 "The LowRoller version of the RollerBall"
+    T.h3 "The controllers of the RollerBall"
     T.div "#bloviation.contents", =>
-      T.p """Did you ever see a Samuri movie where the police take down a rampaging samuri?"""
-      T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
-      T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
-covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
-It can alter it's center of gravity to roll around.  that's it.
-"""
-      T.p  """Even with that limitation, it can gang up at the feet of a person causing a threat.
-The random motions of the balls will make the attacker lose balance and be unable to continue.
-"""
-      T.p  """Press the spacebar to start and stop the simulation.  The large ball is a meter in diameter.
-press '.' to single step the simulation.
-"""
+      T.form "#sliders.flex-container"
       T.canvas "#seen-canvas",width:400, height:400 
       #T.p => T.raw "single slider for each actuator"
       T.p => T.raw "Press hjkl to change where these rollerballs take down an attacker."
@@ -993,10 +983,11 @@ page = new index
 rendered =  T.render page.html
 # ------- db start
 db = {} unless db
+
 #
-db[id="celarienpeacefarerollerball"] =
-  title: "Rollerball Spring"
-  slug: "rollerball"
+db[id="celarienpeacefarerollerball-control"] =
+  title: "rollerball-control"
+  slug: "rollerball-control"
   category: "peacefare"
   site: "597aea40d3cfff7cc5f926f0"
   accepted: false
@@ -1006,14 +997,15 @@ db[id="celarienpeacefarerollerball"] =
   tags: []
   snippets: "{\"first name\":\"first name\"}"
   memberOf: []
-  created: "2018-04-04T21:10:55.084Z"
-  lastEdited: "2018-04-04T21:10:55.085Z"
-  published: "2018-04-04T21:10:55.085Z"
-  embargo: "2018-04-04T21:10:55.085Z"
-  captureDate: "2018-04-04T21:10:55.085Z"
-  TimeStamp: 1522876255085
+  created: "2018-04-25T21:53:41.402Z"
+  lastEdited: "2018-04-25T21:53:41.403Z"
+  published: "2018-04-25T21:53:41.403Z"
+  embargo: "2018-04-25T21:53:41.403Z"
+  captureDate: "2018-04-25T21:53:41.403Z"
+  TimeStamp: 1524693221403
   debug: ""
   author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarienpeacefarerollerball"
-  name: "Rollerball with Springs"
+  id: "celarienpeacefarerollerball-control"
+  name: "rollerball-control"
 #
+#end of story

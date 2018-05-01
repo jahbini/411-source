@@ -25,6 +25,11 @@ THE SOFTWARE.
 ###
 
 Gravitas = ->
+  bind = (func, inst) ->
+    args = toArray(arguments).slice(2)
+    ->
+      func.apply inst or this, args.concat(toArray(arguments))
+      return
   do ->
     consoles = {}
   
@@ -312,25 +317,89 @@ Gravitas = ->
   
     window.Console = Console
     return
+      #
+  class TetraForcer
+    MINFORCE = 25
+    constructor: (body,@e)->
+      @tetraPoint = @e.cannonLocal
+      @outerSphere = body.outerSphere
+      @innerSphere = body.innerSphere
+      @body = body
+      @seekerPID = new PID -100,1,-0.1, 1/60.0
+      @seekerPID.setTarget = 0
+      @.seek = bind @.seek, @
+    ###
+     pursuit.z = @body.radius * 2  
+      seekVector = pursuit.vsub @outerSphere.position
+      seekPosition = @outerSphere.position.vadd seekVector.unit().scale @body.radius *.8
+      tetraPosition = @outerSphere.pointToWorldFrame @tetraPoint
+      force = MINFORCE
+      if seekPosition.distanceTo(tetraPosition) > @innerSphere.position.distanceTo(tetraPosition)
+        force += @seekerPID.update @innerSphere.position.distanceTo seekPosition
+      else
+        force += @seekerPID.update 0
+      tetraVector = (tetraPosition.vsub @innerSphere.position).unit().scale @body.mass
+      @innerSphere.applyForce (tetraVector.scale force),@innerSphere.position
+      @outerSphere.applyForce (tetraVector.scale -force),tetraPosition
+      return
+    ###
+    seek: (pursuit) -> # the real world position
+      pursuit.z = @body.radius * 2  
+      seekVector = pursuit.vsub @outerSphere.position
+      seekPosition = @outerSphere.position.vadd seekVector.unit().scale @body.radius *.8
+      tetraPosition = @outerSphere.pointToWorldFrame @tetraPoint
+      force = MINFORCE
+      @tetraToPursuit = pursuit.distanceTo(tetraPosition)
+      @tetraToPursuit = seekPosition.distanceTo(tetraPosition)
+      @toInnie =@innerSphere.position.distanceTo(seekPosition)
+      @innieToPursuit = pursuit.distanceTo @innerSphere.position
+      @tetraToInnie = tetraPosition.distanceTo @innerSphere.position
+      if @tetraToPursuit < @tetraToInnie
+        adjust = @toInnie
+        debugger
+        if @body.A == "Biggie"
+          console.log @e.viewAttributes.name,adjust
+      else
+        adjust = 0
+      adjust = @seekerPID.update adjust
+      @force = force + adjust
+      tetraVector = (tetraPosition.vsub @innerSphere.position).unit().scale @body.mass
+      @innerSphere.applyForce (tetraVector.scale @force),@innerSphere.position
+      @outerSphere.applyForce (tetraVector.scale @force*-1),tetraPosition
+      return
 
   class RollerBall
     
     # utility to convert points to/from cannon from/to seen
     toVec3 = (p) -> new CANNON.Vec3 p.x/10, p.y/10, p.z/10
     toPoint = (v) -> seen.P v.x*10,v.y*10,v.z*10
-
+    C = (x=0,y=0,z=0)-> new CANNON.Vec3 x,y,z
+    
     TETRAHEDRON_COORDINATE_MAP = [
       [0, 2, 1]
       [0, 1, 3]
       [3, 2, 0]
       [1, 2, 3]
     ]
+    # the raw values of the tetrahedron points -- useful in several places
     tetrahedronPoints = [
-      seen.P( 1,  1,  1).normalize()
-      seen.P(-1, -1,  1).normalize()
-      seen.P(-1,  1, -1).normalize()
-      seen.P( 1, -1, -1).normalize()] 
-        
+      seen.P( 1,  1,  1)
+      seen.P(-1, -1,  1)
+      seen.P(-1,  1, -1)
+      seen.P( 1, -1, -1)] 
+    # algorithmic generation
+    tetrahedralDescription=[]
+    do -> 
+      r=[ 1,-1]
+      for z in r
+        for y in r
+          tetrahedralDescription.push
+            p: seen.P z*y,y,z
+            raw: [ z*y,y,z]
+            cannonLocal: C z*y,y,z
+            index: tetrahedralDescription.length
+      return
+
     #
     # tetrasphere -- a spherical hull with tetrahedral attachment points
     #
@@ -341,17 +410,16 @@ Gravitas = ->
         for triangle in triangles
           for p in triangle
             p.normalize()
-            console.log "we here"
       # return a unit sphereical hull of triangles -- points 0 through 3 are the original
       # attachment points on the unit sphere
       return new seen.Shape('tetrahedralSphere', triangles.map (triangle) -> new seen.Surface(triangle.map (v) -> v.copy()))
      
     # create a seen Model of inner and outer seen sphereish shapes decorated
     # with cannon mass objects connected by tetrahedral force positions
-    
-    controlPoints: ()->  #return a CANNON world copy of the four normalized tetrahedral points
-      toVec3 p.copy().multiply 10 for p in tetrahedronPoints
-    
+    accessControlPoints: (f) =>
+      for element in @controlPoints
+        f element
+    window.bind1=bind #hack
     setPursuit: (x,y)->
       @pursuit = new CANNON.Vec3 x, y,-10
       p1 = toPoint @pursuit
@@ -360,7 +428,7 @@ Gravitas = ->
       pipe=seen.Shapes.pipe p1,p2,0.3,6
       @avatar.add pipe.fill new seen.Material seen.C 20,20,20
       return
-    C = (x=0,y=0,z=0)-> new CANNON.Vec3 x,y,z
+
     # mass in kg, distance in meters
     constructor: (name,world, mass=1,radius=0.2, options={}) ->
       @A = name
@@ -370,6 +438,9 @@ Gravitas = ->
       @mass=mass
       @radius=radius
       @setPursuit 0,0
+      @controlPoints = for v in tetrahedralDescription
+        Object.assign {}, v
+      
       
       defaultOptions = 
         massRatio: 0.1
@@ -383,7 +454,7 @@ Gravitas = ->
         shape: new (CANNON.Sphere)(@radius * @config.innerRatio))
       @outerSphere = new (CANNON.Body)(
         mass: @mass * @config.massRatio
-        angularDamping: 0.5
+        angularDamping: 0
         position: @config.position
         shape: new (CANNON.Sphere)(@radius))
       #debugger
@@ -396,60 +467,17 @@ Gravitas = ->
       @outerSphere.collisionFilterMask = 2
       @world.addBody @innerSphere
       @world.addBody @outerSphere
-      # set displacement as 'center of mass' relative to outerSphere position
-      @.displacement= C()
-      @.centerOfGravity = new CANNON.PointToPointConstraint @outerSphere,C(),@innerSphere,C(@radius*.8,0,0)
-      @world.addConstraint @centerOfGravity
-      #
-      makeTetraForce = (centerBody,vertices,destination,cogBody)->
-        # centerBody is the CANNON outer body
-        # vertex is the normalized vector to the tetrahedron point in local space
-        # destination Point in the CANNON world
-        cogVector = destination.vsub cogBody.position
-        allFour = for vertex in vertices
-          realVertex = centerBody.pointToWorldFrame vertex
-          seekerVector = destination.vsub realVertex
-          inVector = realVertex.vsub cogBody.position
-          #console.log {seekerVector,cogVector,inVector,vertex,realVertex}
-          #[
-          trialForce = ((cogVector.length()/seekerVector.length())-1)*cogVector.length()
-          if trialForce >0
-            forceApplied = inVector.scale trialForce*13500
-            cogBody.applyForce forceApplied,cogBody.position
-            centerBody.applyForce forceApplied.scale(-1),realVertex
-          else
-            trialForce = 0
-          #,cogVector.length(), seekerVector.length(), inVector.length() ]
-          trialForce
-        return allFour
+      
+      # build up an array of structures for the anchor points
+      @accessControlPoints (e)=>
+        e.tetraForcer = new TetraForcer @, e
         
       # set up simulation-step update routine for feint and final position force
       world.addEventListener "preStep",(event)=>
         who=@A
-        
-        tetraForce = makeTetraForce @outerSphere, @controlPoints(), @pursuit,@innerSphere
-        console.log {tetraForce}
-        gravityForce = makeTetraForce @outerSphere, @controlPoints(), C(0,0,100),@innerSphere
-        console.log {gravityForce}
-        deviationX = @radius*Math.sin event.target.time/500
-        deviationY = @radius*.1*Math.cos event.target.time/1000
-        # it seems that iForce during the preStep is zero, but...
-        #iForce = @innerSphere.force.clone()
-        #seekerForce = @pursuit.vsub(@innerSphere.position).scale(@mass)
-        #@innerSphere.applyForce seekerForce,@innerSphere.position
-        seekerVector = @pursuit.vsub(@outerSphere.position)
-        localSeekerVector= @outerSphere.vectorToLocalFrame(seekerVector).
-          vadd(C deviationX,deviationY).unit()
-        console.log 'Seeker',seekerVector, localSeekerVector
-        distance = seekerVector.length() + 3
-        distance = .90-1.0/distance
-        
-        @displacement = localSeekerVector.scale(distance*@radius)
-        if @displacement.length() > @radius
-          boff toff,noff,roff
-        #@centerOfGravity.pivotA = @displacement
-        #console.log "prestep",@outerSphere.position,@pursuit, seekerVector,@displacement
-        #@centerOfGravity.update()
+        @accessControlPoints (e)=>
+          e.tetraForcer.seek @pursuit
+        return
         
       world.addEventListener "postStep",(event)=>
         @.innerSphere.velocity.scale .97,@.innerSphere.velocity
@@ -461,25 +489,25 @@ Gravitas = ->
       # scene model for the control force tetrahedron 
       @.avatar.add @.innerHull = seen.Shapes.tetrahedron().scale(10*@radius * @config.innerRatio).fill new seen.Material seen.C 20,200,200,200
       @.innerHull.bake()
-      @innerPointer = seen.Shapes.pipe seen.P(), seen.P(0,2,0),0.1,3
-      @innerPointer.fill new seen.Material seen.C 255,20,255
-      @.avatar.add @innerPointer
-      @outerPointer = seen.Shapes.pipe seen.P(), seen.P(10,0,0),0.2,3
-      @outerPointer.fill new seen.Material seen.C 128,128,128
-      @.avatar.add @outerPointer
       # create seen model for outerHull & it's decorations
       @.outerHull = new seen.Model()
       @.outerHull.add seen.Shapes.sphere().scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
       @.outerHull.bake()
       @.contolPairs=[]
-      first = new seen.Material seen.C 200,20,20,100
-      rest = new seen.Material seen.C 20,20,20,100
-      for i in [0..3]
-        pInner = toPoint tetrahedronPoints[i].copy().multiply @radius * @config.innerRatio
-        pOuter = toPoint tetrahedronPoints[i].copy().multiply @radius
+      tetraNames = ["orange","blue","green","violet"]
+      colorHex = ["#FDD459", "#46e1d4","#24C52B","#C31A96"]
+      @accessControlPoints (e)->
+        e.viewAttributes =
+          name: tetraNames[e.index]
+          color: colorHex[e.index] 
+      @accessControlPoints (e)=>
+        pInner = e.p.copy().multiply 5*@radius * @config.innerRatio
+        pOuter = e.p.copy().multiply 5*@radius
         pipe = seen.Shapes.pipe pInner,pOuter,0.1,3
-        @outerHull.add pipe.fill first
-        first = rest
+        pipe.name = e.viewAttributes.name
+        pipe.anchor = pOuter
+        e.pipe = pipe
+        @outerHull.add pipe.fill new seen.Material seen.Colors.parse e.viewAttributes.color
         @.contolPairs.push [pInner,pOuter]
       @avatar.add @outerHull
       return
@@ -492,12 +520,8 @@ Gravitas = ->
       pr=@outerSphere.quaternion
       rotation = new seen.Quaternion pr.x,pr.y,pr.z,pr.w
       #console.log "outie",po
-      @outerPointer.reset().translate po.x,po.y,po.z
       
       pi=toPoint @.innerSphere.position
-      @innerPointer.reset().translate pi.x,pi.y,pi.z
-      
-      @innerPointer.translate po.x,po.y,po.z
       #console.log "innie",pi
       @.innerHull.reset().transform rotation.toMatrix()
       @.innerHull.translate pi.x,pi.y,pi.z
@@ -580,7 +604,7 @@ Gravitas = ->
     # seconds
     maxSubSteps = 3
     lastTime = undefined
-    if t>dropTime & balls.length <1
+    if t>dropTime & balls.length <10
       dropTime = t+fixedTimeStep*100000
       #console.log "pushing new ball",t
       balls.push new RollerBall "jack_#{dropTime}",world,10,0.30, position:new CANNON.Vec3 4,4,6
@@ -593,11 +617,11 @@ Gravitas = ->
       world.step fixedTimeStep, dt, maxSubSteps
     #
     timeStamp += dt*1e-2
-    
     allBall (b)-> b.update()
   
     return
 
+  m=Pylon.Mithril
 
   seenModel = scene.model.append()
   # Add mouse-rotate
@@ -881,6 +905,7 @@ The random motions of the balls will make the attacker lose balance and be unabl
 press '.' to single step the simulation.
 """
       T.canvas "#seen-canvas",width:400, height:400 
+      #T.input "#red-slider",type:"range", min:0,max:255,onchange: "alert('wow')"
       T.p => T.raw "Press hjkl to change where these rollerballs take down an attacker."
       T.p => "Rotate the view with click and drag.  Zoom with fingers or mouse wheel."
   # 
