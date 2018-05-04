@@ -104,3 +104,28 @@ db[id="597b839bd3cfff7cc5f92713"] =
   id: "597b839bd3cfff7cc5f92713"
   name: "Take Your Inner Child Out To Play!"
 #
+
+
+
+db[id="celarien/draft/take-your-inner-child-out-to-play"] =
+  title: "Take Your Inner Child Out To Play!"
+  slug: "take-your-inner-child-out-to-play"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.625Z"
+  lastEdited: "2017-07-28T18:34:03.625Z"
+  published: "2017-07-28T18:34:03.625Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.625Z"
+  TimeStamp: "1501266843625"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/take-your-inner-child-out-to-play"
+  name: "Take Your Inner Child Out To Play!"
+#

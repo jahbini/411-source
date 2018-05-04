@@ -117,3 +117,28 @@ db[id="597b839bd3cfff7cc5f92711"] =
   id: "597b839bd3cfff7cc5f92711"
   name: "Reassuring Reasons why Hypnosis is your Friend"
 #
+
+
+
+db[id="celarien/draft/reassuring-reasons-why-hypnosis-is-your-friend"] =
+  title: "Reassuring Reasons why Hypnosis is your Friend"
+  slug: "reassuring-reasons-why-hypnosis-is-your-friend"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.605Z"
+  lastEdited: "2017-07-28T18:34:03.605Z"
+  published: "2017-07-28T18:34:03.605Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.605Z"
+  TimeStamp: "1501266843605"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/reassuring-reasons-why-hypnosis-is-your-friend"
+  name: "Reassuring Reasons why Hypnosis is your Friend"
+#

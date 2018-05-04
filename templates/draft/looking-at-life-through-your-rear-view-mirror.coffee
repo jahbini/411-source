@@ -104,3 +104,28 @@ db[id="597b839bd3cfff7cc5f926ff"] =
   id: "597b839bd3cfff7cc5f926ff"
   name: "Looking At Life Through Your Rear View Mirror"
 #
+
+
+
+db[id="celarien/draft/looking-at-life-through-your-rear-view-mirror"] =
+  title: "Looking At Life Through Your Rear View Mirror"
+  slug: "looking-at-life-through-your-rear-view-mirror"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.308Z"
+  lastEdited: "2017-07-28T18:34:03.308Z"
+  published: "2017-07-28T18:34:03.308Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.308Z"
+  TimeStamp: "1501266843308"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/looking-at-life-through-your-rear-view-mirror"
+  name: "Looking At Life Through Your Rear View Mirror"
+#

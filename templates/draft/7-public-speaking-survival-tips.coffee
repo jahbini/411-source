@@ -119,3 +119,28 @@ db[id="597b839bd3cfff7cc5f9270a"] =
   id: "597b839bd3cfff7cc5f9270a"
   name: "7 Public Speaking Survival Tips"
 #
+
+
+
+db[id="celarien/draft/7-public-speaking-survival-tips"] =
+  title: "7 Public Speaking Survival Tips"
+  slug: "7-public-speaking-survival-tips"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: false
+  index: false
+  headlines: []
+  tags: []
+  snippets: "{}"
+  memberOf: []
+  created: "2017-07-28T18:34:03.000Z"
+  lastEdited: "2017-07-28T18:34:03.000Z"
+  published: "2017-07-28T18:34:03.000Z"
+  embargo: "2030-01-01T00:00:00.000Z"
+  captureDate: "2017-07-28T18:34:03.000Z"
+  TimeStamp: "1501266843000"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  id: "celarien/draft/7-public-speaking-survival-tips"
+  name: "7 Public Speaking Survival Tips"
+#

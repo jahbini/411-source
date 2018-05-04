@@ -112,3 +112,28 @@ db[id="597b839bd3cfff7cc5f926f8"] =
   id: "597b839bd3cfff7cc5f926f8"
   name: "5 Hypnosis Myths Exploded"
 #
+
+
+
+db[id="celarien/draft/5-hypnosis-myths-exploded"] =
+  title: "5 Hypnosis Myths Exploded"
+  slug: "5-hypnosis-myths-exploded"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: false
+  index: false
+  headlines: []
+  tags: []
+  snippets: "{}"
+  memberOf: []
+  created: "2017-07-28T18:34:03.000Z"
+  lastEdited: "2017-07-28T18:34:03.000Z"
+  published: "2017-07-28T18:34:03.000Z"
+  embargo: "2030-01-01T00:00:00.000Z"
+  captureDate: "2017-07-28T18:34:03.000Z"
+  TimeStamp: "1501266843000"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  id: "celarien/draft/5-hypnosis-myths-exploded"
+  name: "5 Hypnosis Myths Exploded"
+#

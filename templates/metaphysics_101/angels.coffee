@@ -115,3 +115,29 @@ db[id="celarienmetaphysics_101angels"] =
   name: "angels"
 #
 #end of story
+
+
+
+db[id="celarien/metaphysics_101/angels"] =
+  title: "angels"
+  slug: "angels"
+  category: "metaphysics_101"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: false
+  index: false
+  sourcePath: ""
+  headlines: []
+  tags: []
+  snippets: "{\"first name\":\"first name\"}"
+  memberOf: []
+  created: "2018-03-26T19:54:07.400Z"
+  lastEdited: "2018-03-26T19:54:07.401Z"
+  published: "2018-03-26T19:54:07.401Z"
+  embargo: "2018-03-26T19:54:07.401Z"
+  captureDate: "2018-03-26T19:54:07.401Z"
+  TimeStamp: 1522094047401
+  debug: ""
+  author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  id: "celarien/metaphysics_101/angels"
+  name: "angels"
+#

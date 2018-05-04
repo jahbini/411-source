@@ -76,3 +76,28 @@ db[id="597b839bd3cfff7cc5f926fa"] =
   id: "597b839bd3cfff7cc5f926fa"
   name: "Can you cure a disease or diagnose an injury?"
 #
+
+
+
+db[id="celarien/draft/can-you-cure-a-disease-or-diagnose-an-injury"] =
+  title: "Can you cure a disease or diagnose an injury?"
+  slug: "can-you-cure-a-disease-or-diagnose-an-injury"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.296Z"
+  lastEdited: "2017-07-28T18:34:03.296Z"
+  published: "2017-07-28T18:34:03.296Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.296Z"
+  TimeStamp: "1501266843296"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/can-you-cure-a-disease-or-diagnose-an-injury"
+  name: "Can you cure a disease or diagnose an injury?"
+#

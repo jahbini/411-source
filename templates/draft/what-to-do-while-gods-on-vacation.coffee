@@ -88,3 +88,28 @@ db[id="597b839bd3cfff7cc5f9271b"] =
   id: "597b839bd3cfff7cc5f9271b"
   name: "What to do while God's on Vacation"
 #
+
+
+
+db[id="celarien/draft/what-to-do-while-gods-on-vacation"] =
+  title: "What to do while God's on Vacation"
+  slug: "what-to-do-while-gods-on-vacation"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.630Z"
+  lastEdited: "2017-07-28T18:34:03.630Z"
+  published: "2017-07-28T18:34:03.630Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.630Z"
+  TimeStamp: "1501266843630"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/what-to-do-while-gods-on-vacation"
+  name: "What to do while God's on Vacation"
+#

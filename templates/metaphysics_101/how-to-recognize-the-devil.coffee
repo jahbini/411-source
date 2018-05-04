@@ -100,3 +100,28 @@ db[id="59ffe3f73a4b7b001549ce4e"] =
   id: "59ffe3f73a4b7b001549ce4e"
   name: "How to Recognize the Devil"
 #
+
+
+
+db[id="celarien/metaphysics_101/how-to-recognize-the-devil"] =
+  title: "How to Recognize the Devil"
+  slug: "how-to-recognize-the-devil"
+  category: "metaphysics_101"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  snippets: "{}"
+  memberOf: []
+  created: "2017-11-06T04:24:23.000Z"
+  lastEdited: "2017-11-06T04:24:23.000Z"
+  published: "2017-11-06T04:24:23.000Z"
+  embargo: "2017-11-06T04:24:23.000Z"
+  captureDate: "2017-11-06T04:24:23.000Z"
+  TimeStamp: "1509942263000"
+  debug: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  id: "celarien/metaphysics_101/how-to-recognize-the-devil"
+  name: "How to Recognize the Devil"
+#

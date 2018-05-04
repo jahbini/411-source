@@ -77,3 +77,33 @@ db[id="597b839bd3cfff7cc5f926f7"] =
   id: "597b839bd3cfff7cc5f926f7"
   name: "Celarien -- The tools of the spiritual bodyguard"
 #
+
+
+
+db[id="celarien/-/index"] =
+  title: "Celarien -- The tools of the spiritual bodyguard"
+  slug: "index"
+  category: "-"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: true
+  headlines: [
+    "A better way"
+    "Wisdom starts here"
+    "There are Diamonds at your feet if you only look"
+    "Western Metaphysical NLP"
+  ]
+  tags: []
+  snippets: "{}"
+  memberOf: []
+  created: "2016-03-11T12:40:04.000Z"
+  lastEdited: "2016-03-11T14:20:28.000Z"
+  published: "2016-03-11T12:40:04.000Z"
+  embargo: "2016-03-11T12:40:04.000Z"
+  captureDate: "2017-07-28T18:34:03.000Z"
+  TimeStamp: "1501266843000"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  id: "celarien/-/index"
+  name: "Celarien -- The tools of the spiritual bodyguard"
+#

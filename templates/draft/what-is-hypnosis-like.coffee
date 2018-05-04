@@ -79,3 +79,28 @@ db[id="597b839bd3cfff7cc5f9271a"] =
   id: "597b839bd3cfff7cc5f9271a"
   name: "What is hypnosis like?"
 #
+
+
+
+db[id="celarien/draft/what-is-hypnosis-like"] =
+  title: "What is hypnosis like?"
+  slug: "what-is-hypnosis-like"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.629Z"
+  lastEdited: "2017-07-28T18:34:03.629Z"
+  published: "2017-07-28T18:34:03.629Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.629Z"
+  TimeStamp: "1501266843629"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/what-is-hypnosis-like"
+  name: "What is hypnosis like?"
+#

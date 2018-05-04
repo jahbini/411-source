@@ -73,3 +73,28 @@ db[id="597b839bd3cfff7cc5f9270f"] =
   id: "597b839bd3cfff7cc5f9270f"
   name: "It is easy to make an appointment."
 #
+
+
+
+db[id="celarien/draft/it-is-easy-to-make-an-appointment"] =
+  title: "It is easy to make an appointment."
+  slug: "it-is-easy-to-make-an-appointment"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.589Z"
+  lastEdited: "2017-07-28T18:34:03.589Z"
+  published: "2017-07-28T18:34:03.589Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.589Z"
+  TimeStamp: "1501266843589"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/it-is-easy-to-make-an-appointment"
+  name: "It is easy to make an appointment."
+#

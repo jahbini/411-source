@@ -73,3 +73,28 @@ db[id="597b839bd3cfff7cc5f926f5"] =
   id: "597b839bd3cfff7cc5f926f5"
   name: "How can hypnosis help me with other people in my life?"
 #
+
+
+
+db[id="celarien/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"] =
+  title: "How can hypnosis help me with other people in my life?"
+  slug: "how-can-hypnosis-help-me-with-other-people-in-my-life"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: false
+  index: false
+  headlines: []
+  tags: []
+  snippets: "{}"
+  memberOf: []
+  created: "2017-07-28T18:34:03.000Z"
+  lastEdited: "2017-07-28T18:34:03.000Z"
+  published: "2017-07-28T18:34:03.000Z"
+  embargo: "2030-01-01T00:00:00.000Z"
+  captureDate: "2017-07-28T18:34:03.000Z"
+  TimeStamp: "1501266843000"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  id: "celarien/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"
+  name: "How can hypnosis help me with other people in my life?"
+#

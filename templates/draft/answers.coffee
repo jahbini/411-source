@@ -88,3 +88,28 @@ db[id="597b839bd3cfff7cc5f92708"] =
   id: "597b839bd3cfff7cc5f92708"
   name: "Answers"
 #
+
+
+
+db[id="celarien/draft/answers"] =
+  title: "Answers"
+  slug: "answers"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.550Z"
+  lastEdited: "2017-07-28T18:34:03.550Z"
+  published: "2017-07-28T18:34:03.550Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.550Z"
+  TimeStamp: "1501266843550"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/answers"
+  name: "Answers"
+#

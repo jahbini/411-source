@@ -1017,3 +1017,26 @@ db[id="celarienpeacefarerollerball"] =
   id: "celarienpeacefarerollerball"
   name: "Rollerball with Springs"
 #
+db[id="celarien/peacefare/rollerball"] =
+  title: "Rollerball Spring"
+  slug: "rollerball"
+  category: "peacefare"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: false
+  index: false
+  sourcePath: ""
+  headlines: []
+  tags: []
+  snippets: "{\"first name\":\"first name\"}"
+  memberOf: []
+  created: "2018-04-04T21:10:55.084Z"
+  lastEdited: "2018-04-04T21:10:55.085Z"
+  published: "2018-04-04T21:10:55.085Z"
+  embargo: "2018-04-04T21:10:55.085Z"
+  captureDate: "2018-04-04T21:10:55.085Z"
+  TimeStamp: 1522876255085
+  debug: ""
+  author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  id: "celarien/peacefare/rollerball"
+  name: "Rollerball with Springs"
+#

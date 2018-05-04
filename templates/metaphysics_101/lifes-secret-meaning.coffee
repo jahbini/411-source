@@ -73,3 +73,28 @@ db[id="59ffe5053a4b7b001549ce4f"] =
   id: "59ffe5053a4b7b001549ce4f"
   name: "Life's Secret Meaning"
 #
+
+
+
+db[id="celarien/metaphysics_101/lifes-secret-meaning"] =
+  title: "Life's Secret Meaning"
+  slug: "lifes-secret-meaning"
+  category: "metaphysics_101"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: false
+  index: false
+  headlines: []
+  tags: []
+  snippets: "{\"first name\":\"first name\"}"
+  memberOf: []
+  created: "2017-11-06T04:28:53.000Z"
+  lastEdited: "2017-11-06T04:28:53.000Z"
+  published: "2017-11-06T04:28:53.000Z"
+  embargo: "2017-11-06T04:28:53.000Z"
+  captureDate: "2017-11-06T04:28:53.000Z"
+  TimeStamp: "1509942533000"
+  debug: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  id: "celarien/metaphysics_101/lifes-secret-meaning"
+  name: "Life's Secret Meaning"
+#

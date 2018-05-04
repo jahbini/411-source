@@ -88,3 +88,28 @@ db[id="597b839bd3cfff7cc5f926f2"] =
   id: "597b839bd3cfff7cc5f926f2"
   name: "Are Religions Socially Useful?"
 #
+
+
+
+db[id="celarien/draft/are-religions-socially-useful"] =
+  title: "Are Religions Socially Useful?"
+  slug: "are-religions-socially-useful"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  snippets: "{}"
+  memberOf: []
+  created: "2017-07-28T18:34:03.000Z"
+  lastEdited: "2017-07-28T18:34:03.000Z"
+  published: "2017-07-28T18:34:03.000Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.000Z"
+  TimeStamp: "1501266843000"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  id: "celarien/draft/are-religions-socially-useful"
+  name: "Are Religions Socially Useful?"
+#

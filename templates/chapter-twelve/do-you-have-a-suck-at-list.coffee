@@ -107,3 +107,33 @@ db[id="599f58b8d65fa400d0fbaaea"] =
   id: "599f58b8d65fa400d0fbaaea"
   name: "Do You Have a Suck-At List?"
 #
+
+
+
+db[id="celarien/chapter-twelve/do-you-have-a-suck-at-list"] =
+  title: "Do You Have a Suck-At List?"
+  slug: "do-you-have-a-suck-at-list"
+  category: "chapter-twelve"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: [
+    "What's the English word for Italian Suppository?"
+    "Stop Being Your Own Worst Enemy"
+  ]
+  tags: [
+    "599f806dd65fa400d0fbaaec"
+  ]
+  snippets: "{\"first name\":\"first name\"}"
+  memberOf: []
+  created: "2017-08-24T22:52:40.000Z"
+  lastEdited: "2017-08-24T22:52:40.000Z"
+  published: "2017-08-24T22:52:40.000Z"
+  embargo: "2017-08-24T22:52:40.000Z"
+  captureDate: "2017-08-24T22:52:40.000Z"
+  TimeStamp: "1503615160000"
+  debug: ""
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  id: "celarien/chapter-twelve/do-you-have-a-suck-at-list"
+  name: "Do You Have a Suck-At List?"
+#

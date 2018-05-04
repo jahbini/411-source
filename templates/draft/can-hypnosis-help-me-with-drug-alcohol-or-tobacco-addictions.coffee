@@ -71,3 +71,28 @@ db[id="597b839bd3cfff7cc5f9270b"] =
   id: "597b839bd3cfff7cc5f9270b"
   name: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
 #
+
+
+
+db[id="celarien/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"] =
+  title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
+  slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.557Z"
+  lastEdited: "2017-07-28T18:34:03.557Z"
+  published: "2017-07-28T18:34:03.557Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.557Z"
+  TimeStamp: "1501266843557"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
+  name: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
+#

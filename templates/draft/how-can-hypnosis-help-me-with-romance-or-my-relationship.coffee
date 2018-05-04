@@ -83,3 +83,28 @@ db[id="597b839bd3cfff7cc5f9270c"] =
   id: "597b839bd3cfff7cc5f9270c"
   name: "How can hypnosis help me with romance or my relationship?"
 #
+
+
+
+db[id="celarien/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"] =
+  title: "How can hypnosis help me with romance or my relationship?"
+  slug: "how-can-hypnosis-help-me-with-romance-or-my-relationship"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.573Z"
+  lastEdited: "2017-07-28T18:34:03.573Z"
+  published: "2017-07-28T18:34:03.573Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.573Z"
+  TimeStamp: "1501266843573"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"
+  name: "How can hypnosis help me with romance or my relationship?"
+#

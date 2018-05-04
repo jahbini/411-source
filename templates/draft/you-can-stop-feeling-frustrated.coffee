@@ -109,3 +109,28 @@ db[id="597b839bd3cfff7cc5f92707"] =
   id: "597b839bd3cfff7cc5f92707"
   name: "You Can Stop Feeling Frustrated"
 #
+
+
+
+db[id="celarien/draft/you-can-stop-feeling-frustrated"] =
+  title: "You Can Stop Feeling Frustrated"
+  slug: "you-can-stop-feeling-frustrated"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.324Z"
+  lastEdited: "2017-07-28T18:34:03.324Z"
+  published: "2017-07-28T18:34:03.324Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.324Z"
+  TimeStamp: "1501266843324"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/you-can-stop-feeling-frustrated"
+  name: "You Can Stop Feeling Frustrated"
+#

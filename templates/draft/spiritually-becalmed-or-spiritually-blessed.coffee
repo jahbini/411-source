@@ -90,3 +90,28 @@ db[id="597b839bd3cfff7cc5f92717"] =
   id: "597b839bd3cfff7cc5f92717"
   name: "Spiritually becalmed? Or spiritually blessed?"
 #
+
+
+
+db[id="celarien/draft/spiritually-becalmed-or-spiritually-blessed"] =
+  title: "Spiritually becalmed? Or spiritually blessed?"
+  slug: "spiritually-becalmed-or-spiritually-blessed"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.622Z"
+  lastEdited: "2017-07-28T18:34:03.623Z"
+  published: "2017-07-28T18:34:03.623Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.623Z"
+  TimeStamp: "1501266843623"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/spiritually-becalmed-or-spiritually-blessed"
+  name: "Spiritually becalmed? Or spiritually blessed?"
+#

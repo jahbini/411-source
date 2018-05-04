@@ -71,3 +71,28 @@ db[id="597b839bd3cfff7cc5f92715"] =
   id: "597b839bd3cfff7cc5f92715"
   name: "Jim Hinds, Creator of The Celarien Experience®"
 #
+
+
+
+db[id="celarien/draft/jim-hinds-creator-of-the-celarien-experiencer"] =
+  title: "Jim Hinds, Creator of The Celarien Experience®"
+  slug: "jim-hinds-creator-of-the-celarien-experiencer"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.590Z"
+  lastEdited: "2017-07-28T18:34:03.590Z"
+  published: "2017-07-28T18:34:03.590Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.590Z"
+  TimeStamp: "1501266843590"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/jim-hinds-creator-of-the-celarien-experiencer"
+  name: "Jim Hinds, Creator of The Celarien Experience®"
+#

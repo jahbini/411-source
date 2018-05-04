@@ -104,3 +104,28 @@ db[id="597b839bd3cfff7cc5f92701"] =
   id: "597b839bd3cfff7cc5f92701"
   name: "My Past Doesn't Have to Be My Future"
 #
+
+
+
+db[id="celarien/draft/my-past-doesnt-have-to-be-my-future"] =
+  title: "My Past Doesn't Have to Be My Future"
+  slug: "my-past-doesnt-have-to-be-my-future"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.308Z"
+  lastEdited: "2017-07-28T18:34:03.308Z"
+  published: "2017-07-28T18:34:03.308Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.308Z"
+  TimeStamp: "1501266843308"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/my-past-doesnt-have-to-be-my-future"
+  name: "My Past Doesn't Have to Be My Future"
+#

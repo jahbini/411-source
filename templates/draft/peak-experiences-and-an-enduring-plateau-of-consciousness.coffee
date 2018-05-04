@@ -108,3 +108,28 @@ db[id="597b839bd3cfff7cc5f92716"] =
   id: "597b839bd3cfff7cc5f92716"
   name: "Peak Experiences and an Enduring Plateau of Consciousness"
 #
+
+
+
+db[id="celarien/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"] =
+  title: "Peak Experiences and an Enduring Plateau of Consciousness"
+  slug: "peak-experiences-and-an-enduring-plateau-of-consciousness"
+  category: "draft"
+  site: "597aea40d3cfff7cc5f926f0"
+  accepted: true
+  index: false
+  headlines: []
+  tags: []
+  memberOf: []
+  created: "2017-07-28T18:34:03.598Z"
+  lastEdited: "2017-07-28T18:34:03.598Z"
+  published: "2017-07-28T18:34:03.598Z"
+  embargo: "2017-12-31T23:59:59.000Z"
+  captureDate: "2017-07-28T18:34:03.598Z"
+  TimeStamp: "1501266843598"
+  author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  debug: ""
+  snippets: "{}"
+  id: "celarien/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"
+  name: "Peak Experiences and an Enduring Plateau of Consciousness"
+#
