@@ -1,5 +1,5 @@
-# #-------- class start
-class  do_you_have_a_suck_at_list extends celarientemplate
+# #-------- renderer = class start
+renderer = class  do_you_have_a_suck_at_list extends celarientemplate
   # 
   # section html
   # 
@@ -44,7 +44,7 @@ class  do_you_have_a_suck_at_list extends celarientemplate
       T.blockquote =>
         T.p => T.raw "Remember that we have two sets of values – those values that motivate us to DO something, and a completely different set of values that make us feel about what we did."
       T.p "It’s kind of like a Bucket List, but instead of things that you really want to do, it is a list of things where you are your own worst enemy.  You do so badly that you have decided to just say ‘That’s not for me’"
-      T.p => T.raw "Like maybe you took a class in English Literature, but can’t tell the difference between an innuendo and an Italian suppository."
+      T.p => T.raw "Like maybe you took a renderer = class in English Literature, but can’t tell the difference between an innuendo and an Italian suppository."
       T.p => T.raw "Like maybe your family are all great glass blowers, but you are allergic to glass."
       T.p => T.raw "Or maybe you want to change the world in politics, but hate to lie."
       T.p => T.raw "You love to sing, but you need to wear a bullet-proof vest at Karaoke."
@@ -73,9 +73,9 @@ class  do_you_have_a_suck_at_list extends celarientemplate
   # 
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
-#-------- class end
-page = new do_you_have_a_suck_at_list
-rendered =  T.render page.html
+#-------- renderer = class end
+
+
 # ------- db start
 db = {} unless db
 

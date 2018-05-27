@@ -1,5 +1,5 @@
 # #-------- class start#-------- class start
-class   statement_of_beliefs extends celarientemplate
+renderer = class   statement_of_beliefs extends celarientemplate
   # 
   # section html
   # 
@@ -100,8 +100,8 @@ Simply put, If you are weak, you wont win the Mr. Universe title;  If your emoti
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
 #-------- class end
 #-------- class end
-page = new statement_of_beliefs
-rendered =  T.render page.html
+
+
 # ------- db start
 db = {} unless db
 db[id="597b839bd3cfff7cc5f92705"] =

@@ -1,5 +1,5 @@
 # #-------- class start
-class  romance_relationships_and_break_ups extends celarientemplate
+renderer = class  romance_relationships_and_break_ups extends celarientemplate
   # 
   # section html
   # 
@@ -68,8 +68,8 @@ class  romance_relationships_and_break_ups extends celarientemplate
   allMeta = [[["name","author"],["content","James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"]],[["http-equiv","Content-Type"],["content","text/html"],["charset","UTF-8"]],[["name","viewport"],["content","width=device-width, initial-scale=1"]],[["name","description"],["content","some good thoughts. Maybe."]],[["name","keywords"],["content","romance, wisdom, tarot"]],[["property","fb:admins"],["content","1981510532097452"]],[["name","msapplication-TileColor"],["content","#ffffff"]],[["name","msapplication-TileImage"],["content","/assets/icons/ms-icon-144x144.png"]],[["name","theme-color"],["content","#ffffff"]]]
   htmlTitle = "Practical Metaphysics and Harmonious Mana."
 #-------- class end
-page = new romance_relationships_and_break_ups
-rendered =  T.render page.html
+
+
 # ------- db start
 db = {} unless db
 
