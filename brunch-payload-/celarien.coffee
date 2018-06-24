@@ -35,7 +35,7 @@ module.exports =  class CelarienLook
     delete attrs.id
     title = attrs.title
     delete attrs.title
-    T.div '.Container.widget-wrap.p1.m1.border-bottom',attrs , ->
+    T.div '.container.widget-wrap.p-2.my-1',attrs , ->
       T.h3 title unless !title
-      T.div '.pl2',->contents
+      T.div '.btn-group.btn-group-vertical.widget',->contents
   

@@ -54,7 +54,7 @@ db[id="597b839bd3cfff7cc5f926f7"] =
   title: "Celarien -- The tools of the spiritual bodyguard"
   slug: "index"
   category: "-"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: true
   headlines: [
@@ -84,7 +84,7 @@ db[id="celarien/-/index"] =
   title: "Celarien -- The tools of the spiritual bodyguard"
   slug: "index"
   category: "-"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: true
   headlines: [

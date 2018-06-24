@@ -58,7 +58,7 @@ db[id="597b839bd3cfff7cc5f926f6"] =
   title: "How much does it cost?"
   slug: "how-much-does-it-cost"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -83,7 +83,7 @@ db[id="celarien/draft/how-much-does-it-cost"] =
   title: "How much does it cost?"
   slug: "how-much-does-it-cost"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

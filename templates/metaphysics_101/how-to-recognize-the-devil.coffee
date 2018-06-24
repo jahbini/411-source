@@ -82,7 +82,7 @@ db[id="59ffe3f73a4b7b001549ce4e"] =
   title: "How to Recognize the Devil"
   slug: "how-to-recognize-the-devil"
   category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -107,7 +107,7 @@ db[id="celarien/metaphysics_101/how-to-recognize-the-devil"] =
   title: "How to Recognize the Devil"
   slug: "how-to-recognize-the-devil"
   category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

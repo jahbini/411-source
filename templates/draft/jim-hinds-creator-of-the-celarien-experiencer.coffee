@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f92715"] =
   title: "Jim Hinds, Creator of The Celarien Experience®"
   slug: "jim-hinds-creator-of-the-celarien-experiencer"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -78,7 +78,7 @@ db[id="celarien/draft/jim-hinds-creator-of-the-celarien-experiencer"] =
   title: "Jim Hinds, Creator of The Celarien Experience®"
   slug: "jim-hinds-creator-of-the-celarien-experiencer"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

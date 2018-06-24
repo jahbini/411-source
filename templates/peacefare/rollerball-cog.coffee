@@ -482,7 +482,7 @@ db[id="celarienpeacefarerollerball-cog"] =
   title: "rollerball"
   slug: "rollerball-cog"
   category: "peacefare"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   sourcePath: ""
@@ -505,7 +505,7 @@ db[id="celarienpeacefarerollerballcog"] =
   title: "rollerball"
   slug: "rollerball-cog"
   category: "peacefare"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   sourcePath: ""
@@ -528,7 +528,7 @@ db[id="celarien/peacefare/rollerball-cog"] =
   title: "rollerball"
   slug: "rollerball-cog"
   category: "peacefare"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   sourcePath: ""

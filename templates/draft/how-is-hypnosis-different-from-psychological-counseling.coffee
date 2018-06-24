@@ -55,7 +55,7 @@ db[id="597b839bd3cfff7cc5f9270e"] =
   title: "How is hypnosis different from psychological counseling?"
   slug: "how-is-hypnosis-different-from-psychological-counseling"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -80,7 +80,7 @@ db[id="celarien/draft/how-is-hypnosis-different-from-psychological-counseling"] 
   title: "How is hypnosis different from psychological counseling?"
   slug: "how-is-hypnosis-different-from-psychological-counseling"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

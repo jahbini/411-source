@@ -108,7 +108,7 @@ db[id="597b839bd3cfff7cc5f92705"] =
   title: "Statement of Beliefs"
   slug: "statement-of-beliefs"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   sourcePath: "celarien/contents/old-contents/2008-04-27-0517-statement-of-beliefs.md"
@@ -134,7 +134,7 @@ db[id="597b839bd3cfff7cc5f92718"] =
   title: "Statement of Beliefs"
   slug: "statement-of-beliefs"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -159,7 +159,7 @@ db[id="celarien/draft/statement-of-beliefs"] =
   title: "Statement of Beliefs"
   slug: "statement-of-beliefs"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

@@ -101,7 +101,7 @@ db[id="597b839bd3cfff7cc5f9270a"] =
   title: "7 Public Speaking Survival Tips"
   slug: "7-public-speaking-survival-tips"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []
@@ -126,7 +126,7 @@ db[id="celarien/draft/7-public-speaking-survival-tips"] =
   title: "7 Public Speaking Survival Tips"
   slug: "7-public-speaking-survival-tips"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []

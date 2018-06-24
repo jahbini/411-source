@@ -99,7 +99,7 @@ db[id="597b839bd3cfff7cc5f92711"] =
   title: "Reassuring Reasons why Hypnosis is your Friend"
   slug: "reassuring-reasons-why-hypnosis-is-your-friend"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -124,7 +124,7 @@ db[id="celarien/draft/reassuring-reasons-why-hypnosis-is-your-friend"] =
   title: "Reassuring Reasons why Hypnosis is your Friend"
   slug: "reassuring-reasons-why-hypnosis-is-your-friend"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

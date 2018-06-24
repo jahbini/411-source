@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f926f3"] =
   title: "Can hypnosis help in sports and athletic performance?"
   slug: "can-hypnosis-help-in-sports-and-athletic-performance"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []
@@ -78,7 +78,7 @@ db[id="celarien/draft/can-hypnosis-help-in-sports-and-athletic-performance"] =
   title: "Can hypnosis help in sports and athletic performance?"
   slug: "can-hypnosis-help-in-sports-and-athletic-performance"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []

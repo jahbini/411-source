@@ -94,7 +94,7 @@ db[id="597b839bd3cfff7cc5f926f8"] =
   title: "5 Hypnosis Myths Exploded"
   slug: "5-hypnosis-myths-exploded"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []
@@ -119,7 +119,7 @@ db[id="celarien/draft/5-hypnosis-myths-exploded"] =
   title: "5 Hypnosis Myths Exploded"
   slug: "5-hypnosis-myths-exploded"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []

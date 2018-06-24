@@ -61,7 +61,7 @@ db[id="597b839bd3cfff7cc5f9271a"] =
   title: "What is hypnosis like?"
   slug: "what-is-hypnosis-like"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -86,7 +86,7 @@ db[id="celarien/draft/what-is-hypnosis-like"] =
   title: "What is hypnosis like?"
   slug: "what-is-hypnosis-like"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

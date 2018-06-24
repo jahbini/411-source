@@ -70,7 +70,7 @@ db[id="597b839bd3cfff7cc5f9271b"] =
   title: "What to do while God's on Vacation"
   slug: "what-to-do-while-gods-on-vacation"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -95,7 +95,7 @@ db[id="celarien/draft/what-to-do-while-gods-on-vacation"] =
   title: "What to do while God's on Vacation"
   slug: "what-to-do-while-gods-on-vacation"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

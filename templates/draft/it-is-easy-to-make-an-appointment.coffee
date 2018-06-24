@@ -55,7 +55,7 @@ db[id="597b839bd3cfff7cc5f9270f"] =
   title: "It is easy to make an appointment."
   slug: "it-is-easy-to-make-an-appointment"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -80,7 +80,7 @@ db[id="celarien/draft/it-is-easy-to-make-an-appointment"] =
   title: "It is easy to make an appointment."
   slug: "it-is-easy-to-make-an-appointment"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

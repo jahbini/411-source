@@ -86,7 +86,7 @@ db[id="597b839bd3cfff7cc5f926ff"] =
   title: "Looking At Life Through Your Rear View Mirror"
   slug: "looking-at-life-through-your-rear-view-mirror"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -111,7 +111,7 @@ db[id="celarien/draft/looking-at-life-through-your-rear-view-mirror"] =
   title: "Looking At Life Through Your Rear View Mirror"
   slug: "looking-at-life-through-your-rear-view-mirror"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

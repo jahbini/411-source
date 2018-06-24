@@ -55,7 +55,7 @@ db[id="59ffe5053a4b7b001549ce4f"] =
   title: "Life's Secret Meaning"
   slug: "lifes-secret-meaning"
   category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []
@@ -80,7 +80,7 @@ db[id="celarien/metaphysics_101/lifes-secret-meaning"] =
   title: "Life's Secret Meaning"
   slug: "lifes-secret-meaning"
   category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []

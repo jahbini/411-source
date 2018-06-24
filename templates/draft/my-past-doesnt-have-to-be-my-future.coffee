@@ -86,7 +86,7 @@ db[id="597b839bd3cfff7cc5f92701"] =
   title: "My Past Doesn't Have to Be My Future"
   slug: "my-past-doesnt-have-to-be-my-future"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -111,7 +111,7 @@ db[id="celarien/draft/my-past-doesnt-have-to-be-my-future"] =
   title: "My Past Doesn't Have to Be My Future"
   slug: "my-past-doesnt-have-to-be-my-future"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

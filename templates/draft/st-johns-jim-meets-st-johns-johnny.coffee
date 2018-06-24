@@ -56,7 +56,7 @@ db[id="597b839bd3cfff7cc5f92706"] =
   title: "St. John's Jim Meets St. John's Johnny"
   slug: "st-johns-jim-meets-st-johns-johnny"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -81,7 +81,7 @@ db[id="celarien/draft/st-johns-jim-meets-st-johns-johnny"] =
   title: "St. John's Jim Meets St. John's Johnny"
   slug: "st-johns-jim-meets-st-johns-johnny"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

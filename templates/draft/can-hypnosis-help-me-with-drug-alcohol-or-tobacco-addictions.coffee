@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f9270b"] =
   title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
   slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -78,7 +78,7 @@ db[id="celarien/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictio
   title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
   slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

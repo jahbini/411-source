@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f926fe"] =
   title: "Jim face"
   slug: "jim-face"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -78,7 +78,7 @@ db[id="celarien/draft/jim-face"] =
   title: "Jim face"
   slug: "jim-face"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

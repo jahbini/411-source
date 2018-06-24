@@ -55,7 +55,7 @@ db[id="597b839bd3cfff7cc5f926f5"] =
   title: "How can hypnosis help me with other people in my life?"
   slug: "how-can-hypnosis-help-me-with-other-people-in-my-life"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []
@@ -80,7 +80,7 @@ db[id="celarien/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"] =
   title: "How can hypnosis help me with other people in my life?"
   slug: "how-can-hypnosis-help-me-with-other-people-in-my-life"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []

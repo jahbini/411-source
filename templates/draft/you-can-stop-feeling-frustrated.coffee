@@ -91,7 +91,7 @@ db[id="597b839bd3cfff7cc5f92707"] =
   title: "You Can Stop Feeling Frustrated"
   slug: "you-can-stop-feeling-frustrated"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -116,7 +116,7 @@ db[id="celarien/draft/you-can-stop-feeling-frustrated"] =
   title: "You Can Stop Feeling Frustrated"
   slug: "you-can-stop-feeling-frustrated"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

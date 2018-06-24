@@ -74,7 +74,7 @@ db[id="597b839bd3cfff7cc5f92719"] =
   title: "The Birth of St. John's Jim"
   slug: "the-birth-of-st-johns-jim"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -99,7 +99,7 @@ db[id="celarien/draft/the-birth-of-st-johns-jim"] =
   title: "The Birth of St. John's Jim"
   slug: "the-birth-of-st-johns-jim"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

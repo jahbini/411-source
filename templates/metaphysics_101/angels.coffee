@@ -9,8 +9,6 @@ renderer = class  index extends celarientemplate
   # 
   # section cover
   # 
-  cover: =>
-    T.div "#cover", style: "background-image:url(/assets/images/hooray-fade2.jpg);-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH"
   # 
   # section footer
   # 
@@ -95,7 +93,7 @@ db[id="celarienmetaphysics_101angels"] =
   title: "angels"
   slug: "angels"
   category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   sourcePath: ""
@@ -122,7 +120,7 @@ db[id="celarien/metaphysics_101/angels"] =
   title: "angels"
   slug: "angels"
   category: "metaphysics_101"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   sourcePath: ""

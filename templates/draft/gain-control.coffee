@@ -69,7 +69,7 @@ db[id="597b839bd3cfff7cc5f926f4"] =
   title: "Gain Control"
   slug: "gain-control"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []
@@ -94,7 +94,7 @@ db[id="celarien/draft/gain-control"] =
   title: "Gain Control"
   slug: "gain-control"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: false
   index: false
   headlines: []

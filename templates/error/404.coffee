@@ -57,7 +57,7 @@ db[id="celarienerror404"] =
   title: "404"
   slug: "404"
   category: "error"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -82,7 +82,7 @@ db[id="celarien/error/404"] =
   title: "404"
   slug: "404"
   category: "error"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

@@ -70,7 +70,7 @@ db[id="597b839bd3cfff7cc5f926f2"] =
   title: "Are Religions Socially Useful?"
   slug: "are-religions-socially-useful"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -95,7 +95,7 @@ db[id="celarien/draft/are-religions-socially-useful"] =
   title: "Are Religions Socially Useful?"
   slug: "are-religions-socially-useful"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

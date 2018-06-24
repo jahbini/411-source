@@ -98,7 +98,7 @@ db[id="597b839bd3cfff7cc5f926fb"] =
   title: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
   slug: "healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -123,7 +123,7 @@ db[id="celarien/draft/healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-h
   title: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
   slug: "healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

@@ -65,7 +65,7 @@ db[id="597b839bd3cfff7cc5f9270c"] =
   title: "How can hypnosis help me with romance or my relationship?"
   slug: "how-can-hypnosis-help-me-with-romance-or-my-relationship"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -90,7 +90,7 @@ db[id="celarien/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"]
   title: "How can hypnosis help me with romance or my relationship?"
   slug: "how-can-hypnosis-help-me-with-romance-or-my-relationship"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

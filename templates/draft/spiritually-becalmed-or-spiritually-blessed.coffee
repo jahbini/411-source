@@ -72,7 +72,7 @@ db[id="597b839bd3cfff7cc5f92717"] =
   title: "Spiritually becalmed? Or spiritually blessed?"
   slug: "spiritually-becalmed-or-spiritually-blessed"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -97,7 +97,7 @@ db[id="celarien/draft/spiritually-becalmed-or-spiritually-blessed"] =
   title: "Spiritually becalmed? Or spiritually blessed?"
   slug: "spiritually-becalmed-or-spiritually-blessed"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

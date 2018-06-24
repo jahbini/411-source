@@ -84,7 +84,7 @@ db[id="599f58b8d65fa400d0fbaaea"] =
   title: "Do You Have a Suck-At List?"
   slug: "do-you-have-a-suck-at-list"
   category: "chapter-twelve"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: [
@@ -114,7 +114,7 @@ db[id="celarien/chapter-twelve/do-you-have-a-suck-at-list"] =
   title: "Do You Have a Suck-At List?"
   slug: "do-you-have-a-suck-at-list"
   category: "chapter-twelve"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: [

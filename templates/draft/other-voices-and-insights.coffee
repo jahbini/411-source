@@ -54,7 +54,7 @@ db[id="597b839bd3cfff7cc5f92703"] =
   title: "Other Voices and Insights"
   slug: "other-voices-and-insights"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -79,7 +79,7 @@ db[id="celarien/draft/other-voices-and-insights"] =
   title: "Other Voices and Insights"
   slug: "other-voices-and-insights"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []

@@ -92,7 +92,7 @@ db[id="597b839bd3cfff7cc5f926fd"] =
   title: "I Finally Got My Revenge!"
   slug: "i-finally-got-my-revenge"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
@@ -117,7 +117,7 @@ db[id="celarien/draft/i-finally-got-my-revenge"] =
   title: "I Finally Got My Revenge!"
   slug: "i-finally-got-my-revenge"
   category: "draft"
-  site: "597aea40d3cfff7cc5f926f0"
+  site: "celarien"
   accepted: true
   index: false
   headlines: []
