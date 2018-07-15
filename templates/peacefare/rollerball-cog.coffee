@@ -393,7 +393,9 @@ renderer = class  index extends celarientemplate
   # section storyHeadMatter
   #
   storyHeadMatter: ->
-    T.script src:"http://seenjs.io/dist/latest/seen.min.js"
+    T.script src:"https://aframe.io/releases/0.5.0/aframe.min.js"
+    T.script src:"draft/peacefare/rollerball-cog/aframe-physics-system.js"
+    T.script src:"assets/seen.min.js"
     T.script src:"draft/peacefare/rollerball/cannon.js"
     T.script src:"draft/peacefare/rollerball/pid.js"
     T.script src:src="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"
@@ -412,15 +414,9 @@ renderer = class  index extends celarientemplate
   # 
   # section cover
   # 
-  cover: =>
-    T.div "#cover", style: "background-image:url(/assets/images/hooray-fade2.jpg);-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH"
   # 
   # section footer 
   # 
-  footer: =>
-    T.div "#console0",'data-limit':10
-    T.coffeescript Gravitas
-    return
   # 
   # section sidecar
   # 
@@ -445,9 +441,10 @@ renderer = class  index extends celarientemplate
   # section bloviation
   # 
   bloviation: =>
+    T.div ".container",->
     T.h3 "The LowRoller version of the RollerBall"
     T.div "#bloviation.contents", =>
-      T.p """Did you ever see a Samuri movie where the police take down a rampaging samuri?"""
+      T.p """Did you ever see a Samurai movie where the police take down a rampaging samuri?"""
       T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
       T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
 covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
@@ -476,53 +473,6 @@ press '.' to single step the simulation.
 # ------- db start
 db = {} unless db
 
-#
-
-db[id="celarienpeacefarerollerball-cog"] =
-  title: "rollerball"
-  slug: "rollerball-cog"
-  category: "peacefare"
-  site: "celarien"
-  accepted: false
-  index: false
-  sourcePath: ""
-  headlines: []
-  tags: []
-  snippets: "{\"first name\":\"first name\"}"
-  memberOf: []
-  created: "2018-04-04T21:10:55.084Z"
-  lastEdited: "2018-04-04T21:10:55.085Z"
-  published: "2018-04-04T21:10:55.085Z"
-  embargo: "2018-04-04T21:10:55.085Z"
-  captureDate: "2018-04-04T21:10:55.085Z"
-  TimeStamp: 1522876255085
-  debug: ""
-  author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarienpeacefarerollerball-cog"
-  name: "Low Roller"
-#
-db[id="celarienpeacefarerollerballcog"] =
-  title: "rollerball"
-  slug: "rollerball-cog"
-  category: "peacefare"
-  site: "celarien"
-  accepted: false
-  index: false
-  sourcePath: ""
-  headlines: []
-  tags: []
-  snippets: "{\"first name\":\"first name\"}"
-  memberOf: []
-  created: "2018-04-04T21:10:55.084Z"
-  lastEdited: "2018-04-04T21:10:55.085Z"
-  published: "2018-04-04T21:10:55.085Z"
-  embargo: "2018-04-04T21:10:55.085Z"
-  captureDate: "2018-04-04T21:10:55.085Z"
-  TimeStamp: 1522876255085
-  debug: ""
-  author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarienpeacefarerollerball-cog"
-  name: "Low Roller"
 #
 db[id="celarien/peacefare/rollerball-cog"] =
   title: "rollerball"

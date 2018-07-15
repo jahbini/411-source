@@ -471,7 +471,7 @@ renderer = class  index extends celarientemplate
   # section storyHeadMatter
   #
   storyHeadMatter: ->
-    T.script src:"http://seenjs.io/dist/latest/seen.min.js"
+    T.script src:"assets/seen.min.js"
     T.script src:"draft/peacefare/rollerball/cannon.js"
     T.script src:"draft/peacefare/rollerball/pid.js"
     T.script src:src="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"
