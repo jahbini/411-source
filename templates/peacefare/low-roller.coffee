@@ -1,54 +1,23 @@
-# #-------- class start
+###
+#-------- class start
 #
 # lowRoller -- internally controlled sphere
 #
-
-###! for Console redirection
-Copyright (C) 2011 by Marty Zalega
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
 ###
 
+demoMode = true
 Gravitas = ->
+  window.demo = true
+  #include constraint2.coffee
   #include console.coffee
+  #include linear-motor.coffee
   
-Ignore = ->
+#Ignore = ->
+  
   window.onkeypress= (event)->
     switch event.key
       when "."
-        onceStop = true 
-        startStop = true 
-      when ' '
-        startStop = !startStop
-      when 'h'
-        allBall (b)->
-          b.setPursuit -5,0
-      when 'j'
-        allBall (b)->
-          b.setPursuit 4,4   
-      when 'k'
-        allBall (b)->
-          b.setPursuit -3,-3
-      when 'l'
-        allBall (b)->
-          b.setPursuit 0,0
-    return 
+        window.debugForce = true
   
   #
   # ## Apache 2.0 License
@@ -80,6 +49,7 @@ renderer = class  index extends celarientemplate
     T.script src:"draft/peacefare/rollerball/pid.js"
     T.script src:"https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"
     T.script src:"https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"
+    T.script src:"https://unpkg.com/aframe-arrow-component@1.0.0/index.js"
     T.style type:"text/css","""
 a-scene { height: 300px; width: 600px; }
 #include console.css
@@ -90,7 +60,10 @@ a-scene { height: 300px; width: 600px; }
     ###
     T.coffeescript Gravitas
     T.coffeescript  ->
-      #console=Console "console0",window
+      if !window.demo
+        consolex=Console "console0",window
+        window.consol = consolex
+        window.debugForce = false
       extend = (src) ->
         i = 1
         while i < arguments.length
@@ -153,9 +126,6 @@ a-scene { height: 300px; width: 600px; }
           tetraVector = (tetraPosition.vsub @innie.body.position).unit().scale @innie.body.mass/10
           @innie.body.applyImpulse (tetraVector.scale @force),@innie.body.position
           @outie.body.applyImpulse (tetraVector.scale @force*-1),tetraPosition
-          if @e.index == 0
-            #debugger
-            console.log 'FORCE',@force,@outie.body.position,@innie.body.position
           return
 
 
@@ -182,8 +152,11 @@ a-scene { height: 300px; width: 600px; }
         ###
         setPursuit aims the low-roller at this xy destination
         ###
-        setPursuit: (x,y)->
-          @pursuit = new CANNON.Vec3 x, y,10
+        setPursuit: (p)->
+          @pursuit = new CANNON.Vec3 p.x,@radius , p.y
+          if this.el.body
+            this.el.body.pursuit = @pursuit
+            this.el.body.radius = @radius
           return
         ###
         Initialization
@@ -199,7 +172,7 @@ a-scene { height: 300px; width: 600px; }
                   p:  new THREE.Vector3 z*y,y,z
                   normed:  (new THREE.Vector3 z*y,y,z).normalize()
                   raw: [z*y,y,z]
-                  cannonLocal: C z*y,y,z
+                  cannonLocal: (C z*y,y,z).unit()
                   index: tetrahedralDescription.length
                   flip:1
             return
@@ -208,56 +181,56 @@ a-scene { height: 300px; width: 600px; }
           ###
           @.tetrahedralDescription=tetrahedralDescription
           data = @.data
-          @setPursuit @.data.pursuit
+          @setPursuit @.data.pursuit 
           radius = @.el.components.geometry.data.radius
           scale = @.el.components.geometry.data.scale
           @totalMass = data.inner + data.outer
           position = @.el.components.position.data
           @el.addEventListener 'body-loaded', (event) =>
+            #debugger
             body = event.currentTarget.body
             body.velocity.set 0,0,0
             body.angularVelocity.set 0,0,0
             body.quaternion = body.initQuaternion
+            body.pursuit = @pursuit
+            body.radius = @.el.components.geometry.data.radius
+            body.tetraPoints = tetrahedralDescription
             body.updateProperties()
             return
           ###
           Outer sphere physics attributes
           ###
-          @el.setAttribute 'dynamic-body',true
-          @el.setAttribute 'physics', "mass: #{data.outer}; linearDamping: 0.5; angularDamping: 0.5;"
-          @el.setAttribute "velocity",  "0 0 0"
+          @el.setAttribute 'dynamic-body',"shape:'sphere'; sphereRadius:#{radius}; mass: #{data.outer}; linearDamping: 0.5; angularDamping: 0.91;"
+          @el.setAttribute "geometry", "primitive: sphere; radius: #{radius}"
           ###
           create inner sphere
           ###
-          tet = document.createElement 'a-sphere'
-          tet.id = innieID()
+          innie = document.createElement 'a-sphere'
+          innie.id = innieID()
           @myInnieID = innieCounter
-          tet.setAttribute 'dynamic-body',true
-          tet.setAttribute 'position', V2A position
-          tet.setAttribute 'radius',"#{data.outer/@totalMass}"
-          tet.setAttribute "velocity",C()
-          tet.setAttribute 'physics', "mass: #{data.inner}; linearDamping: 1.5; angularDamping: 0.5; collisionResponse: false"
-          @.innie = tet
+          innie.setAttribute 'radius',"#{data.outer/@totalMass}"
+          innie.setAttribute "position",position
+          innie.setAttribute 'dynamic-body', "shape:'sphere'; sphereRadius: #{data.outer/@totalMass}; mass: #{data.inner}; linearDamping: 0.5; angularDamping: 0.5"
+          @.innie = innie
           @innie.addEventListener 'body-loaded', (event) =>
+            #debugger
             body = event.currentTarget.body
-            body.velocity.set 0,0,0
-            body.angularVelocity.set 0,0,0
-            body.quaternion = body.initQuaternion
-            body.collisionResponse = false 
-            body.collisionFilterGroup = 0
-            body.collisionFilterMask = 0
+            body.collisionResponse =  true
+            body.collisionFilterGroup = 2
+            body.collisionFilterMask = 1
             body.updateProperties();
             return
-          @.el.parentElement.insertBefore tet, @.el
+          @.el.parentElement.insertBefore innie, @.el
+          
           ###
           create tetrahedron
           ###
-          tet = document.createElement 'a-tetrahedron'
-          tet.setAttribute 'physics',"mass:0;"
-          tet.setAttribute 'material','wireframe:true'
-          tet.setAttribute 'radius',"#{radius}"
-          @.el.appendChild tet
-          @.tet = tet
+          #tet = document.createElement 'a-tetrahedron'
+          #tet.setAttribute 'physics',"mass:0; shape:'sphere'; sphereRadius: 0.1; collisionResponse: false"
+          #tet.setAttribute 'material','wireframe:true'
+          #tet.setAttribute 'radius',"#{radius}"
+          #@.el.appendChild tet
+          #@.tet = tet
           ###
           create tetrahedral support points
           ###
@@ -265,31 +238,25 @@ a-scene { height: 300px; width: 600px; }
           @controlPoints = for v in tetrahedralDescription
             Object.assign {}, v
           @myPoints = @accessControlPoints (e)=>
-            point = document.createElement 'a-sphere'
-            point.addEventListener 'body-loaded',(event) =>
-              body = event.currentTarget.body
-              body.velocity.set 0,0,0
-              body.angularVelocity.set 0,0,0
-              body.quaternion = body.initQuaternion
-              body.updateProperties();
-              return
-            point.id = "tet__#{innieCounter}_#{e.index}"
             pivotPoint = V2A e.normed.multiplyScalar radius
+            mPivotPoint = V2A e.normed.multiplyScalar -radius
             p2 = V2A e.normed.multiplyScalar -radius
-            point.setAttribute 'physics', "mass: 0; shape:none; linearDamping: 0.5; angularDamping: 0.5;"
-            point.setAttribute 'position',pivotPoint
-            point.setAttribute 'radius',0.1
-            point.setAttribute 'dynamic-body',true
-            point.setAttribute 'color','black'
-            point.setAttribute 'constraint',"target: ##{@innie.id}; distance: #{radius/3}; type: distance; maxForce: #{1.15*@.data.inner}"
-            point.setAttribute "velocity","0 0 0"
-            @el.appendChild point
-            @el.setAttribute "constraint__#{point.id}","target: ##{point.id}; type: pointToPoint; pivot: #{pivotPoint}; targetPivot: 0 0 0;"
-            console.log "constraint__#{point.id}","target: ##{point.id}; type: pointToPoint; pivot: #{pivotPoint}; targetPivot: 0 0 0;"
-            return point
-          # build up an array of structures for the anchor points
+            return
+          # build up the force vectors on the anchor points
+          colors = ["#fff","#f88","#8F8","#88F"]
           @accessControlPoints (e)=>
-            e.tetraForcer = new TetraForcer @, e
+            iVector = document.createElement 'a-entity'
+            iVector.setAttribute 'arrow',"direction: 1 1 1; length:1; color: #{colors[e.index]}"
+            iVector.id = "#{@innie.id}__innieForce__#{e.index}"
+            @.el.parentElement.insertBefore iVector,@.el
+            iVector = document.createElement 'a-entity'
+            iVector.setAttribute 'arrow',"direction: 1 1 1; length:1; color: #{colors[e.index]}"
+            iVector.id = "#{@innie.id}__outieForce__#{e.index}"
+            @.el.parentElement.insertBefore iVector,@.el
+            
+          #  e.tetraForcer = new TetraForcer @, e
+          @el.setAttribute "constraint2","target: ##{@innie.id}; minForce:15; type: tetraForcer;"
+          #@el.setAttribute "constraint","target: ##{@innie.id}; maxForce:1.0e4; type: distance;"
           @tockCount = 20
           console.log "INIT",@totalMass,radius
           return 
@@ -308,17 +275,8 @@ a-scene { height: 300px; width: 600px; }
         ###
         tick: ->
           return unless @innie.body && @el.body
-          who=@A
           if @initRuntime
-            body=@innie.body
-            body.collisionFilterGroup = 0
-            body.collisionFilterMask = 0
-            body.updateProperties();
             @initRuntime = false
-            v1 = @innie.getAttribute.velocity
-            v2 = @el.getAttribute.velocity
-            v3 = @myPoints[0].getAttribute.velocity
-            console.log "TICK",v2,v1,v3
           #console.log "TICK",@el.body.velocity,@innie.body.velocity
           return  #jah
         tock: ->
@@ -329,7 +287,7 @@ a-scene { height: 300px; width: 600px; }
             v1 = @innie.body.velocity
             v2 = @el.body.velocity
             v3 = @myPoints[0].body.velocity
-            console.log v2,v1,v3
+            #console.log v2,v1,v3
               
           catch
           return
@@ -345,7 +303,7 @@ a-scene { height: 300px; width: 600px; }
   # 
   # section footer 
   footer: =>
-    T.div "#console0.left",'data-limit':100
+    T.div "#console0.left",visible:false,'data-limit':100
     return
   # 
   # 
@@ -372,31 +330,45 @@ a-scene { height: 300px; width: 600px; }
   # section bloviation
   # 
   bloviation: =>
+    if useAll = demoMode
+      cameraPos = "0 1.6 5"
+    else
+      cameraPos = "0 1 3"
     @footer()
     @lowRollerDefinition()
     T.div ".container.right",=>
-      T.tag "a-scene",embedded:true,physics:'debug: false; driver: local; friction: 10; restitution: 0.10;',=>
-        T.tag "a-entity", physics:'mass:0;', position: "0 1.6 0",=>
+      T.tag "a-scene",embedded:true,physics:'debug: false; driver: local; gravity: -9.6; friction: 0.10; restitution: 0.300;',=>
+        T.tag "a-entity", physics:'mass:0;', position: cameraPos, rotation:"0 0 0",=>
           T.tag "a-camera", physics: 'mass:0;','universal-controls':true, 'body-static':true, 'mouse-cursor':true, "look-controls":"enabled:true", "wasd-controls":"enabled:true",->
             T.tag "a-cursor"
+        T.tag "a-sphere",  "#outie", lowroller: "inner:4;outer:1;pursuit: 2,0;", position:"-2 6 -10", radius:"1", material:"color:#EFff5E; transparent:true; opacity:0.3;"
+        if useAll
+          T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:9;outer:1;", position:"-2 1.25 -15", radius:"1.25", material:"color:#EF005E; transparent:true; opacity:0.3;"
+          T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:4;outer:1;pursuit: 2.2,0;", position:"-3 10.75 0", radius:"0.75", material:"color:#EFff5E; transparent:true; opacity:0.3;"
+          T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:4;outer:1;pursuit: 2,0;", position:"-4 0.75 0", radius:"0.75", material:"color:#EFff5E; transparent:true; opacity:0.3;"
+          T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:4;outer:1;pursuit: 2.2,0;", position:"-5 0.75 -4", radius:"0.75", material:"color:#EFff5E; transparent:true; opacity:0.3;"
+          T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:4;outer:1;pursuit: 2,0;", position:"-2 0.75 -2", radius:"0.75", material:"color:#EFff5E; transparent:true; opacity:0.3;"
+          T.tag "a-sphere", 'dynamic-body':'', position:"0 .25 -2.2", radius:".25",  material:"color:#EF005E; transparent:true; opacity:0.3;"
+          T.tag "a-box", 'dynamic-body':'', position:"0 4.5 -5", rotation:"0 45 0", width:"2", height:"2", depth:"2", color:"#4CC3D9"
+          T.tag "a-box", 'static-body': '', position:"-10 3.5 -7", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#22CC22"
+          T.tag "a-box", 'static-body': '', position:"2 3.5 -5", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
+          T.tag "a-box", 'static-body': '', position:"-2 3.5 -5", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
+          T.tag "a-box", 'static-body': '', position:"-4 3.5 -3", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
+          T.tag "a-box", 'static-body': '', position:"8 3.5 -10", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
+          T.tag "a-cylinder", 'static-body': '', position:"-1 0.75 -3", radius:"0.5", height:"1.5", color:"#FFC65D"
+          #T.tag "a-plane", 'static-body':'', position:"3 1.5 -4", rotation:"0 45 30", width:"4", height:"5", color:"#987654"
+          T.tag "a-sky", color:"#cceecc"
+          T.tag "a-box", position: "-2 0 0" ,width: "0.1", height: "0.1" , depth:"0.1", color: "yellow"
+          T.tag "a-box", position: "2 0 0" ,width: "0.1", height: "0.1" , depth:"0.1", color: "yellow"
 
-        #T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:9;outer:1;", position:"0 1.25 -2.5", radius:"1.25", material:"color:#EF005E; transparent:true; opacity:0.3;"
-        T.tag "a-sphere",  'dynamic-body':'', lowroller: "inner:4;outer:1;", position:"0 5.25 -4", radius:"0.75", material:"color:#EFff5E; transparent:true; opacity:0.3;"
-        T.tag "a-sphere", position:"0 .25 -2.2", radius:".25",  material:"color:#EF005E; transparent:true; opacity:0.3;"
-        T.tag "a-box", 'dynamic-body':'', position:"1.5 4.5 -5", rotation:"0 45 0", width:"2", height:"2", depth:"2", color:"#4CC3D9"
-        T.tag "a-box", 'static-body': '', position:"-10 3.5 -7", rotation:"0 45 0", width:"0.1", height:"10", depth:"0.1", color:"#22CC22"
-        T.tag "a-box", 'static-body': '', position:"2 3.5 -5", rotation:"0 45 0", width:"0.1", height:"10", depth:"0.1", color:"#4CC3D9"
-        T.tag "a-box", 'static-body': '', position:"-2 3.5 -5", rotation:"0 45 0", width:"0.1", height:"10", depth:"0.1", color:"#4CC3D9"
-        T.tag "a-box", 'static-body': '', position:"-4 3.5 -3", rotation:"0 45 0", width:"0.1", height:"10", depth:"0.1", color:"#4CC3D9"
-        T.tag "a-box", 'static-body': '', position:"8 3.5 -10", rotation:"0 45 0", width:"0.1", height:"10", depth:"0.1", color:"#4CC3D9"
-        T.tag "a-cylinder", position:"1 0.75 -3", radius:"0.5", height:"1.5", color:"#FFC65D"
-        T.tag "a-plane", 'static-body':'', position:"0 0 -4", rotation:"-90 0 0", width:"40", height:"50", color:"#7BC8A4"
-        T.tag "a-plane", 'static-body':'', position:"3 1.5 -4", rotation:"0 45 -", width:"4", height:"5", color:"#7BC8A4"
-        T.tag "a-sky", color:"#cceecc"
-        for x in [-3..3]
-          for y in [-5..-1]
-            T.tag "a-box", position: "#{x} 0 #{y}" ,width: "0.1", height: "0.1" , depth:"0.1", color: "green"
-        T.tag "a-entity", environment:"preset: forest; dressingAmount: 500"
+          for x in [-3..3]
+            for y in [-5..-1]
+              T.tag "a-box", position: "#{x} 0 #{y}" ,width: "0.1", height: "0.1" , depth:"0.1", color: "green"
+          T.tag "a-entity", environment:"preset: forest; dressingAmount: 500"
+          
+        T.tag "a-plane", 'static-body':'', position:"0  -0.01 -4", rotation:"-90 0 0", width:"40", height:"50", color:"#7BC8A4"
+        T.tag "a-sphere", "#marker", position: "0 0 0", radius: "0.1", color: "black"
+        T.tag "a-sphere", "#sucker", position: "2 0 0", radius: "0.1", color: "white"
   
 
     T.h3 "The LowRoller version of the RollerBall"
