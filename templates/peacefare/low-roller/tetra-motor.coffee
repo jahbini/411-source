@@ -16,10 +16,10 @@ class PID
   constructor: (proportionalParm, integrationParm, derivativeParm, dt) ->
     if (typeof proportionalParm == 'object')
       options = proportionalParm
-      proportionalParm = options.proportionalParm
-      integrationParm = options.integrationParm
-      derivativeParm = options.derivativeParm
-      dt = options.dt || 0
+      proportionalParm = options.p
+      integrationParm = options.i
+      derivativeParm = options.d
+      dt = options.rate || 0
       integrationLimit = options.integrationLimit
   
     # PID constants
@@ -55,7 +55,7 @@ class PID
     delta = @target - @currentValue  #used as the Proportional factor
     
     @sumDelta = @sumDelta + delta*dt  #used as the Integral factor
-    if 0< @integrationLimit < Math.abs(@sumDelta) #if there is an integration limit, check it
+    if 0<= @integrationLimit < Math.abs(@sumDelta) #if there is an integration limit, check it
       sumSign = if @sumDelta > 0 then 1 else -1
       @sumDelta = sumSign * @integrationLimit  # activate the caller's failsafe quantity
 
@@ -97,16 +97,22 @@ pointToWorldFrame= (body,localPoint,result= new CANNON.Vec3())->
 class TetraForcer
   constructor: (@outie, @innie, options={}) ->
     ###*
+    # debug by showning marker and computed forces
+    ###
+    @debug = options.debug || false
+    ###*
     # Proportional, Integral, Differential parameters
     # @property pid
     # @type {object}
     ###
     p=options.pid || {}
-    p.p = p.p || -100
-    p.i = p.i || 1
-    p.d = p.d || -0.1
+    p.p = p.p || 40
+    p.i = p.i || 40
+    p.d = p.d || 0.4
     p.rate = p.rate || 1/60.0
-    @pID = new PID p
+    @pIDs = []
+    for i in [0..3]
+      @pIDs.push new PID p
     ###*
     # min force
     # resting force
@@ -154,7 +160,7 @@ class TetraForcer
   seekVector = new Vec3()
   seekPosition = new Vec3()
   tetraPosition = new Vec3()
-  tetraToPursuit = new Vec3()
+  tetraToSeekPostion = new Vec3()
   toInnie = new Vec3()
   innieToPursuit = new Vec3()
   tetraToInnie = new Vec3()
@@ -178,11 +184,10 @@ class TetraForcer
     # where is the pursuit in local coordinates?
     # the low-roller centric position we want to place innie's body
     # must be within outie (outie)
+    pursue = @outie.el.pursuit()
     outieLimitW = @outie.radius * 0.9     #exactly where is on this hull
-    seekPositionW = @outie.position.vadd ( (@outie.pursuit.vsub @outie.position).unit().scale outieLimitW )
+    seekPositionW = @outie.position.vadd ( (pursue.vsub @outie.position).unit().scale outieLimitW )
     seekPositionL = @outie.pointToLocalFrame seekPositionW
-    inf=document.querySelector "#marker"
-    inf.setAttribute "position",seekPositionW
     if @type=='tetraPositioner'  # HACK JAH
       # we move the innie as if it were a static component
       # and apply innie's gravitational force to outie's magic innie position
@@ -202,25 +207,25 @@ class TetraForcer
     innieToSeekDistance = innieLocalPosition.distanceTo seekPositionL
       
     for tetraStruct in @outie.tetraPoints
-      force = @minForce * @innie.mass
       tet = tetraStruct.cannonLocal.scale @outie.radius
       tetW = pointToWorldFrame @outie, tet
       innieNullPointW = pointToWorldFrame @innie, nullPoint
       tetraVector = (tetW.vsub @innie.position)
       tetraLength = tetraVector.length() # - outieLimitW
-      force = force * tetraLength 
       tetToSeekDistance = tetW.distanceTo seekPositionW
-      if tetToSeekDistance < innieToSeekDistance
-        adjust = 10*@innie.mass 
-      else
-        adjust = -10*@innie.mass
+      tetToInnieDistance = tetW.distanceTo @innie.position
+      
+      force = @minForce * @innie.mass
+      adjust = @pIDs[tetraStruct.index].update tetToSeekDistance-tetToInnieDistance
       force += adjust
       direction=tetraVector.unit()
       @outie.applyForce (tetraVector.unit().scale -force), tetW.vsub @outie.position
       @innie.applyForce (tetraVector.unit().scale force),innieNullPointW.vsub @innie.position
+      continue unless @debug
       innieID=@innie.el.id
+      inf=document.querySelector "##{innieID}__marker"
+      inf.setAttribute "position",seekPositionW
       inf=document.querySelector "##{innieID}__innieForce__#{tetraStruct.index}"
-      return if !inf
       inf.setAttribute "position",@innie.position 
       inf.setAttribute "arrow", "direction: #{direction.x} #{direction.y} #{direction.z}; length: #{force/10}"
       otf=document.querySelector "##{innieID}__outieForce__#{tetraStruct.index}"
@@ -242,6 +247,7 @@ AFRAME.registerComponent('tetra-motor',
         'tetraPositioner'
         'tetraForcer'
       ]
+    debug: {type:'boolean', default:false}
     target: type: 'selector'
     minForce:
       default: 10
@@ -251,6 +257,9 @@ AFRAME.registerComponent('tetra-motor',
       min: 0
     collideConnected: default: true
     wakeUpBodies: default: true
+    pid:
+      type: 'array'
+      default: [200,100,1]
     restLength:
       type: 'number'
       default: 0
@@ -297,7 +306,8 @@ AFRAME.registerComponent('tetra-motor',
         lA = @data.localAnchor
         lB = @data.localTarget
         constraint = new (TetraForcer)(@el.body, data.target.body,
-          pid: @data.pid
+          pid: p: data.pid[0], i: data.pid[1], d: data.pid[2], dt: 0.016
+          debug: data.debug
           minForce: @data.minForce)
         constraint.type = 'tetraMotor'
       else
@@ -312,46 +322,7 @@ setEverything = (e,attributes,hash={}) ->
     e[a] = v
   e.updateProperties() if e.updateProperties?
   return
-class TetraForcer2
-  MINFORCE = 15
-  constructor: (body,@e)->
-    @tetraPoint = @e.cannonLocal
-    @outie = body.el
-    @innie = body.innie
-    @seekerPID = new PID -100,1,-0.1, 1/60.0
-    #@seekerPID = new PID 0,0,0, 1/60.0
-    @seekerPID.setTarget = 0
-    return
-
-  seek: (pursuit) => # the real world position
-    pursuit.z = (radius=@outie.getAttribute('geometry').radius) * 2  
-    seekVector = pursuit.vsub @outie.body.position
-    seekPosition = @outie.body.position.vadd seekVector.unit().scale radius *.8
-    tetraPosition = @outie.body.pointToWorldFrame @tetraPoint
-    force = MINFORCE
-    @tetraToPursuit = pursuit.distanceTo(tetraPosition)
-    @tetraToPursuit = seekPosition.distanceTo(tetraPosition)
-    @toInnie =@innie.body.position.distanceTo(seekPosition)
-    @innieToPursuit = pursuit.distanceTo @innie.body.position
-    @tetraToInnie = tetraPosition.distanceTo @innie.body.position
-    if @tetraToPursuit < @tetraToInnie
-      adjust = @toInnie
-    else
-      adjust = 0
-    #adjust = @seekerPID.update adjust
-    adjust = 0
-    if @jamming
-      @force = force + (@jamForce - 128)/255
-    else
-      @force = force + adjust
-    tetraPosition = @outie.body.position
-    @force= MINFORCE
-    tetraVector = (tetraPosition.vsub @innie.body.position).unit().scale @innie.body.mass/10
-    @innie.body.applyImpulse (tetraVector.scale @force),@innie.body.position
-    @outie.body.applyImpulse (tetraVector.scale @force*-1),tetraPosition
-    return
-
-
+  
 innieCounter = 0
 innieID = ->
   "innie__#{++innieCounter}"
@@ -360,11 +331,29 @@ dLay = (f)->
 V2A = (position) ->
   "#{position.x} #{position.y} #{position.z}"
 C = (x=0,y=0,z=0)-> new CANNON.Vec3 x,y,z
+
+debug = AFRAME.utils.debug
+coordinates = AFRAME.utils.coordinates
+isCoordinates = coordinates.isCoordinates or coordinates.isCoordinate
+
 AFRAME.registerComponent 'lowroller',  
   schema:
     inner: type: 'number',default: 9
     outer: type: 'number',default:1
-    pursuit: type: 'vec2', default: {x:0, y:0}
+    debug: type: 'boolean', default: false
+    pid: type: 'array', default: [200,100,1]
+    pursuit:
+      default: 'self'
+      parse: (value) ->
+        # A static position to look at.
+        if isCoordinates(value) or typeof value == 'object'
+          return coordinates.parse(value)
+        # A selector to a target entity.
+        value
+      stringify: (data) ->
+        if typeof data == 'object'
+          return coordinates.stringify(data)
+        data
   controlPoints: []
   ###
   iterate over the four tetrahedral control points
@@ -372,15 +361,44 @@ AFRAME.registerComponent 'lowroller',
   accessControlPoints: (f) ->
     for element in @controlPoints
       f element
+    
   ###
   setPursuit aims the low-roller at this xy destination
   ###
   setPursuit: (p)->
-    @pursuit = new CANNON.Vec3 p.x,@radius , p.y
-    if this.el.body
-      this.el.body.pursuit = @pursuit
-      this.el.body.radius = @radius
+    console.log "Setting pursuit"
+    # the default is that we center the pursuit
+    if !this.el.body
+      @el.addEventListener 'body-loaded', (event) =>
+        @.setPursuit p
+      return
+    # we record our current position for idle or self
+    @pursuitVector.copy @el.body.position
+    @.el.pursuit = ()=> @pursuitVector
+    return if p == 'self' || p == 'idle'
+    if typeof p == 'object'
+      @pursuitVector.copy x:p.x, y:0, z:p.y
+      return
+    if m=p.trim().match /(-?[\d.]+)[,\s]+(-?[\d.]+)([,\s]+(-?[\d.]+))?/
+      @pursuitVector.copy x:m[1], y:0, z:m[2]
+      return
+    targetEl = @el.sceneEl.querySelector(p)
+    if !targetEl
+      return
+    if !targetEl.hasLoaded
+      targetEl.addEventListener 'loaded', =>
+        @.setPursuit p
+        return
+      return
+    if targetEl.body
+      @.el.pursuit = ()->targetEl.body.position
+      return
+    @.el.pursuit = ()=>
+      debugger
+      @pursuitVector.copy targetEl.components.position.data
+      return @pursuitVector
     return
+      
   ###
   Initialization
   ###
@@ -404,18 +422,17 @@ AFRAME.registerComponent 'lowroller',
     ###
     @.tetrahedralDescription=tetrahedralDescription
     data = @.data
+    @pursuitVector = C()
     @setPursuit @.data.pursuit 
     radius = @.el.components.geometry.data.radius
     scale = @.el.components.geometry.data.scale
     @totalMass = data.inner + data.outer
     position = @.el.components.position.data
     @el.addEventListener 'body-loaded', (event) =>
-      #debugger
       body = event.currentTarget.body
       body.velocity.set 0,0,0
       body.angularVelocity.set 0,0,0
       body.quaternion = body.initQuaternion
-      body.pursuit = @pursuit
       body.radius = @.el.components.geometry.data.radius
       body.tetraPoints = tetrahedralDescription
       body.updateProperties()
@@ -436,7 +453,6 @@ AFRAME.registerComponent 'lowroller',
     innie.setAttribute 'dynamic-body', "shape:'sphere'; sphereRadius: #{data.outer/@totalMass}; mass: #{data.inner}; linearDamping: 0.5; angularDamping: 0.5"
     @.innie = innie
     @innie.addEventListener 'body-loaded', (event) =>
-      #debugger
       body = event.currentTarget.body
       body.collisionResponse =  true
       body.collisionFilterGroup = 2
@@ -466,23 +482,38 @@ AFRAME.registerComponent 'lowroller',
       p2 = V2A e.normed.multiplyScalar -radius
       return
     # build up the force vectors on the anchor points
-    colors = ["#fff","#f88","#8F8","#88F"]
-    @accessControlPoints (e)=>
-      iVector = document.createElement 'a-entity'
-      iVector.setAttribute 'arrow',"direction: 1 1 1; length:1; color: #{colors[e.index]}"
-      iVector.id = "#{@innie.id}__innieForce__#{e.index}"
-      @.el.parentElement.insertBefore iVector,@.el
-      iVector = document.createElement 'a-entity'
-      iVector.setAttribute 'arrow',"direction: 1 1 1; length:1; color: #{colors[e.index]}"
-      iVector.id = "#{@innie.id}__outieForce__#{e.index}"
-      @.el.parentElement.insertBefore iVector,@.el
+    if data.debug
+        marker = document.createElement 'a-sphere'
+        marker.id = "#{innie.id}__marker" 
+        marker.setAttribute "position", "0 0 0"
+        marker.setAttribute "radius","0.05"
+        marker.setAttribute "color","black"
+        @.el.parentElement.insertBefore marker,@.el
+        #T.tag "a-sphere", "#marker", position: "0 0 0", radius: "0.1", color: "black"
+        colors = ["#fff","#f88","#8F8","#88F"]
+        @accessControlPoints (e)=>
+          iVector = document.createElement 'a-entity'
+          iVector.setAttribute 'arrow',"direction: 1 1 1; length:1; color: #{colors[e.index]}"
+          iVector.id = "#{@innie.id}__innieForce__#{e.index}"
+          @.el.parentElement.insertBefore iVector,@.el
+          iVector = document.createElement 'a-entity'
+          iVector.setAttribute 'arrow',"direction: 1 1 1; length:1; color: #{colors[e.index]}"
+          iVector.id = "#{@innie.id}__outieForce__#{e.index}"
+          @.el.parentElement.insertBefore iVector,@.el
 
-    #  e.tetraForcer = new TetraForcer @, e
-    @el.setAttribute "tetra-motor","target: ##{@innie.id}; minForce:15; type: tetraForcer;"
-    #@el.setAttribute "constraint","target: ##{@innie.id}; maxForce:1.0e4; type: distance;"
-    @tockCount = 20
+    @el.setAttribute "tetra-motor",
+      target: "##{@innie.id}"
+      minForce:15
+      type: 'tetraForcer'
+      debug: data.debug
+      pid: data.pid
+    @el.addEventListener "setAction",(event)=>
+      if event.detail.chase 
+        @setPursuit event.detail.chase
+      if event.detail.idle
+        @setPursuit 'idle'
+      return
     console.log "INIT",@totalMass,radius
-    debugger
     return 
 
   update: ->
@@ -498,20 +529,7 @@ AFRAME.registerComponent 'lowroller',
   Tick updated on each physics state
   ###
   tick: ->
-    return unless @innie.body && @el.body
-    if @initRuntime
-      @initRuntime = false
     #console.log "TICK",@el.body.velocity,@innie.body.velocity
-    return  #jah
+    return
   tock: ->
-    if @tockCount == 0
-      return
-    @tockCount--
-    try
-      v1 = @innie.body.velocity
-      v2 = @el.body.velocity
-      v3 = @myPoints[0].body.velocity
-      #console.log v2,v1,v3
-
-    catch
     return
