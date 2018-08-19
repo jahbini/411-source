@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  you_can_stop_feeling_frustrated extends celarientemplate
+renderer = class  you_can_stop_feeling_frustrated extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -91,7 +91,7 @@ db[id="597b839bd3cfff7cc5f92707"] =
   title: "You Can Stop Feeling Frustrated"
   slug: "you-can-stop-feeling-frustrated"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -112,11 +112,11 @@ db[id="597b839bd3cfff7cc5f92707"] =
 
 
 
-db[id="celarien/draft/you-can-stop-feeling-frustrated"] =
+db[id="411-source/draft/you-can-stop-feeling-frustrated"] =
   title: "You Can Stop Feeling Frustrated"
   slug: "you-can-stop-feeling-frustrated"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -131,6 +131,6 @@ db[id="celarien/draft/you-can-stop-feeling-frustrated"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/you-can-stop-feeling-frustrated"
+  id: "411-source/draft/you-can-stop-feeling-frustrated"
   name: "You Can Stop Feeling Frustrated"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  st_johns_jim extends celarientemplate
+renderer = class  st_johns_jim extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f92712"] =
   title: "St. John's Jim."
   slug: "st-johns-jim"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -74,11 +74,11 @@ db[id="597b839bd3cfff7cc5f92712"] =
 
 
 
-db[id="celarien/draft/st-johns-jim"] =
+db[id="411-source/draft/st-johns-jim"] =
   title: "St. John's Jim."
   slug: "st-johns-jim"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,6 +93,6 @@ db[id="celarien/draft/st-johns-jim"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/st-johns-jim"
+  id: "411-source/draft/st-johns-jim"
   name: "St. John's Jim."
 #

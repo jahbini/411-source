@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  romance_relationships_and_break_ups extends celarientemplate
+renderer = class  romance_relationships_and_break_ups extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -78,7 +78,7 @@ db[id="597b839bd3cfff7cc5f92704"] =
   title: "Romance, Relationships and Break-ups"
   slug: "romance-relationships-and-break-ups"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -99,11 +99,11 @@ db[id="597b839bd3cfff7cc5f92704"] =
 
 
 
-db[id="celarien/draft/romance-relationships-and-break-ups"] =
+db[id="411-source/draft/romance-relationships-and-break-ups"] =
   title: "Romance, Relationships and Break-ups"
   slug: "romance-relationships-and-break-ups"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -118,6 +118,6 @@ db[id="celarien/draft/romance-relationships-and-break-ups"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/romance-relationships-and-break-ups"
+  id: "411-source/draft/romance-relationships-and-break-ups"
   name: "Romance, Relationships and Break-ups"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  answers extends celarientemplate
+renderer = class  answers extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -39,21 +39,21 @@ renderer = class  answers extends celarientemplate
       T.p => T.raw "These are a few of the questions you want to know about."
       T.ul =>
         T.li =>
-          T.a href: "http://celarien.com/answers/hypnosis", => T.raw "What is hypnosis like? What Will I feel? How is it like a daydream?"
+          T.a href: "http://411-source.com/answers/hypnosis", => T.raw "What is hypnosis like? What Will I feel? How is it like a daydream?"
         T.li =>
-          T.a href: "http://celarien.com/answers/others", => T.raw "How can hypnosis help me in dealing with other people?"
+          T.a href: "http://411-source.com/answers/others", => T.raw "How can hypnosis help me in dealing with other people?"
         T.li =>
-          T.a href: "http://celarien.com/answers/romance", => T.raw "Can hypnosis help with marriage, relationship or romance problems"
+          T.a href: "http://411-source.com/answers/romance", => T.raw "Can hypnosis help with marriage, relationship or romance problems"
         T.li =>
-          T.a href: "http://celarien.com/answers/disease", => T.raw "Can hypnosis cure a physical condition or disease?"
+          T.a href: "http://411-source.com/answers/disease", => T.raw "Can hypnosis cure a physical condition or disease?"
         T.li =>
-          T.a href: "http://celarien.com/answers/sports", => T.raw "Can you help me in sports?"
+          T.a href: "http://411-source.com/answers/sports", => T.raw "Can you help me in sports?"
         T.li =>
-          T.a href: "http://celarien.com/answers/addictions", => T.raw "Can you help me with drug, alcohol, or tobacco addictions?"
+          T.a href: "http://411-source.com/answers/addictions", => T.raw "Can you help me with drug, alcohol, or tobacco addictions?"
         T.li =>
-          T.a href: "http://celarien.com/answers/costs", => T.raw "how much does it cost? Do you have a guarantee? or do you take insurance?"
+          T.a href: "http://411-source.com/answers/costs", => T.raw "how much does it cost? Do you have a guarantee? or do you take insurance?"
         T.li =>
-          T.a href: "http://celarien.com/answers/counseling", => T.raw "How is hypnosis different from psychological counseling"
+          T.a href: "http://411-source.com/answers/counseling", => T.raw "How is hypnosis different from psychological counseling"
   # 
   # section header
   # 
@@ -70,7 +70,7 @@ db[id="597b839bd3cfff7cc5f92708"] =
   title: "Answers"
   slug: "answers"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -91,11 +91,11 @@ db[id="597b839bd3cfff7cc5f92708"] =
 
 
 
-db[id="celarien/draft/answers"] =
+db[id="411-source/draft/answers"] =
   title: "Answers"
   slug: "answers"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -110,6 +110,6 @@ db[id="celarien/draft/answers"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/answers"
+  id: "411-source/draft/answers"
   name: "Answers"
 #

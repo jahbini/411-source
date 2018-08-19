@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  gain_control extends celarientemplate
+renderer = class  gain_control extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -69,7 +69,7 @@ db[id="597b839bd3cfff7cc5f926f4"] =
   title: "Gain Control"
   slug: "gain-control"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -90,11 +90,11 @@ db[id="597b839bd3cfff7cc5f926f4"] =
 
 
 
-db[id="celarien/draft/gain-control"] =
+db[id="411-source/draft/gain-control"] =
   title: "Gain Control"
   slug: "gain-control"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -109,6 +109,6 @@ db[id="celarien/draft/gain-control"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/draft/gain-control"
+  id: "411-source/draft/gain-control"
   name: "Gain Control"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  looking_at_life_through_your_rear_view_mirror extends celarientemplate
+renderer = class  looking_at_life_through_your_rear_view_mirror extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -86,7 +86,7 @@ db[id="597b839bd3cfff7cc5f926ff"] =
   title: "Looking At Life Through Your Rear View Mirror"
   slug: "looking-at-life-through-your-rear-view-mirror"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -107,11 +107,11 @@ db[id="597b839bd3cfff7cc5f926ff"] =
 
 
 
-db[id="celarien/draft/looking-at-life-through-your-rear-view-mirror"] =
+db[id="411-source/draft/looking-at-life-through-your-rear-view-mirror"] =
   title: "Looking At Life Through Your Rear View Mirror"
   slug: "looking-at-life-through-your-rear-view-mirror"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -126,6 +126,6 @@ db[id="celarien/draft/looking-at-life-through-your-rear-view-mirror"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/looking-at-life-through-your-rear-view-mirror"
+  id: "411-source/draft/looking-at-life-through-your-rear-view-mirror"
   name: "Looking At Life Through Your Rear View Mirror"
 #

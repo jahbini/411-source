@@ -1,7 +1,7 @@
 # 
 T = require 'halvalla'
 #include card.coffee
-module.exports = class celarientemplate
+module.exports = class _411SourceTemplate
   #pass the db entry into the class so that the classes have access to it
   constructor: (@db,@allDB)->
   #
@@ -51,7 +51,7 @@ module.exports = class celarientemplate
         T.script src: "mystories.json"
         T.script src: "assets/js/vendor.js", "-content--type": "text/javascript", "-content--encoding": "gzip"
         T.script src: "assets/js/app.js", "-content--type": "text/javascript", "-content--encoding": "gzip"
-        T.script "siteHandle = 'celarien'; topDomain = 'celarien.com'; require('initialize');"
+        T.script "siteHandle = '411-source'; topDomain = '411-source.com'; require('initialize');"
         T.style '',"""#cover {
   top: 0;
   left: 0;
@@ -65,17 +65,17 @@ module.exports = class celarientemplate
         @storyHeadMatter()
       T.body  =>
         T.div ".fixed",style: "background: url(/assets/images/hooray-fade2.jpg) no-repeat center fixed; -moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH ", =>
-        @celarien_body()
+        @site_body()
   #
   # section faceBook
   #
   faceBook: =>
     #include fb-script.teacup
   # 
-  # section celarien_body
+  # section site_body
   # 
-  celarien_body: =>
-    T.div "#celarien-body.container-fluid.bg-transparent", =>
+  site_body: =>
+    T.div "#411-source-body.container-fluid.bg-transparent", =>
       #T.div ".style.c-hero", style: "{ border-bottom: 1px solid #333; }"
       T.div ".row", =>
         @header()

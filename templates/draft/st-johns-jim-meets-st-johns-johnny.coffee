@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  st_johns_jim_meets_st_johns_johnny extends celarientemplate
+renderer = class  st_johns_jim_meets_st_johns_johnny extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -56,7 +56,7 @@ db[id="597b839bd3cfff7cc5f92706"] =
   title: "St. John's Jim Meets St. John's Johnny"
   slug: "st-johns-jim-meets-st-johns-johnny"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -77,11 +77,11 @@ db[id="597b839bd3cfff7cc5f92706"] =
 
 
 
-db[id="celarien/draft/st-johns-jim-meets-st-johns-johnny"] =
+db[id="411-source/draft/st-johns-jim-meets-st-johns-johnny"] =
   title: "St. John's Jim Meets St. John's Johnny"
   slug: "st-johns-jim-meets-st-johns-johnny"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -96,6 +96,6 @@ db[id="celarien/draft/st-johns-jim-meets-st-johns-johnny"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/st-johns-jim-meets-st-johns-johnny"
+  id: "411-source/draft/st-johns-jim-meets-st-johns-johnny"
   name: "St. John's Jim Meets St. John's Johnny"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  can_hypnosis_help_in_sports_and_athletic_performance extends celarientemplate
+renderer = class  can_hypnosis_help_in_sports_and_athletic_performance extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f926f3"] =
   title: "Can hypnosis help in sports and athletic performance?"
   slug: "can-hypnosis-help-in-sports-and-athletic-performance"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -74,11 +74,11 @@ db[id="597b839bd3cfff7cc5f926f3"] =
 
 
 
-db[id="celarien/draft/can-hypnosis-help-in-sports-and-athletic-performance"] =
+db[id="411-source/draft/can-hypnosis-help-in-sports-and-athletic-performance"] =
   title: "Can hypnosis help in sports and athletic performance?"
   slug: "can-hypnosis-help-in-sports-and-athletic-performance"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -93,6 +93,6 @@ db[id="celarien/draft/can-hypnosis-help-in-sports-and-athletic-performance"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/draft/can-hypnosis-help-in-sports-and-athletic-performance"
+  id: "411-source/draft/can-hypnosis-help-in-sports-and-athletic-performance"
   name: "Can hypnosis help in sports and athletic performance?"
 #

@@ -53,7 +53,7 @@ Gravitas = ->
   #   limitations under the License.
   # 
 #-------- class start
-renderer = class  index extends celarientemplate
+renderer = class  index extends _411SourceTemplate
   #
   # section storyHeadMatter
   #
@@ -79,7 +79,7 @@ a-scene { height: 300px; width: 600px; }
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -107,7 +107,7 @@ a-scene { height: 300px; width: 600px; }
   storybar: =>
     T.div "#storybar.o-grid__cell.order-2.bg-lighten-2", =>
       T.h1 => T.raw "How to wage peace in a terrorized society."
-      T.h3 => "The celarien's tools of the spiritual bodyguard"
+      T.h3 => "The 411-source's tools of the spiritual bodyguard"
       T.hr()
       @bloviation()
   # 
@@ -186,11 +186,11 @@ The random motions of the balls will make the attacker lose balance and be unabl
 db = {} unless db
 
 #
-db[id="celarien/peacefare/low-roller"] =
+db[id="411-source/peacefare/low-roller"] =
   title: "low-roller"
   slug: "low-roller"
   category: "peacefare"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   sourcePath: ""
@@ -206,7 +206,7 @@ db[id="celarien/peacefare/low-roller"] =
   TimeStamp: 1530236264694
   debug: ""
   author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarien/peacefare/low-roller"
+  id: "411-source/peacefare/low-roller"
   name: "low-roller"
 #
 #end of story

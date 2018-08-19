@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  how_much_does_it_cost extends celarientemplate
+renderer = class  how_much_does_it_cost extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -58,7 +58,7 @@ db[id="597b839bd3cfff7cc5f926f6"] =
   title: "How much does it cost?"
   slug: "how-much-does-it-cost"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -79,11 +79,11 @@ db[id="597b839bd3cfff7cc5f926f6"] =
 
 
 
-db[id="celarien/draft/how-much-does-it-cost"] =
+db[id="411-source/draft/how-much-does-it-cost"] =
   title: "How much does it cost?"
   slug: "how-much-does-it-cost"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -98,6 +98,6 @@ db[id="celarien/draft/how-much-does-it-cost"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/how-much-does-it-cost"
+  id: "411-source/draft/how-much-does-it-cost"
   name: "How much does it cost?"
 #

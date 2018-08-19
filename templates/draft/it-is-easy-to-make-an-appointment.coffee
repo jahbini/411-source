@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  it_is_easy_to_make_an_appointment extends celarientemplate
+renderer = class  it_is_easy_to_make_an_appointment extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -38,7 +38,7 @@ renderer = class  it_is_easy_to_make_an_appointment extends celarientemplate
     T.div "#bloviation.contents", "dangerously-set-inner-h-t-m-l": "[object Object]", =>
       T.h3 style: "text-align:right", => T.raw "Simply Dial 808-224-5433."
       T.p => T.raw "If I can answer you will be connected to me immediately.  However, If I am not available, you will not be able to leave a message, simply call back later."
-      T.p => T.raw "If you would rather contact me by e-mail: jim @ celarien (dot) com"
+      T.p => T.raw "If you would rather contact me by e-mail: jim @ 411-source (dot) com"
   # 
   # section header
   # 
@@ -55,7 +55,7 @@ db[id="597b839bd3cfff7cc5f9270f"] =
   title: "It is easy to make an appointment."
   slug: "it-is-easy-to-make-an-appointment"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -76,11 +76,11 @@ db[id="597b839bd3cfff7cc5f9270f"] =
 
 
 
-db[id="celarien/draft/it-is-easy-to-make-an-appointment"] =
+db[id="411-source/draft/it-is-easy-to-make-an-appointment"] =
   title: "It is easy to make an appointment."
   slug: "it-is-easy-to-make-an-appointment"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -95,6 +95,6 @@ db[id="celarien/draft/it-is-easy-to-make-an-appointment"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/it-is-easy-to-make-an-appointment"
+  id: "411-source/draft/it-is-easy-to-make-an-appointment"
   name: "It is easy to make an appointment."
 #

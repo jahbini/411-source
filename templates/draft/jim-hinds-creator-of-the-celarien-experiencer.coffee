@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  jim_hinds_creator_of_the_celarien_experiencer extends celarientemplate
+renderer = class  jim_hinds_creator_of_the_411-source_experiencer extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -51,9 +51,9 @@ db = {} unless db
 
 db[id="597b839bd3cfff7cc5f92715"] =
   title: "Jim Hinds, Creator of The Celarien Experience®"
-  slug: "jim-hinds-creator-of-the-celarien-experiencer"
+  slug: "jim-hinds-creator-of-the-411-source-experiencer"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -74,11 +74,11 @@ db[id="597b839bd3cfff7cc5f92715"] =
 
 
 
-db[id="celarien/draft/jim-hinds-creator-of-the-celarien-experiencer"] =
+db[id="411-source/draft/jim-hinds-creator-of-the-411-source-experiencer"] =
   title: "Jim Hinds, Creator of The Celarien Experience®"
-  slug: "jim-hinds-creator-of-the-celarien-experiencer"
+  slug: "jim-hinds-creator-of-the-411-source-experiencer"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,6 +93,6 @@ db[id="celarien/draft/jim-hinds-creator-of-the-celarien-experiencer"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/jim-hinds-creator-of-the-celarien-experiencer"
+  id: "411-source/draft/jim-hinds-creator-of-the-411-source-experiencer"
   name: "Jim Hinds, Creator of The Celarien Experience®"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  what_to_do_while_gods_on_vacation extends celarientemplate
+renderer = class  what_to_do_while_gods_on_vacation extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -70,7 +70,7 @@ db[id="597b839bd3cfff7cc5f9271b"] =
   title: "What to do while God's on Vacation"
   slug: "what-to-do-while-gods-on-vacation"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -91,11 +91,11 @@ db[id="597b839bd3cfff7cc5f9271b"] =
 
 
 
-db[id="celarien/draft/what-to-do-while-gods-on-vacation"] =
+db[id="411-source/draft/what-to-do-while-gods-on-vacation"] =
   title: "What to do while God's on Vacation"
   slug: "what-to-do-while-gods-on-vacation"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -110,6 +110,6 @@ db[id="celarien/draft/what-to-do-while-gods-on-vacation"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/what-to-do-while-gods-on-vacation"
+  id: "411-source/draft/what-to-do-while-gods-on-vacation"
   name: "What to do while God's on Vacation"
 #

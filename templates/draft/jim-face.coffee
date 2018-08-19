@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  jim_face extends celarientemplate
+renderer = class  jim_face extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f926fe"] =
   title: "Jim face"
   slug: "jim-face"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -74,11 +74,11 @@ db[id="597b839bd3cfff7cc5f926fe"] =
 
 
 
-db[id="celarien/draft/jim-face"] =
+db[id="411-source/draft/jim-face"] =
   title: "Jim face"
   slug: "jim-face"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,6 +93,6 @@ db[id="celarien/draft/jim-face"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/jim-face"
+  id: "411-source/draft/jim-face"
   name: "Jim face"
 #

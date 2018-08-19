@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  index extends celarientemplate
+renderer = class  index extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -89,11 +89,11 @@ renderer = class  index extends celarientemplate
 db = {} unless db
 
 #
-db[id="celarienmetaphysics_101angels"] =
+db[id="411-sourcemetaphysics_101angels"] =
   title: "angels"
   slug: "angels"
   category: "metaphysics_101"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   sourcePath: ""
@@ -109,18 +109,18 @@ db[id="celarienmetaphysics_101angels"] =
   TimeStamp: 1522094047401
   debug: ""
   author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarienmetaphysics_101angels"
+  id: "411-sourcemetaphysics_101angels"
   name: "angels"
 #
 #end of story
 
 
 
-db[id="celarien/metaphysics_101/angels"] =
+db[id="411-source/metaphysics_101/angels"] =
   title: "angels"
   slug: "angels"
   category: "metaphysics_101"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   sourcePath: ""
@@ -136,6 +136,6 @@ db[id="celarien/metaphysics_101/angels"] =
   TimeStamp: 1522094047401
   debug: ""
   author: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarien/metaphysics_101/angels"
+  id: "411-source/metaphysics_101/angels"
   name: "angels"
 #

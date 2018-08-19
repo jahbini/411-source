@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  how_is_hypnosis_different_from_psychological_counseling extends celarientemplate
+renderer = class  how_is_hypnosis_different_from_psychological_counseling extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -55,7 +55,7 @@ db[id="597b839bd3cfff7cc5f9270e"] =
   title: "How is hypnosis different from psychological counseling?"
   slug: "how-is-hypnosis-different-from-psychological-counseling"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -76,11 +76,11 @@ db[id="597b839bd3cfff7cc5f9270e"] =
 
 
 
-db[id="celarien/draft/how-is-hypnosis-different-from-psychological-counseling"] =
+db[id="411-source/draft/how-is-hypnosis-different-from-psychological-counseling"] =
   title: "How is hypnosis different from psychological counseling?"
   slug: "how-is-hypnosis-different-from-psychological-counseling"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -95,6 +95,6 @@ db[id="celarien/draft/how-is-hypnosis-different-from-psychological-counseling"] 
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/how-is-hypnosis-different-from-psychological-counseling"
+  id: "411-source/draft/how-is-hypnosis-different-from-psychological-counseling"
   name: "How is hypnosis different from psychological counseling?"
 #

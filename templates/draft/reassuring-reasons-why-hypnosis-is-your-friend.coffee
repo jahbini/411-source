@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  reassuring_reasons_why_hypnosis_is_your_friend extends celarientemplate
+renderer = class  reassuring_reasons_why_hypnosis_is_your_friend extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -99,7 +99,7 @@ db[id="597b839bd3cfff7cc5f92711"] =
   title: "Reassuring Reasons why Hypnosis is your Friend"
   slug: "reassuring-reasons-why-hypnosis-is-your-friend"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -120,11 +120,11 @@ db[id="597b839bd3cfff7cc5f92711"] =
 
 
 
-db[id="celarien/draft/reassuring-reasons-why-hypnosis-is-your-friend"] =
+db[id="411-source/draft/reassuring-reasons-why-hypnosis-is-your-friend"] =
   title: "Reassuring Reasons why Hypnosis is your Friend"
   slug: "reassuring-reasons-why-hypnosis-is-your-friend"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -139,6 +139,6 @@ db[id="celarien/draft/reassuring-reasons-why-hypnosis-is-your-friend"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/reassuring-reasons-why-hypnosis-is-your-friend"
+  id: "411-source/draft/reassuring-reasons-why-hypnosis-is-your-friend"
   name: "Reassuring Reasons why Hypnosis is your Friend"
 #

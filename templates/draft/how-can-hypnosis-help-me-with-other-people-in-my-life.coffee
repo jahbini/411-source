@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  how_can_hypnosis_help_me_with_other_people_in_my_life extends celarientemplate
+renderer = class  how_can_hypnosis_help_me_with_other_people_in_my_life extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -55,7 +55,7 @@ db[id="597b839bd3cfff7cc5f926f5"] =
   title: "How can hypnosis help me with other people in my life?"
   slug: "how-can-hypnosis-help-me-with-other-people-in-my-life"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -76,11 +76,11 @@ db[id="597b839bd3cfff7cc5f926f5"] =
 
 
 
-db[id="celarien/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"] =
+db[id="411-source/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"] =
   title: "How can hypnosis help me with other people in my life?"
   slug: "how-can-hypnosis-help-me-with-other-people-in-my-life"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -95,6 +95,6 @@ db[id="celarien/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"
+  id: "411-source/draft/how-can-hypnosis-help-me-with-other-people-in-my-life"
   name: "How can hypnosis help me with other people in my life?"
 #

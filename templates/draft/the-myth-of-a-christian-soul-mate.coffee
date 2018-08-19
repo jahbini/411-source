@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  the_myth_of_a_christian_soul_mate extends celarientemplate
+renderer = class  the_myth_of_a_christian_soul_mate extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -101,7 +101,7 @@ db[id="597b839bd3cfff7cc5f92714"] =
   title: "The Myth Of A Christian Soul Mate"
   slug: "the-myth-of-a-christian-soul-mate"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -122,11 +122,11 @@ db[id="597b839bd3cfff7cc5f92714"] =
 
 
 
-db[id="celarien/draft/the-myth-of-a-christian-soul-mate"] =
+db[id="411-source/draft/the-myth-of-a-christian-soul-mate"] =
   title: "The Myth Of A Christian Soul Mate"
   slug: "the-myth-of-a-christian-soul-mate"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -141,6 +141,6 @@ db[id="celarien/draft/the-myth-of-a-christian-soul-mate"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/the-myth-of-a-christian-soul-mate"
+  id: "411-source/draft/the-myth-of-a-christian-soul-mate"
   name: "The Myth Of A Christian Soul Mate"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  how_can_hypnosis_help_me_with_romance_or_my_relationship extends celarientemplate
+renderer = class  how_can_hypnosis_help_me_with_romance_or_my_relationship extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -65,7 +65,7 @@ db[id="597b839bd3cfff7cc5f9270c"] =
   title: "How can hypnosis help me with romance or my relationship?"
   slug: "how-can-hypnosis-help-me-with-romance-or-my-relationship"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -86,11 +86,11 @@ db[id="597b839bd3cfff7cc5f9270c"] =
 
 
 
-db[id="celarien/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"] =
+db[id="411-source/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"] =
   title: "How can hypnosis help me with romance or my relationship?"
   slug: "how-can-hypnosis-help-me-with-romance-or-my-relationship"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -105,6 +105,6 @@ db[id="celarien/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"]
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"
+  id: "411-source/draft/how-can-hypnosis-help-me-with-romance-or-my-relationship"
   name: "How can hypnosis help me with romance or my relationship?"
 #

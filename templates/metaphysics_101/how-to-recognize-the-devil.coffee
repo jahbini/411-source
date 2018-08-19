@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  how_to_recognize_the_devil extends celarientemplate
+renderer = class  how_to_recognize_the_devil extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -82,7 +82,7 @@ db[id="59ffe3f73a4b7b001549ce4e"] =
   title: "How to Recognize the Devil"
   slug: "how-to-recognize-the-devil"
   category: "metaphysics_101"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -103,11 +103,11 @@ db[id="59ffe3f73a4b7b001549ce4e"] =
 
 
 
-db[id="celarien/metaphysics_101/how-to-recognize-the-devil"] =
+db[id="411-source/metaphysics_101/how-to-recognize-the-devil"] =
   title: "How to Recognize the Devil"
   slug: "how-to-recognize-the-devil"
   category: "metaphysics_101"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -122,6 +122,6 @@ db[id="celarien/metaphysics_101/how-to-recognize-the-devil"] =
   TimeStamp: "1509942263000"
   debug: ""
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarien/metaphysics_101/how-to-recognize-the-devil"
+  id: "411-source/metaphysics_101/how-to-recognize-the-devil"
   name: "How to Recognize the Devil"
 #

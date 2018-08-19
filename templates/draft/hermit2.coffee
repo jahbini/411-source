@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  hermit2 extends celarientemplate
+renderer = class  hermit2 extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f9270d"] =
   title: "hermit2"
   slug: "hermit2"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -74,11 +74,11 @@ db[id="597b839bd3cfff7cc5f9270d"] =
 
 
 
-db[id="celarien/draft/hermit2"] =
+db[id="411-source/draft/hermit2"] =
   title: "hermit2"
   slug: "hermit2"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,6 +93,6 @@ db[id="celarien/draft/hermit2"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/hermit2"
+  id: "411-source/draft/hermit2"
   name: "hermit2"
 #

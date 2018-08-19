@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  peak_experiences_and_an_enduring_plateau_of_consciousness extends celarientemplate
+renderer = class  peak_experiences_and_an_enduring_plateau_of_consciousness extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -90,7 +90,7 @@ db[id="597b839bd3cfff7cc5f92716"] =
   title: "Peak Experiences and an Enduring Plateau of Consciousness"
   slug: "peak-experiences-and-an-enduring-plateau-of-consciousness"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -111,11 +111,11 @@ db[id="597b839bd3cfff7cc5f92716"] =
 
 
 
-db[id="celarien/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"] =
+db[id="411-source/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"] =
   title: "Peak Experiences and an Enduring Plateau of Consciousness"
   slug: "peak-experiences-and-an-enduring-plateau-of-consciousness"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -130,6 +130,6 @@ db[id="celarien/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"
+  id: "411-source/draft/peak-experiences-and-an-enduring-plateau-of-consciousness"
   name: "Peak Experiences and an Enduring Plateau of Consciousness"
 #

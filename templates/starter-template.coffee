@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class index extends celarientemplate
+renderer = class index extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover

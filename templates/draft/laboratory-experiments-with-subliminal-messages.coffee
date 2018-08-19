@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  laboratory_experiments_with_subliminal_messages extends celarientemplate
+renderer = class  laboratory_experiments_with_subliminal_messages extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -170,7 +170,7 @@ db[id="597b839bd3cfff7cc5f92700"] =
   title: "Laboratory Experiments With Subliminal Messages"
   slug: "laboratory-experiments-with-subliminal-messages"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -191,11 +191,11 @@ db[id="597b839bd3cfff7cc5f92700"] =
 
 
 
-db[id="celarien/draft/laboratory-experiments-with-subliminal-messages"] =
+db[id="411-source/draft/laboratory-experiments-with-subliminal-messages"] =
   title: "Laboratory Experiments With Subliminal Messages"
   slug: "laboratory-experiments-with-subliminal-messages"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -210,6 +210,6 @@ db[id="celarien/draft/laboratory-experiments-with-subliminal-messages"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/laboratory-experiments-with-subliminal-messages"
+  id: "411-source/draft/laboratory-experiments-with-subliminal-messages"
   name: "Laboratory Experiments With Subliminal Messages"
 #

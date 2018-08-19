@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions extends celarientemplate
+renderer = class  can_hypnosis_help_me_with_drug_alcohol_or_tobacco_addictions extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -53,7 +53,7 @@ db[id="597b839bd3cfff7cc5f9270b"] =
   title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
   slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -74,11 +74,11 @@ db[id="597b839bd3cfff7cc5f9270b"] =
 
 
 
-db[id="celarien/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"] =
+db[id="411-source/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"] =
   title: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
   slug: "can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,6 +93,6 @@ db[id="celarien/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictio
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
+  id: "411-source/draft/can-hypnosis-help-me-with-drug-alcohol-or-tobacco-addictions"
   name: "Can hypnosis help me with drug, alcohol, or tobacco addictions?"
 #

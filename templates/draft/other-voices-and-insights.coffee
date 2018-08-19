@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  other_voices_and_insights extends celarientemplate
+renderer = class  other_voices_and_insights extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -54,7 +54,7 @@ db[id="597b839bd3cfff7cc5f92703"] =
   title: "Other Voices and Insights"
   slug: "other-voices-and-insights"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -75,11 +75,11 @@ db[id="597b839bd3cfff7cc5f92703"] =
 
 
 
-db[id="celarien/draft/other-voices-and-insights"] =
+db[id="411-source/draft/other-voices-and-insights"] =
   title: "Other Voices and Insights"
   slug: "other-voices-and-insights"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -94,6 +94,6 @@ db[id="celarien/draft/other-voices-and-insights"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/other-voices-and-insights"
+  id: "411-source/draft/other-voices-and-insights"
   name: "Other Voices and Insights"
 #

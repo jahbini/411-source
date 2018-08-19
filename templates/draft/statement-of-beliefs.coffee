@@ -1,10 +1,10 @@
 # #-------- class start#-------- class start
-renderer = class   statement_of_beliefs extends celarientemplate
+renderer = class   statement_of_beliefs extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -68,7 +68,7 @@ Simply put, If you are weak, you wont win the Mr. Universe title;  If your emoti
 """
         T.li =>
           T.raw "That improvement in these domains can be found various forms, including, but not necessarily limited to"
-          T.img ".alignright.size-full.wp-image-344", title: "hermit2", src: "http://celarien.com/wp-content/uploads/celarien/2009/03/hermit2.jpg", alt: "hermit2", width: "130", height: "127"
+          T.img ".alignright.size-full.wp-image-344", title: "hermit2", src: "http://411-source.com/wp-content/uploads/411-source/2009/03/hermit2.jpg", alt: "hermit2", width: "130", height: "127"
           T.raw ":"
       T.p =>
         T.ul =>
@@ -108,10 +108,10 @@ db[id="597b839bd3cfff7cc5f92705"] =
   title: "Statement of Beliefs"
   slug: "statement-of-beliefs"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
-  sourcePath: "celarien/contents/old-contents/2008-04-27-0517-statement-of-beliefs.md"
+  sourcePath: "411-source/contents/old-contents/2008-04-27-0517-statement-of-beliefs.md"
   headlines: []
   tags: []
   memberOf: []
@@ -134,7 +134,7 @@ db[id="597b839bd3cfff7cc5f92718"] =
   title: "Statement of Beliefs"
   slug: "statement-of-beliefs"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -155,11 +155,11 @@ db[id="597b839bd3cfff7cc5f92718"] =
 
 
 
-db[id="celarien/draft/statement-of-beliefs"] =
+db[id="411-source/draft/statement-of-beliefs"] =
   title: "Statement of Beliefs"
   slug: "statement-of-beliefs"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -174,6 +174,6 @@ db[id="celarien/draft/statement-of-beliefs"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/statement-of-beliefs"
+  id: "411-source/draft/statement-of-beliefs"
   name: "Statement of Beliefs"
 #

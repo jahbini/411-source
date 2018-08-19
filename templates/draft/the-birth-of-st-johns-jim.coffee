@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  the_birth_of_st_johns_jim extends celarientemplate
+renderer = class  the_birth_of_st_johns_jim extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -41,7 +41,7 @@ renderer = class  the_birth_of_st_johns_jim extends celarientemplate
       T.p =>
         T.raw "[caption id=”attachment_766” align=”alignright” width=”300” caption=”This man will get you totally blissed out!”]"
         T.a href: "http://Blissboulevard.com/", =>
-          T.img ".size-medium.wp-image-766", title: "St. John's Jim.", src: "http://celarien.com/wp-content/uploads/celarien/2010/06/Photo-on-2010-06-04-at-08.50-300x225.jpg", alt: "Jim Hinds in St. John's district of Portland", width: "300", height: "225"
+          T.img ".size-medium.wp-image-766", title: "St. John's Jim.", src: "http://411-source.com/wp-content/uploads/411-source/2010/06/Photo-on-2010-06-04-at-08.50-300x225.jpg", alt: "Jim Hinds in St. John's district of Portland", width: "300", height: "225"
         T.raw "[/caption]"
       T.p => T.raw "and letting folks know about the Bliss Quest that not only gets folks to a high that few have experienced, but is rumored to aid spiritual development."
       T.p => T.raw "Ask me for a discount off the normal $45 dollar price: I’m easy!"
@@ -74,7 +74,7 @@ db[id="597b839bd3cfff7cc5f92719"] =
   title: "The Birth of St. John's Jim"
   slug: "the-birth-of-st-johns-jim"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -95,11 +95,11 @@ db[id="597b839bd3cfff7cc5f92719"] =
 
 
 
-db[id="celarien/draft/the-birth-of-st-johns-jim"] =
+db[id="411-source/draft/the-birth-of-st-johns-jim"] =
   title: "The Birth of St. John's Jim"
   slug: "the-birth-of-st-johns-jim"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -114,6 +114,6 @@ db[id="celarien/draft/the-birth-of-st-johns-jim"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/the-birth-of-st-johns-jim"
+  id: "411-source/draft/the-birth-of-st-johns-jim"
   name: "The Birth of St. John's Jim"
 #

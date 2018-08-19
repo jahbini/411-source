@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  free_will_vs_the_hole_in_the_sock_gang extends celarientemplate
+renderer = class  free_will_vs_the_hole_in_the_sock_gang extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -65,7 +65,7 @@ db[id="597b839bd3cfff7cc5f92709"] =
   title: "Free Will vs. The Hole in the Sock Gang"
   slug: "free-will-vs-the-hole-in-the-sock-gang"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -86,11 +86,11 @@ db[id="597b839bd3cfff7cc5f92709"] =
 
 
 
-db[id="celarien/draft/free-will-vs-the-hole-in-the-sock-gang"] =
+db[id="411-source/draft/free-will-vs-the-hole-in-the-sock-gang"] =
   title: "Free Will vs. The Hole in the Sock Gang"
   slug: "free-will-vs-the-hole-in-the-sock-gang"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -105,6 +105,6 @@ db[id="celarien/draft/free-will-vs-the-hole-in-the-sock-gang"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/free-will-vs-the-hole-in-the-sock-gang"
+  id: "411-source/draft/free-will-vs-the-hole-in-the-sock-gang"
   name: "Free Will vs. The Hole in the Sock Gang"
 #

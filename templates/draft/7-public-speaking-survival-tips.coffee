@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  _7_public_speaking_survival_tips extends celarientemplate
+renderer = class  _7_public_speaking_survival_tips extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -101,7 +101,7 @@ db[id="597b839bd3cfff7cc5f9270a"] =
   title: "7 Public Speaking Survival Tips"
   slug: "7-public-speaking-survival-tips"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -122,11 +122,11 @@ db[id="597b839bd3cfff7cc5f9270a"] =
 
 
 
-db[id="celarien/draft/7-public-speaking-survival-tips"] =
+db[id="411-source/draft/7-public-speaking-survival-tips"] =
   title: "7 Public Speaking Survival Tips"
   slug: "7-public-speaking-survival-tips"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -141,6 +141,6 @@ db[id="celarien/draft/7-public-speaking-survival-tips"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/draft/7-public-speaking-survival-tips"
+  id: "411-source/draft/7-public-speaking-survival-tips"
   name: "7 Public Speaking Survival Tips"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  take_your_inner_child_out_to_play extends celarientemplate
+renderer = class  take_your_inner_child_out_to_play extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -86,7 +86,7 @@ db[id="597b839bd3cfff7cc5f92713"] =
   title: "Take Your Inner Child Out To Play!"
   slug: "take-your-inner-child-out-to-play"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -107,11 +107,11 @@ db[id="597b839bd3cfff7cc5f92713"] =
 
 
 
-db[id="celarien/draft/take-your-inner-child-out-to-play"] =
+db[id="411-source/draft/take-your-inner-child-out-to-play"] =
   title: "Take Your Inner Child Out To Play!"
   slug: "take-your-inner-child-out-to-play"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -126,6 +126,6 @@ db[id="celarien/draft/take-your-inner-child-out-to-play"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/take-your-inner-child-out-to-play"
+  id: "411-source/draft/take-your-inner-child-out-to-play"
   name: "Take Your Inner Child Out To Play!"
 #

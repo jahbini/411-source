@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  healing_from_abuse_how_wakeful_rest_can_heal_and_enhance_health_for_domestic_violence_survivors extends celarientemplate
+renderer = class  healing_from_abuse_how_wakeful_rest_can_heal_and_enhance_health_for_domestic_violence_survivors extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -98,7 +98,7 @@ db[id="597b839bd3cfff7cc5f926fb"] =
   title: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
   slug: "healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -119,11 +119,11 @@ db[id="597b839bd3cfff7cc5f926fb"] =
 
 
 
-db[id="celarien/draft/healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"] =
+db[id="411-source/draft/healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"] =
   title: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
   slug: "healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -138,6 +138,6 @@ db[id="celarien/draft/healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-h
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
+  id: "411-source/draft/healing-from-abuse-how-wakeful-rest-can-heal-and-enhance-health-for-domestic-violence-survivors"
   name: "Healing from Abuse - How Wakeful Rest Can Heal and Enhance Health for Domestic Violence Survivors"
 #

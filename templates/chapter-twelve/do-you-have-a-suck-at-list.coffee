@@ -1,10 +1,10 @@
 # #-------- renderer = class start
-renderer = class  do_you_have_a_suck_at_list extends celarientemplate
+renderer = class  do_you_have_a_suck_at_list extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -84,7 +84,7 @@ db[id="599f58b8d65fa400d0fbaaea"] =
   title: "Do You Have a Suck-At List?"
   slug: "do-you-have-a-suck-at-list"
   category: "chapter-twelve"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: [
@@ -110,11 +110,11 @@ db[id="599f58b8d65fa400d0fbaaea"] =
 
 
 
-db[id="celarien/chapter-twelve/do-you-have-a-suck-at-list"] =
+db[id="411-source/chapter-twelve/do-you-have-a-suck-at-list"] =
   title: "Do You Have a Suck-At List?"
   slug: "do-you-have-a-suck-at-list"
   category: "chapter-twelve"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: [
@@ -134,6 +134,6 @@ db[id="celarien/chapter-twelve/do-you-have-a-suck-at-list"] =
   TimeStamp: "1503615160000"
   debug: ""
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarien/chapter-twelve/do-you-have-a-suck-at-list"
+  id: "411-source/chapter-twelve/do-you-have-a-suck-at-list"
   name: "Do You Have a Suck-At List?"
 #

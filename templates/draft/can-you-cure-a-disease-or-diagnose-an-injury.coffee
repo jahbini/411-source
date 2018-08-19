@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  can_you_cure_a_disease_or_diagnose_an_injury extends celarientemplate
+renderer = class  can_you_cure_a_disease_or_diagnose_an_injury extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -58,7 +58,7 @@ db[id="597b839bd3cfff7cc5f926fa"] =
   title: "Can you cure a disease or diagnose an injury?"
   slug: "can-you-cure-a-disease-or-diagnose-an-injury"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -79,11 +79,11 @@ db[id="597b839bd3cfff7cc5f926fa"] =
 
 
 
-db[id="celarien/draft/can-you-cure-a-disease-or-diagnose-an-injury"] =
+db[id="411-source/draft/can-you-cure-a-disease-or-diagnose-an-injury"] =
   title: "Can you cure a disease or diagnose an injury?"
   slug: "can-you-cure-a-disease-or-diagnose-an-injury"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -98,6 +98,6 @@ db[id="celarien/draft/can-you-cure-a-disease-or-diagnose-an-injury"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/can-you-cure-a-disease-or-diagnose-an-injury"
+  id: "411-source/draft/can-you-cure-a-disease-or-diagnose-an-injury"
   name: "Can you cure a disease or diagnose an injury?"
 #

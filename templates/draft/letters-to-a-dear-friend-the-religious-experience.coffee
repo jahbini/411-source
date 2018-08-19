@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  letters_to_a_dear_friend_the_religious_experience extends celarientemplate
+renderer = class  letters_to_a_dear_friend_the_religious_experience extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -72,7 +72,7 @@ db[id="597b839bd3cfff7cc5f92710"] =
   title: "Letters to a dear friend -- The Religious Experience"
   slug: "letters-to-a-dear-friend-the-religious-experience"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,11 +93,11 @@ db[id="597b839bd3cfff7cc5f92710"] =
 
 
 
-db[id="celarien/draft/letters-to-a-dear-friend-the-religious-experience"] =
+db[id="411-source/draft/letters-to-a-dear-friend-the-religious-experience"] =
   title: "Letters to a dear friend -- The Religious Experience"
   slug: "letters-to-a-dear-friend-the-religious-experience"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -112,6 +112,6 @@ db[id="celarien/draft/letters-to-a-dear-friend-the-religious-experience"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/letters-to-a-dear-friend-the-religious-experience"
+  id: "411-source/draft/letters-to-a-dear-friend-the-religious-experience"
   name: "Letters to a dear friend -- The Religious Experience"
 #

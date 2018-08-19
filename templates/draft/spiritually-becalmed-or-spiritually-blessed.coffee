@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  spiritually_becalmed_or_spiritually_blessed extends celarientemplate
+renderer = class  spiritually_becalmed_or_spiritually_blessed extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -72,7 +72,7 @@ db[id="597b839bd3cfff7cc5f92717"] =
   title: "Spiritually becalmed? Or spiritually blessed?"
   slug: "spiritually-becalmed-or-spiritually-blessed"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -93,11 +93,11 @@ db[id="597b839bd3cfff7cc5f92717"] =
 
 
 
-db[id="celarien/draft/spiritually-becalmed-or-spiritually-blessed"] =
+db[id="411-source/draft/spiritually-becalmed-or-spiritually-blessed"] =
   title: "Spiritually becalmed? Or spiritually blessed?"
   slug: "spiritually-becalmed-or-spiritually-blessed"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -112,6 +112,6 @@ db[id="celarien/draft/spiritually-becalmed-or-spiritually-blessed"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/spiritually-becalmed-or-spiritually-blessed"
+  id: "411-source/draft/spiritually-becalmed-or-spiritually-blessed"
   name: "Spiritually becalmed? Or spiritually blessed?"
 #

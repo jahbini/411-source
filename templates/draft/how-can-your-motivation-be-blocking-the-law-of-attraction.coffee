@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  how_can_your_motivation_be_blocking_the_law_of_attraction extends celarientemplate
+renderer = class  how_can_your_motivation_be_blocking_the_law_of_attraction extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -87,7 +87,7 @@ db[id="597b839bd3cfff7cc5f926fc"] =
   title: "How Can Your Motivation Be Blocking The Law Of Attraction?"
   slug: "how-can-your-motivation-be-blocking-the-law-of-attraction"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -108,11 +108,11 @@ db[id="597b839bd3cfff7cc5f926fc"] =
 
 
 
-db[id="celarien/draft/how-can-your-motivation-be-blocking-the-law-of-attraction"] =
+db[id="411-source/draft/how-can-your-motivation-be-blocking-the-law-of-attraction"] =
   title: "How Can Your Motivation Be Blocking The Law Of Attraction?"
   slug: "how-can-your-motivation-be-blocking-the-law-of-attraction"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -127,6 +127,6 @@ db[id="celarien/draft/how-can-your-motivation-be-blocking-the-law-of-attraction"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/how-can-your-motivation-be-blocking-the-law-of-attraction"
+  id: "411-source/draft/how-can-your-motivation-be-blocking-the-law-of-attraction"
   name: "How Can Your Motivation Be Blocking The Law Of Attraction?"
 #

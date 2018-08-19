@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  my_past_doesnt_have_to_be_my_future extends celarientemplate
+renderer = class  my_past_doesnt_have_to_be_my_future extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -86,7 +86,7 @@ db[id="597b839bd3cfff7cc5f92701"] =
   title: "My Past Doesn't Have to Be My Future"
   slug: "my-past-doesnt-have-to-be-my-future"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -107,11 +107,11 @@ db[id="597b839bd3cfff7cc5f92701"] =
 
 
 
-db[id="celarien/draft/my-past-doesnt-have-to-be-my-future"] =
+db[id="411-source/draft/my-past-doesnt-have-to-be-my-future"] =
   title: "My Past Doesn't Have to Be My Future"
   slug: "my-past-doesnt-have-to-be-my-future"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -126,6 +126,6 @@ db[id="celarien/draft/my-past-doesnt-have-to-be-my-future"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/my-past-doesnt-have-to-be-my-future"
+  id: "411-source/draft/my-past-doesnt-have-to-be-my-future"
   name: "My Past Doesn't Have to Be My Future"
 #

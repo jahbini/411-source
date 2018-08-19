@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  i_finally_got_my_revenge extends celarientemplate
+renderer = class  i_finally_got_my_revenge extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -92,7 +92,7 @@ db[id="597b839bd3cfff7cc5f926fd"] =
   title: "I Finally Got My Revenge!"
   slug: "i-finally-got-my-revenge"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -113,11 +113,11 @@ db[id="597b839bd3cfff7cc5f926fd"] =
 
 
 
-db[id="celarien/draft/i-finally-got-my-revenge"] =
+db[id="411-source/draft/i-finally-got-my-revenge"] =
   title: "I Finally Got My Revenge!"
   slug: "i-finally-got-my-revenge"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -132,6 +132,6 @@ db[id="celarien/draft/i-finally-got-my-revenge"] =
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
   snippets: "{}"
-  id: "celarien/draft/i-finally-got-my-revenge"
+  id: "411-source/draft/i-finally-got-my-revenge"
   name: "I Finally Got My Revenge!"
 #

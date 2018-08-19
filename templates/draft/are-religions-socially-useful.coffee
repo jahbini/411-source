@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  are_religions_socially_useful extends celarientemplate
+renderer = class  are_religions_socially_useful extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -70,7 +70,7 @@ db[id="597b839bd3cfff7cc5f926f2"] =
   title: "Are Religions Socially Useful?"
   slug: "are-religions-socially-useful"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -91,11 +91,11 @@ db[id="597b839bd3cfff7cc5f926f2"] =
 
 
 
-db[id="celarien/draft/are-religions-socially-useful"] =
+db[id="411-source/draft/are-religions-socially-useful"] =
   title: "Are Religions Socially Useful?"
   slug: "are-religions-socially-useful"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -110,6 +110,6 @@ db[id="celarien/draft/are-religions-socially-useful"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/draft/are-religions-socially-useful"
+  id: "411-source/draft/are-religions-socially-useful"
   name: "Are Religions Socially Useful?"
 #

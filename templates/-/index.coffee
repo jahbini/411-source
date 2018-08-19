@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class index extends celarientemplate
+renderer = class index extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -54,7 +54,7 @@ db[id="597b839bd3cfff7cc5f926f7"] =
   title: "Celarien -- The tools of the spiritual bodyguard"
   slug: "index"
   category: "-"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: true
   headlines: [
@@ -80,11 +80,11 @@ db[id="597b839bd3cfff7cc5f926f7"] =
 
 
 
-db[id="celarien/-/index"] =
+db[id="411-source/-/index"] =
   title: "Celarien -- The tools of the spiritual bodyguard"
   slug: "index"
   category: "-"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: true
   headlines: [
@@ -104,6 +104,6 @@ db[id="celarien/-/index"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/-/index"
+  id: "411-source/-/index"
   name: "Celarien -- The tools of the spiritual bodyguard"
 #

@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  _5_hypnosis_myths_exploded extends celarientemplate
+renderer = class  _5_hypnosis_myths_exploded extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -94,7 +94,7 @@ db[id="597b839bd3cfff7cc5f926f8"] =
   title: "5 Hypnosis Myths Exploded"
   slug: "5-hypnosis-myths-exploded"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -115,11 +115,11 @@ db[id="597b839bd3cfff7cc5f926f8"] =
 
 
 
-db[id="celarien/draft/5-hypnosis-myths-exploded"] =
+db[id="411-source/draft/5-hypnosis-myths-exploded"] =
   title: "5 Hypnosis Myths Exploded"
   slug: "5-hypnosis-myths-exploded"
   category: "draft"
-  site: "celarien"
+  site: "411-source"
   accepted: false
   index: false
   headlines: []
@@ -134,6 +134,6 @@ db[id="celarien/draft/5-hypnosis-myths-exploded"] =
   TimeStamp: "1501266843000"
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
   debug: ""
-  id: "celarien/draft/5-hypnosis-myths-exploded"
+  id: "411-source/draft/5-hypnosis-myths-exploded"
   name: "5 Hypnosis Myths Exploded"
 #

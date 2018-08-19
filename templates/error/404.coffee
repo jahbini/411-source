@@ -1,10 +1,10 @@
 # #-------- class start
-renderer = class  index extends celarientemplate
+renderer = class  index extends _411SourceTemplate
   # 
   # section html
   # 
   # 
-  # section celarien_body
+  # section site_body
   # 
   # 
   # section cover
@@ -53,11 +53,11 @@ db = {} unless db
 #end of story#
 
 
-db[id="celarienerror404"] =
+db[id="411-sourceerror404"] =
   title: "404"
   slug: "404"
   category: "error"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -72,17 +72,17 @@ db[id="celarienerror404"] =
   TimeStamp: 1520225229129
   debug: ""
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarienerror404"
+  id: "411-sourceerror404"
   name: "404"
 #
 
 
 
-db[id="celarien/error/404"] =
+db[id="411-source/error/404"] =
   title: "404"
   slug: "404"
   category: "error"
-  site: "celarien"
+  site: "411-source"
   accepted: true
   index: false
   headlines: []
@@ -97,6 +97,6 @@ db[id="celarien/error/404"] =
   TimeStamp: 1520225229129
   debug: ""
   author: "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
-  id: "celarien/error/404"
+  id: "411-source/error/404"
   name: "404"
 #
