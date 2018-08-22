@@ -28,7 +28,7 @@ renderer = class index extends _411SourceTemplate
   # 
   storybar: =>
     T.div "#storybar.o-grid__cell.order-2.bg-lighten-2", =>
-      T.h1 => T.raw "Celarien -- The tools of the spiritual bodyguard"
+      T.h1 "Good Stuff"
       T.hr()
       @bloviation()
   # 
@@ -36,8 +36,7 @@ renderer = class index extends _411SourceTemplate
   # 
   bloviation: =>
     T.div "#bloviation.contents", =>
-      T.p => T.raw "How’s life working out for you?"
-      T.p => T.raw "If you want the spiritual tools to stay woke, The Celarien might help."
+      T.p "Low Roller demo"
   # 
   # section header
   # 
@@ -51,17 +50,13 @@ db = {} unless db
 
 
 db[id="597b839bd3cfff7cc5f926f7"] =
-  title: "Celarien -- The tools of the spiritual bodyguard"
+  title: "411-source -- Good Stuff"
   slug: "index"
   category: "-"
   site: "411-source"
   accepted: true
   index: true
   headlines: [
-    "A better way"
-    "Wisdom starts here"
-    "There are Diamonds at your feet if you only look"
-    "Western Metaphysical NLP"
   ]
   tags: []
   snippets: "{}"

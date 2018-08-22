@@ -20,9 +20,9 @@ module.exports = class _411SourceTemplate
         T.meta name: "author", content: "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
         T.meta "http-equiv": "Content-Type", content: "text/html", charset: "UTF-8"
         T.meta name: "viewport", content: "width=device-width, initial-scale=1"
-        T.title => T.raw "Practical Metaphysics and Harmonious Mana."
-        T.meta name: "description", content: "some good thoughts. Maybe."
-        T.meta name: "keywords", content: "romance, wisdom, tarot"
+        T.title "A Fountainhead of Strategies, techniques and other stuff"
+        T.meta name: "description", content: "Brainstorms, ideas and such"
+        T.meta name: "keywords", content: "brain candy, ideas, strategies, techniques"
         T.script "document.styling = {\"palx\":\"#03c\",\"black\":\"#000\",\"white\":\"#fff\"}"
         @faceBook()
         T.link rel: "apple-touch-icon", sizes: "57x57", href: "/assets/icons/apple-icon-57x57.png"
@@ -116,7 +116,6 @@ module.exports = class _411SourceTemplate
   footer: =>
     T.div "#footer.panel", bg: "white", =>
       T.h2 => T.raw "All contents copyright 2015, James A. Hinds"
-      T.p => T.raw "The ideas are yours to keep and share, the wording is mine."
   # 
   # section sidecar
   # 

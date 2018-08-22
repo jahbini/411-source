@@ -29,8 +29,7 @@ renderer = class index extends _411SourceTemplate
   # 
   bloviation: =>
     T.div "#bloviation.contents", =>
-      T.p => T.raw "How’s life working out for you?"
-      T.p => T.raw "If you want the spiritual tools to stay woke, keep reading."
+      T.p "put your content here"
   # 
   # section header
   # 
