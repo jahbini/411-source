@@ -86,7 +86,7 @@ renderer = class  index extends _411SourceTemplate
   #
   storyHeadMatter: ->
     T.script src:"https://aframe.io/releases/0.8.0/aframe.js"
-    T.script src:"lowroller/aframe-physics-system.js"
+    T.script src:"-/lowroller/aframe-physics-system.js"
     #T.script src:"assets/seen.min.js"
     #T.script src:"draft/peacefare/low-roller/cannon.js"
     #T.script src:"draft/peacefare/rollerball/pid.js"
