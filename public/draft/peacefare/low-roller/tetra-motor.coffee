@@ -13,31 +13,31 @@ class PID
   2) the Integral component, which is related to "How far have we come to our goal?"
   3) the Differential component, which asks "are we taking big steps, or tiny ones?"
   ###
-  constructor: (options) ->
-    # set defaults
-    
+  constructor: (proportionalParm, integrationParm, derivativeParm, dt) ->
+    if (typeof proportionalParm == 'object')
+      options = proportionalParm
+      proportionalParm = options.p
+      integrationParm = options.i
+      derivativeParm = options.d
+      dt = options.rate || 0
+      integrationLimit = options.integrationLimit
+  
     # PID constants
-    @proportionalParm = 1
-    @integrationParm = 0
-    @derivativeParm = 0
+    @proportionalParm = if typeof proportionalParm == 'number' then proportionalParm else 1
+    @integrationParm = integrationParm || 0
+    @derivativeParm = derivativeParm || 0
+  
     # Interval of time between two updates
     # If not set, it will be automatically calculated
-    @dt = 0
+    @dt = dt || 0
+  
     # Maximum absolute value of sumDelta
-    @integrationLimit = 0
-    # now override with updates
-    @setParms options
-    @reset()  # clear internal history
+    @integrationLimit = integrationLimit || 0
+    @sumDelta  = 0
+    @lastDelta = 0
+    @setTarget 0 # default value, can be modified with .setTarget
     return
-  setParms: (options) ->
-    @proportionalParm = options.p if options.p
-    @integrationParm = options.i if options.i
-    @derivativeParm = options.d if options.d
-    @dt = options.dt if options.dt
-    @integrationLimit = options.integrationLimit if options.integrationLimit
-    return
-  toString: () -> 
-    return "P: #{@.proportionalParm} - I: #{@.integrationParm} - D: #{@.derivativeParm}"
+  
   setTarget: (@target) ->
     @lastTime = Date.now()  # used only if dt is not explicit
     return
@@ -54,8 +54,8 @@ class PID
  
     delta = @target - @currentValue  #used as the Proportional factor
     
-    @sumDelta = @sumDelta*0.9 + delta*dt  #used as the Integral factor
-    if 0< @integrationLimit < Math.abs(@sumDelta) #if there is an integration limit, check it
+    @sumDelta = @sumDelta + delta*dt  #used as the Integral factor
+    if 0<= @integrationLimit < Math.abs(@sumDelta) #if there is an integration limit, check it
       sumSign = if @sumDelta > 0 then 1 else -1
       @sumDelta = sumSign * @integrationLimit  # activate the caller's failsafe quantity
 
@@ -96,10 +96,20 @@ pointToWorldFrame= (body,localPoint,result= new CANNON.Vec3())->
 ###
 class TetraForcer
   constructor: (@outie, @innie, options={}) ->
+    ###*
+    # debug by showning marker and computed forces
+    ###
+    @debug = options.debug || false
+    ###*
+    # Proportional, Integral, Differential parameters
+    # @property pid
+    # @type {object}
+    ###
     p=options.pid || {}
     p.p = p.p || 40
     p.i = p.i || 40
     p.d = p.d || 0.4
+    p.rate = p.rate || 1/60.0
     @pIDs = []
     for i in [0..3]
       @pIDs.push new PID p
@@ -112,34 +122,7 @@ class TetraForcer
     @minForce = options.minForce || 10
     # springs and TetraForcers do not have equations, they add forces directly 
     @equations = []
-    Vec3 = CANNON.Vec3
-    @temps =
-      tetW: new Vec3()
-      forcePositionW: new Vec3()
-      tetraVector: new Vec3()
-      innieAttachPointW: new Vec3()
-      seekPositionL: new Vec3()
-      seekPositionW: new Vec3()
-      pursueVector: new Vec3()
     return
-  update: (options={})->
-    #debugger
-    ###*
-    # debug by showning marker and computed forces
-    ###
-    @debug = options.debug if options.debug
-    ###*
-    # Proportional, Integral, Differential parameters
-    # @property pid
-    # @type {object}
-    ###
-    if options.pid
-      for i in @pIDs
-        i.setParms options.pid
-    return
-  toString: ()->
-    @pIDs[0].toString()
-    
   ###*
   # Set the anchor point on body A, using world coordinates.
   # @method setWorldAnchorA
@@ -173,6 +156,23 @@ class TetraForcer
     pointToWorldFrame  @innie,@localAnchorB, result
     return
   Vec3 = CANNON.Vec3
+  pursuit = new Vec3()
+  seekVector = new Vec3()
+  seekPosition = new Vec3()
+  tetraPosition = new Vec3()
+  tetraToSeekPostion = new Vec3()
+  toInnie = new Vec3()
+  innieToPursuit = new Vec3()
+  tetraToInnie = new Vec3()
+  applyForce_ri = new Vec3()
+  applyForce_rj = new Vec3()
+  applyForce_ri_x_f = new Vec3()
+  applyForce_rj_x_f = new Vec3()
+  applyForce_tmp = new Vec3()
+  applyForce_pursuePoint = new Vec3()
+  applyForce_worldAnchorA = new Vec3()
+  applyForce_worldAnchorB = new Vec3()
+  outieToInnie = new Vec3()
   nullVector = nullPoint = new Vec3()
     
   ###*
@@ -186,52 +186,50 @@ class TetraForcer
     # must be within outie (outie)
     pursue = @outie.el.pursuit()
     outieLimitW = @outie.radius * 0.9     #exactly where is on this hull
-    # find the internal seek position in world coordinates
-    pursue.vsub @outie.position,@temps.pursueVector
-    @temps.pursueVector.normalize()
-    @temps.pursueVector.scale outieLimitW, @temps.pursueVector
-    @outie.position.vadd  @temps.pursueVector ,@temps.seekPositionW
-    #convert the new innie desired position to Outie local coordinates
-    @outie.pointToLocalFrame @temps.seekPositionW,@temps.seekPositionL
-    
+    seekPositionW = @outie.position.vadd ( (pursue.vsub @outie.position).unit().scale outieLimitW )
+    seekPositionL = @outie.pointToLocalFrame seekPositionW
     if @type=='tetraPositioner'  # HACK JAH
       # we move the innie as if it were a static component
       # and apply innie's gravitational force to outie's magic innie position
-      @innie.position.copy @outie.pointToWorldFrame @temps.seekPositionL
+      @innie.position.copy @outie.pointToWorldFrame seekPositionL
       @innie.velocity.copy @innie.initVelocity
       @outie.applyForce new Vec3(0,-9.6*@innie.mass,0.1),@innie.position.vsub @outie.position
       return
+      
+    outieToInnieLimitR = (@outie.position.distanceTo @innie.position) /@outie.radius
+    innieNextW = @innie.position.vadd @innie.velocity.scale dt      #where will innie be?
+    outieToInnieNextR = (@outie.position.distanceTo innieNextW) /@outie.radius
+    innieNextL = @outie.pointToLocalFrame innieNextW
+    innieStopForce = @innie.velocity.scale -@innie.mass*dt  # what force does it take to stop it?
     
-    #debugger
+    # where is innie in local coordinates?
+    innieLocalPosition = @outie.pointToLocalFrame @innie.position
+    innieToSeekDistance = innieLocalPosition.distanceTo seekPositionL
+      
     for tetraStruct in @outie.tetraPoints
-      tetraStruct.cannonLocal.scale @outie.radius, @temps.tetW
-      pointToWorldFrame @outie, @temps.tetW,@temps.tetW
-      pointToWorldFrame @innie, nullPoint,@temps.innieAttachPointW
-      @temps.tetW.vsub @innie.position, @temps.tetraVector
-      tetToSeekDistance = @temps.tetW.distanceTo @temps.seekPositionW
-      tetToInnieDistance = @temps.tetW.distanceTo @innie.position
+      tet = tetraStruct.cannonLocal.scale @outie.radius
+      tetW = pointToWorldFrame @outie, tet
+      innieNullPointW = pointToWorldFrame @innie, nullPoint
+      tetraVector = (tetW.vsub @innie.position)
+      tetraLength = tetraVector.length() # - outieLimitW
+      tetToSeekDistance = tetW.distanceTo seekPositionW
+      tetToInnieDistance = tetW.distanceTo @innie.position
       
       force = @minForce * @innie.mass
-      adjust = (@innie.mass+@outie.mass)*@pIDs[tetraStruct.index].update tetToSeekDistance-tetToInnieDistance
+      adjust = @pIDs[tetraStruct.index].update tetToSeekDistance-tetToInnieDistance
       force += adjust
-      @temps.tetraVector.normalize()
-      @temps.tetraVector.scale force,@temps.tetraVector
-      @temps.innieAttachPointW.vsub @innie.position,@temps.forcePositionW
-      @innie.applyForce @temps.tetraVector,@temps.forcePositionW
-      @temps.tetraVector.scale -1,@temps.tetraVector
-      @temps.tetW.vsub @outie.position,@temps.forcePositionW
-      @outie.applyForce @temps.tetraVector, @temps.forcePositionW
+      direction=tetraVector.unit()
+      @outie.applyForce (tetraVector.unit().scale -force), tetW.vsub @outie.position
+      @innie.applyForce (tetraVector.unit().scale force),innieNullPointW.vsub @innie.position
       continue unless @debug
       innieID=@innie.el.id
       inf=document.querySelector "##{innieID}__marker"
-      inf.setAttribute "position",@temps.seekPositionW
+      inf.setAttribute "position",seekPositionW
       inf=document.querySelector "##{innieID}__innieForce__#{tetraStruct.index}"
       inf.setAttribute "position",@innie.position 
-      @temps.tetraVector.normalize()
-      direction=@temps.tetraVector
       inf.setAttribute "arrow", "direction: #{direction.x} #{direction.y} #{direction.z}; length: #{force/10}"
       otf=document.querySelector "##{innieID}__outieForce__#{tetraStruct.index}"
-      otf.setAttribute "position",@temps.tetW
+      otf.setAttribute "position",tetW
       otf.setAttribute "arrow", "direction: #{-1 * direction.x} #{-1*direction.y} #{-1 * direction.z}; length: #{force/10}"
       
     return
@@ -249,7 +247,6 @@ AFRAME.registerComponent('tetra-motor',
         'tetraPositioner'
         'tetraForcer'
       ]
-      default: 'tetraForcer'
     debug: {type:'boolean', default:false}
     target: type: 'selector'
     minForce:
@@ -261,27 +258,8 @@ AFRAME.registerComponent('tetra-motor',
     collideConnected: default: true
     wakeUpBodies: default: true
     pid:
-      parse: (v)->
-        if typeof v == 'object'
-          p=v.p || 20; i=v.i || 10; d=v.d || 1
-        if typeof v == 'string'
-          p=20; i=10; d=1
-          v=v.toLowerCase()
-          v=v.replace /,+/g, ' '
-          v=v.replace /\s+/g, ' '
-          if a=v.match /p:\s*(-?[\d.]+)/
-            p=a[1]
-          if a=v.match /i:\s*(-?[\d.]+)/
-            i=a[1]
-          if a=v.match /d:\s*(-?[\d.]+)/
-            d=a[1]
-        return {p,i,d}
-    	default:
-        p:20
-        i:10
-        d:1
-      toString:(v )->
-        "p: #{v.p}, i: #{v.i}, d: #{v.d}"
+      type: 'array'
+      default: [200,100,1]
     restLength:
       type: 'number'
       default: 0
@@ -302,18 +280,11 @@ AFRAME.registerComponent('tetra-motor',
     @system = @el.sceneEl.systems.physics
     @constraint = null
     return
-  # return the current PID parameters
-  toString: ->
-    return @constraint.toString()
   remove: ->
     if !@constraint
       return
     @system.removeConstraint @constraint
     @constraint = null
-    return
-  setPID: (data)->
-    for e in @constraint.pIDs
-      e.setParms data
     return
   update: ->
     el = @el
@@ -329,15 +300,16 @@ AFRAME.registerComponent('tetra-motor',
     constraint = undefined
     data = @data
     constraint = undefined
+    data.type = 'tetraForcer'
     switch data.type
-      when 'tetraForcer', 'tetraPositioner'
+      when 'tetraForcer' || 'tetraPositioner'
         lA = @data.localAnchor
         lB = @data.localTarget
         constraint = new (TetraForcer)(@el.body, data.target.body,
-          pid: p: data.pid.p, i: data.pid.i, d: data.pid.d, dt: 0.016
+          pid: p: data.pid[0], i: data.pid[1], d: data.pid[2], dt: 0.016
           debug: data.debug
           minForce: @data.minForce)
-        constraint.type = data.type
+        constraint.type = 'tetraMotor'
       else
         throw new Error('[constraint] Unexpected type: ' + data.type)
     constraint
@@ -369,32 +341,7 @@ AFRAME.registerComponent 'lowroller',
     inner: type: 'number',default: 9
     outer: type: 'number',default:1
     debug: type: 'boolean', default: false
-    pid:
-    	default:
-        p: 20
-        i: 10
-        d: 1
-      parse: (v)->
-        if typeof v == 'object'
-          p=v.p || 200; i=v.i || 100; d=v.d || 1
-        if typeof v == 'string'
-          p=20; i=10; d=1
-          v=v.toLowerCase()
-          v=v.replace /,+/g, ' '
-          v=v.replace /\s+/g, ' '
-          if a=v.match /p:\s*(-?[\d.]+)/
-            p=a[1]
-          if a=v.match /i:\s*(-?[\d.]+)/
-            i=a[1]
-          if a=v.match /d:\s*(-?[\d.]+)/
-            d=a[1]
-        return {p,i,d}
-    type:
-      oneOf: [
-        'tetraPositioner'
-        'tetraForcer'
-      ]
-      default: 'tetraForcer'
+    pid: type: 'array', default: [200,100,1]
     pursuit:
       default: 'self'
       parse: (value) ->
@@ -419,6 +366,7 @@ AFRAME.registerComponent 'lowroller',
   setPursuit aims the low-roller at this xy destination
   ###
   setPursuit: (p)->
+    console.log "Setting pursuit"
     # the default is that we center the pursuit
     if !this.el.body
       @el.addEventListener 'body-loaded', (event) =>
@@ -446,7 +394,8 @@ AFRAME.registerComponent 'lowroller',
       @.el.pursuit = ()->targetEl.body.position
       return
     @.el.pursuit = ()=>
-      @pursuitVector.copy targetEl.object3D.position
+      debugger
+      @pursuitVector.copy targetEl.components.position.data
       return @pursuitVector
     return
       
@@ -555,15 +504,9 @@ AFRAME.registerComponent 'lowroller',
     @el.setAttribute "tetra-motor",
       target: "##{@innie.id}"
       minForce:15
-      type: data.type
+      type: 'tetraForcer'
       debug: data.debug
       pid: data.pid
-    @el.addEventListener "setPID", (event)=>
-      @el.components['tetra-motor'].setPID event.detail
-      return
-    @el.addEventListener "showPID", (cb)=>
-      cb.detail @el.components['tetra-motor'].toString()
-      return
     @el.addEventListener "setAction",(event)=>
       if event.detail.chase 
         @setPursuit event.detail.chase

@@ -10,18 +10,46 @@ Gravitas = ->
   window.demo = true
   #no-include console.coffee
   #include tetra-motor.coffee
-  
-#Ignore = ->
-  
+  fillRanges= (color)->
+    els = document.querySelectorAll '.'+color
+    els[0].emit 'showPID', (v)->
+      console.log v
+      debugger
+      where = document.querySelector "#show-#{color}"
+      where.innerHTML = v
+      v=v.toLowerCase()
+      v=v.replace /,+/g, ' '
+      v=v.replace /\s+/g, ' '
+      if a=v.match /p:\s*(-?[\d.]+)/
+        document.querySelector("##{color}pControl").value =a[1]
+      if a=v.match /i:\s*(-?[\d.]+)/
+        document.querySelector("##{color}iControl").value =a[1]
+      if a=v.match /d:\s*(-?[\d.]+)/
+        document.querySelector("##{color}dControl").value =a[1]
+      return
+    
+  Pylon.on "loaded",->
+    fillRanges "red"
+    fillRanges "green"
+    
+  Pylon.on "updatePid",(info)->
+    who = info.who
+    delete info.who
+    els = document.querySelectorAll '.'+who
+    return false if els.length == 0
+    for e in els
+      e.emit 'setPID', info
+    fillRanges who
+    return false
   loopMe = (color, points)->
     el = document.querySelector "#marker-#{color}"
     el.object3D.position.applyAxisAngle {x:0,y:1,z:0}, 2*Math.PI/points
     commandByTeam color, chase: "#marker-#{color}"
     return
     
-  setInterval (()->loopMe 'red',5),10000  
-  setInterval (()->loopMe 'blue',-5),10500  
-  setInterval (()->loopMe 'green',7),9500  
+  setInterval (()->loopMe 'red',-7),3000  
+  setInterval (()->loopMe 'blue',5),7500  
+  setInterval (()->loopMe 'green',5),4500  
   
   window.onkeypress= (event)->
     switch event.key
@@ -115,6 +143,8 @@ a-scene { height: 300px; width: 600px; }
   bloviation: =>
     if useAll = demoMode
       cameraPos = "0 8 15"
+      cameraPos = "0 #{1.6*4} 0"
+      cameraPos = "0 8 15"
     else
       cameraPos = "0 1 3"
     @footer()
@@ -134,32 +164,27 @@ a-scene { height: 300px; width: 600px; }
           for i in [1..10]
             T.tag "a-sphere", '.red',
               'dynamic-body':''
-              lowroller: "inner:25;outer:25;pursuit: 2.2,0; pid: 2000,2800,10;"
+              lowroller: "inner:25;outer:15;pursuit: 2.2,0; pid: p:40,i:40,d:0.25;"
               position:"#{-i} 0.8 #{14-i}"
               radius:"0.8"
               material:"color:#ff0000; transparent:true; opacity:0.7;"
           for i in [1..10]
             T.tag "a-sphere", '.green',
               'dynamic-body':''
-              lowroller: "inner:5;outer:1;pursuit: 2.2,0; pid: 800,400,1"
+              lowroller: "inner:5;outer:1;pursuit: 2.2,0; pid: p:20,i:20,d:0.25"
               position:"#{-i} 0.9 #{12-i}"
               radius:".9"
               material:"color:#00ff00; transparent:true; opacity:0.7;"
           for i in [1..10]
             T.tag "a-sphere", '.blue',
               'dynamic-body':''
-              lowroller: "inner:5;outer:1;pursuit: 2.2,0; pid: 800,400,1;type:tetraPositioner;"
+              lowroller: "inner:5;outer:1;pursuit: 2.2,0; pid: p:100,i:200,d:1;type:tetraPositioner;"
               position:"#{-i} 1 #{10-i}"
               radius:"0.5"
               material:"color:#0000ff; transparent:true; opacity:0.7;"
-          T.tag "a-sphere", 'dynamic-body':'', position:"0 .25 -2.2", radius:".25",  material:"color:#EF005E; transparent:true; opacity:0.3;"
-          T.tag "a-box", 'dynamic-body':'', position:"0 4.5 -5", rotation:"0 45 0", width:"2", height:"2", depth:"2", color:"#4CC3D9"
-          T.tag "a-box", 'static-body': '', position:"-10 3.5 -7", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#22CC22"
-          T.tag "a-box", 'static-body': '', position:"2 3.5 -5", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
-          T.tag "a-box", 'static-body': '', position:"-2 3.5 -5", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
-          T.tag "a-box", 'static-body': '', position:"-4 3.5 -3", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
-          T.tag "a-box", 'static-body': '', position:"8 3.5 -10", rotation:"0 45 0", width:"0.1", height:"1.0", depth:"0.1", color:"#4CC3D9"
-          T.tag "a-cylinder", 'static-body': '', position:"-1 0.75 -3", radius:"0.5", height:"1.5", color:"#FFC65D"
+          T.tag "a-sphere", 'dynamic-body':'',physics:"mass:0.5", position:"0 .25 -2.2", radius:".25",  material:"color:#EF005E; transparent:true; opacity:0.8;"
+          T.tag "a-box", 'dynamic-body':'', position:"0 4.5 -5",physics:"mass:0.5", rotation:"0 45 0", width:"2", height:"2", depth:"2", color:"#4CC3D9"
+          T.tag "a-cylinder", 'static-body': '', position:"0 0 0", radius:"0.5", height:"1.5", color:"#FFC65D"
           T.tag "a-sky", color:"#cceecc"
           T.tag "a-box", position: "-2 0 0" ,width: "0.1", height: "0.1" , depth:"0.1", color: "yellow"
           T.tag "a-box", position: "2 0 0" ,width: "0.1", height: "0.1" , depth:"0.1", color: "yellow"
@@ -170,13 +195,36 @@ a-scene { height: 300px; width: 600px; }
           T.tag "a-entity", environment:"preset: forest; dressingAmount: 500"
           
         T.tag "a-plane", 'static-body':'', position:"0  -0.01 -4", rotation:"-90 0 0", width:"40", height:"50", color:"#7BC8A4"
-        T.tag "a-sphere", "#marker-blue", position: "0 0 -5", radius: "0.5", color: "blue"
-        T.tag "a-sphere", "#marker-red", position: "5 0 -5", radius: "0.5", color: "red"
-        T.tag "a-sphere", "#marker-green", position: "2 0 2", radius: "0.5", color: "green"
+        T.tag "a-sphere", "#marker-blue", position: "2 0 2", radius: "0.5", color: "blue"
+        T.tag "a-sphere", "#marker-red", position: "5.5 0 -5.5", radius: "0.5", color: "red"
+        T.tag "a-sphere", "#marker-green", position: "4 0 4", radius: "0.5", color: "green"
   
 
     T.h3 "The LowRoller version of the RollerBall"
     T.div "#bloviation.contents", =>
+      T.form ->
+        T.div ".form-group",->
+          T.div  ".form-row",->
+            T.div ".col-md-4.mb-3",->
+              T.div ()->
+                T.text "green: "
+                T.span "#show-green","unset"
+              T.label for: "greenpControl", "proportional"
+              T.input "#greenpControl.form-control-range", type:"range" ,value:20, onchange: "Pylon.trigger('updatePid',{who: 'green',p: this.value});"
+              T.label for: "greeniControl", "integral"
+              T.input "#greeniControl.form-control-range", type:"range", value:"20", onchange: "Pylon.trigger('updatePid',{who: 'green',i: this.value});"
+              T.label for: "greendControl", "delta"
+              T.input "#greendControl.form-control-range", type:"range", min: -1, max: 1.5, step: 0.05, value: 0.25, onchange: "Pylon.trigger('updatePid',{who: 'green',d: this.value});"
+            T.div ".col-md-4.mb-3",->
+              T.div ()->
+                T.text "red: "
+                T.span "#show-red","unset"
+              T.label for: "redpControl", "proportional"
+              T.input "#redpControl.form-control-range", type:"range" , onchange: "Pylon.trigger('updatePid',{who: 'red', p: this.value});"
+              T.label for: "rediControl", "integral"
+              T.input "#rediControl.form-control-range", type:"range",  onchange: "Pylon.trigger('updatePid',{who: 'red', i: this.value});"
+              T.label for: "reddControl", "delta"
+              T.input "#reddControl.form-control-range", type:"range", min: -1, max: 1.5, step: 0.05, onchange: "Pylon.trigger('updatePid',{who: 'red', d: this.value});"
       T.p """Did you ever see a Samurai movie where the police take down a rampaging samuri?"""
       T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
       T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is

@@ -63,7 +63,7 @@ module.exports = class _411SourceTemplate
   width:100%;
 }"""
         @storyHeadMatter()
-      T.body  =>
+      T.body onload: "Pylon.trigger('loaded')", =>
         T.div ".fixed",style: "background: url(/assets/images/hooray-fade2.jpg) no-repeat center fixed; -moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH ", =>
         @site_body()
   #
