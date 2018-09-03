@@ -134,13 +134,33 @@ a-scene { height: 300px; width: 600px; }
   storybar: =>
     T.div "#storybar.o-grid__cell.order-2.bg-lighten-2", =>
       T.h1 => T.raw "How to wage peace in a terrorized society."
-      T.h3 => "The 411-source's tools of the spiritual bodyguard"
+      T.h3 => "Tools of the spiritual bodyguard"
       T.hr()
       @bloviation()
   # 
   # section bloviation
   # 
   bloviation: =>
+    T.div '.m2',->
+      T.h3 "The LowRoller version of the RollerBall"
+      T.p """Did you ever see a Samurai movie where the police take down a rampaging samuri?"""
+      T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
+      T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
+covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
+It can alter it's center of gravity to roll around.  that's it.
+"""
+      T.p  """Even with that limitation, it can gang up at the feet of a person causing a threat.
+The random motions of the balls will make the attacker lose balance and be unable to continue.
+"""
+      T.p  """The controls below alter the PID parameters for the heavy Red and lighter Green balls.  Some of the settings will result in
+unstable behavior, especially negative values for "delta."  The green balls can be altered in behavior by being more agressive, and 
+can acutally jump over red balls to go to the proper marker.  The blue balls are fast because they break some of the laws of physics.
+They represent an upper bound on the behavior of these roller balls."""
+      #T.p  "Press the spacebar to start and stop the simulation.  The large ball is a meter in diameter. press '.' to single step the simulation."
+      #T.canvas "#seen-canvas",width:400, height:400 
+      #T.input "#red-slider",type:"range", min:0,max:255,onchange: "alert('wow')"
+      #T.p => T.raw "Press hjkl to change where these rollerballs take down an attacker."
+      #T.p => "Rotate the view with click and drag.  Zoom with fingers or mouse wheel."
     if useAll = demoMode
       cameraPos = "0 8 15"
       cameraPos = "0 #{1.6*4} 0"
@@ -200,8 +220,7 @@ a-scene { height: 300px; width: 600px; }
         T.tag "a-sphere", "#marker-green", position: "4 0 4", radius: "0.5", color: "green"
   
 
-    T.h3 "The LowRoller version of the RollerBall"
-    T.div "#bloviation.contents", =>
+    T.div "#bloviation.contents.container.left", =>
       T.form ->
         T.div ".form-group",->
           T.div  ".form-row",->
@@ -225,20 +244,6 @@ a-scene { height: 300px; width: 600px; }
               T.input "#rediControl.form-control-range", type:"range",  onchange: "Pylon.trigger('updatePid',{who: 'red', i: this.value});"
               T.label for: "reddControl", "delta"
               T.input "#reddControl.form-control-range", type:"range", min: -1, max: 1.5, step: 0.05, onchange: "Pylon.trigger('updatePid',{who: 'red', d: this.value});"
-      T.p """Did you ever see a Samurai movie where the police take down a rampaging samuri?"""
-      T.p """They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller"""
-      T.p """The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
-covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
-It can alter it's center of gravity to roll around.  that's it.
-"""
-      T.p  """Even with that limitation, it can gang up at the feet of a person causing a threat.
-The random motions of the balls will make the attacker lose balance and be unable to continue.
-"""
-      #T.p  "Press the spacebar to start and stop the simulation.  The large ball is a meter in diameter. press '.' to single step the simulation."
-      #T.canvas "#seen-canvas",width:400, height:400 
-      #T.input "#red-slider",type:"range", min:0,max:255,onchange: "alert('wow')"
-      #T.p => T.raw "Press hjkl to change where these rollerballs take down an attacker."
-      #T.p => "Rotate the view with click and drag.  Zoom with fingers or mouse wheel."
   # 
   # section header
   # 
