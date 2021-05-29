@@ -531,13 +531,15 @@ module.exports = T.bless(Sidebar = (function(superClass) {
           catPrefix = catPrefix.replace(/\//g, ' -');
           catPostfix = catPostfix.toString().replace(/\//g, '- ');
           return headliner = _(stories).find(function(story) {
-            var attrX;
+            var attrX, autoExpand;
+            autoExpand = Object.keys(stuff).length < 4;
             attrX = {
-              'aria-expanded': 'false',
+              'aria-expanded': autoExpand,
               onclick: _this.clickHandler,
               role: 'heading'
             };
             return T.div('.btn-group.btn-group-vertical', function() {
+              var attrY;
               if (headliner) {
                 T.button(".btn.btn-group.btn-outline-light.btn-block", attrX, function() {
                   return T.h5('', function() {
@@ -550,10 +552,13 @@ module.exports = T.bless(Sidebar = (function(superClass) {
                   return T.h6('', catPrefix + " " + catPostfix);
                 });
               }
-              return T.section(".pr1.btn-group.btn-outline-light", {
-                hidden: "hidden",
-                "aria-expanded": 'false'
-              }, function() {
+              attrY = {
+                'aria-expanded': autoExpand
+              };
+              if (!autoExpand) {
+                attrY.hidden = 'hidden';
+              }
+              return T.section(".pr1.btn-group.btn-outline-light", attrY, function() {
                 return T.ul(".my-2", function() {
                   return _(stuff[category]).each(function(story) {
                     if ('category' === story.get('className')) {
@@ -989,10 +994,13 @@ PylonTemplate = Backbone.Model.extend({
   Halvalla: require('halvalla/lib/halvalla-mithril'),
   Palx: require('palx'),
   Utils: require('./lib/utils'),
-  Underscore: require('underscore')
+  Underscore: require('underscore'),
+  Backbone: Backbone
 });
 
 window.Pylon = Pylon = new PylonTemplate;
+
+window._$_ = Pylon;
 
 Pylon.Button = require('./components/button');
 
@@ -1083,10 +1091,7 @@ $(function() {
 });
 
 require.register("lib/badass.coffee", function(exports, require, module) {
-var B, HolyGrail, Link, Panel, PanelHeader, T, ref,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
+var B, Link, Panel, PanelHeader, T, ref;
 
 T = Pylon.Halvalla;
 
@@ -1094,114 +1099,60 @@ B = require('backbone');
 
 ref = Pylon.Rebass, Panel = ref.Panel, PanelHeader = ref.PanelHeader, Link = ref.Link;
 
-Panel = T.bless(Panel);
 
-Link = T.bless(Link);
+/*  
+Panel = T.bless Panel
+Link = T.bless Link
+PanelHeader = T.bless PanelHeader
 
-PanelHeader = T.bless(PanelHeader);
+module.exports.holyGrail = T.bless class HolyGrail extends React.Component
 
-module.exports.holyGrail = T.bless(HolyGrail = (function(superClass) {
-  extend(HolyGrail, superClass);
+    
+  render: ()=>
+    options = _.pluck @props, 'user','navLinks','story','page'
+    T.div '.o-grid.o-grid--full', ()->
+      @props.header '.o-grid__cell',options
+      T.div '.o-grid__cell',->
+        T.div '.o-grid',->
+          @props.left
+        T.div '.o-grid__cell',->
+          @props.middle
+        T.div '.o-grid__cell',->
+          @props.right
+      @props.footer '.o-grid__cell',options
+        
+  
 
-  function HolyGrail(props1) {
-    this.props = props1;
-    this.render = bind(this.render, this);
-  }
-
-  HolyGrail.prototype.render = function() {
-    var options;
-    options = _.pluck(this.props, 'user', 'navLinks', 'story', 'page');
-    return T.div('.o-grid.o-grid--full', function() {
-      this.props.header('.o-grid__cell', options);
-      T.div('.o-grid__cell', function() {
-        T.div('.o-grid', function() {
-          return this.props.left;
-        });
-        T.div('.o-grid__cell', function() {
-          return this.props.middle;
-        });
-        return T.div('.o-grid__cell', function() {
-          return this.props.right;
-        });
-      });
-      return this.props.footer('.o-grid__cell', options);
-    });
-  };
-
-  return HolyGrail;
-
-})(React.Component));
-
-module.exports.Panel = Panel = (function(superClass) {
-  extend(Panel, superClass);
-
-  Panel.prototype.displayName = 'Panel';
-
-  function Panel(props1) {
-    this.props = props1;
-    this.view = bind(this.view, this);
-    this.style = bind(this.style, this);
-    this;
-  }
-
-  Panel.prototype.style = function() {
-    return {
-      overflow: 'hidden',
-      borderRadius: px(this.props.theme.radius),
-      borderWidth: px(1),
+module.exports.Panel =   class Panel extends B.Model
+  displayName: 'Panel'
+  constructor: (@props)->
+    @
+  style: ()=>
+      overflow: 'hidden'
+      borderRadius: px @props.theme.radius
+      borderWidth: px 1
       borderStyle: 'solid'
-    };
-  };
-
-  Panel.prototype.view = function() {
-    return T.div({
-      style: this.style(this.props.style, {
-        children: this.props.children
-      })
-    });
-  };
-
-  return Panel;
-
-})(B.Model);
-
-module.exports.PanelHeader = PanelHeader = (function(superClass) {
-  extend(PanelHeader, superClass);
-
-  PanelHeader.prototype.displayName = 'PanelHeader';
-
-  function PanelHeader(vnode) {
-    this.vnode = vnode;
-    this.style = bind(this.style, this);
-    this.props = {
-      f: 2,
-      p: 2
-    };
-    console.log("PanelHeader constructor", this.vnode);
-    this;
-  }
-
-  PanelHeader.prototype.style = function(props) {
-    return {
-      fontWeight: bold(props),
-      borderBottomWidth: px(1),
-      borderBottomStyle: 'solid'
-    };
-  };
-
-  PanelHeader.prototype.view = function() {
-    return T.crel('Header', {
-      style: this.style(this.vode.style)
-    });
-  };
-
-  return PanelHeader;
-
-})(B.Model);
+  view: ()=>
+      T.div style: @style @props.style,children: @props.children
+      
+module.exports.PanelHeader =   class PanelHeader extends B.Model
+  displayName: 'PanelHeader'
+  constructor: (@vnode)->
+    @props= f:2, p:2
+    console.log "PanelHeader constructor",@vnode
+    @
+    
+  style: (props)=>
+    fontWeight: bold(props),
+    borderBottomWidth: px(1),
+    borderBottomStyle: 'solid',
+  view: ()->
+      T.crel 'Header', style: @style @vode.style
+ */
 
 });
 
-require.register("lib/utils.coffee", function(exports, require, module) {
+;require.register("lib/utils.coffee", function(exports, require, module) {
 var Pylon, Utility,
   hasProp = {}.hasOwnProperty,
   slice = [].slice;

@@ -1,5 +1,5 @@
 # #-------- class start
-renderer = class index extends _411SourceTemplate
+renderer = class index extends siteTemplate
   # 
   # section html
   # 

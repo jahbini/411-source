@@ -1,7 +1,7 @@
 # 
 T = require 'halvalla'
 #include card.coffee
-module.exports = class _411SourceTemplate
+module.exports = class siteTemplate
   #pass the db entry into the class so that the classes have access to it
   constructor: (@db,@allDB)->
   #

@@ -9,7 +9,7 @@ demoMode = true
 Gravitas = ->
   window.demo = true
   #no-include console.coffee
-  #include tetra-motor.coffee
+  #  do not include tetra-motor.coffee
   fillRanges= (color)->
     els = document.querySelectorAll '.'+color
     els[0].emit 'showPID', (v)->
@@ -80,7 +80,7 @@ Gravitas = ->
   #   limitations under the License.
   # 
 #-------- class start
-renderer = class  index extends _411SourceTemplate
+renderer = class  index extends siteTemplate
   #
   # section storyHeadMatter
   #
@@ -90,6 +90,7 @@ renderer = class  index extends _411SourceTemplate
     #T.script src:"assets/seen.min.js"
     #T.script src:"draft/peacefare/low-roller/cannon.js"
     #T.script src:"draft/peacefare/rollerball/pid.js"
+    T.script src: "https://unpkg.com/aframe-lowroller-component/dist/aframe-lowroller-component.min.js"
     T.script src:"https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"
     T.script src:"https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"
     T.script src:"https://unpkg.com/aframe-arrow-component@1.0.0/index.js"

@@ -170,7 +170,7 @@ press '.' to single step the simulation.</p><canvas id="seen-canvas" width="400"
     extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     hasProp = {}.hasOwnProperty,
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
-  (function () {
+  (function() {
     var FLIPXZ, FLIPYZ, RollerBall, TetraForcer, allBall, avatar, balls, bind, context, dragger, dropTime, floor, groundBody, groundShape, height, j, leather, m, n, onceStop, scene, seenModel, simulateThem, startStop, timeStamp, width, world, x, xform, y, zoomer;
     T = Pylon.Halvalla;
     bind = function(func, inst) {
