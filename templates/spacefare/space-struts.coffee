@@ -31,18 +31,30 @@ renderer = class index extends siteTemplate
     T.div "#bloviation.contents", =>
       T.canvas width:"400", height:"400", id:"seen-canvas"
       T.p "put your content here"
-      T.coffeescript =>
-        Pylon.on "loaded", ()->
-          shape = seen.Shapes.tetrahedron
-          # Create scene and add shape to model
-          scene = new seen.Scene
-            model    : seen.Models.default().add(shape)
-            viewport : seen.Viewports.center(400, 400)
-          #
-          # Create render context from canvas
-          context = seen.Context 'seen-canvas', scene
-          context.render()
+    T.coffeescript =>
+      Pylon.on "loaded", ()->
+        shape = seen.Shapes.tetrahedron
+        shape = new seen.Shape('tri', [new seen.Surface([
+            seen.P(-1, -1, 0)
+            seen.P( 1, -1, 0)
+            seen.P( 0,  1, 0)
+        ])]).scale(height * 0.2)
+        shape.fill(new seen.Material(seen.Colors.gray()))
+        # Create scene and add shape to model
+        scene = new seen.Scene
+          model    : seen.Models.default().add(shape)
+          viewport : seen.Viewports.center(400, 400)
+          camera   : new seen.Camera
+                  projection : seen.Projections.perspective()
+        #
+        # Create render context from canvas
+        context = seen.Context 'seen-canvas', scene
+        context.render()
 
+        dragger = new seen.Drag('seen-canvas', {inertia : true})
+        dragger.on 'drag.rotate', (e) ->
+          shape.transform seen.Quaternion.xyToTransform(e.offsetRelative...)
+          context.render()
   # 
   # section header
   # 
