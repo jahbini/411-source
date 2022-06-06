@@ -1003,14 +1003,7 @@ injectGlobal"""
  */
 // Initialize the application on DOM ready event.
 $(function() {
-  var badDog, baddd, bloviation, divs, mine, realNode, sidebarContents, theirs;
-  try {
-    window.eruda.init();
-    alert("still ok after eruda init??");
-  } catch (error) {
-    baddd = error;
-    alert(baddd);
-  }
+  var badDog, bloviation, divs, mine, realNode, sidebarContents, theirs;
   mine = {
     collection: myStories,
     filter: function(story) {
