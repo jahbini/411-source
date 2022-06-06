@@ -1,6 +1,6 @@
 # 
 T = require 'halvalla'
-#include card.coffee
+#include _card.halvalla
 module.exports = class siteTemplate
   #pass the db entry into the class so that the classes have access to it
   constructor: (@db,@allDB)->
@@ -63,7 +63,7 @@ module.exports = class siteTemplate
   width:100%;
 }"""
         @storyHeadMatter()
-      T.body onload: "Pylon.trigger('loaded')", =>
+      T.body => # onload: "Pylon.trigger('loaded')", =>
         T.div ".fixed",style: "background: url(/assets/images/hooray-fade2.jpg) no-repeat center fixed; -moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH ", =>
         @site_body()
   #
@@ -75,6 +75,7 @@ module.exports = class siteTemplate
   # section site_body
   # 
   site_body: =>
+
     T.div "#411-source-body.container-fluid.bg-transparent", =>
       #T.div ".style.c-hero", style: "{ border-bottom: 1px solid #333; }"
       T.div ".row", =>
@@ -84,7 +85,7 @@ module.exports = class siteTemplate
           T.div "#storybar.col.col-12.col-md-9",=>
             @storyBar()
           T.div ".col.col-12.col-md-3",=>
-          	@sidebar()
+            @sidebar()
           @sidecar()
       @footer()
       @cover()

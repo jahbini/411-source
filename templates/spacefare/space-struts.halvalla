@@ -30,9 +30,23 @@ renderer = class index extends siteTemplate
   bloviation: =>
     T.div "#bloviation.contents", =>
       T.canvas width:"400", height:"400", id:"seen-canvas"
-      T.p "put your content here"
+      T.p "put your new content here"
+      T.div id:"reference"
     T.coffeescript =>
-      Pylon.on "loaded", ()->
+      $ ()->
+        height=400
+        T=require "halvalla"
+        $("reference").innerHtml = T.div =>
+          rho = 1
+          powers = for i in [0..100]
+            rho = rho * 1.61803398
+            T.text "rho^#{i}=#{rho}. "
+        pp={}
+        ###
+        i=0
+        for slope in [ "groucho","chico","harpo","stan","babe"]
+           pp.slope = i * Math.PI*2/5
+        ###
         shape = seen.Shapes.tetrahedron
         shape = new seen.Shape('tri', [new seen.Surface([
             seen.P(-1, -1, 0)
@@ -76,7 +90,7 @@ db[id="411-source/spacefare/space-struts"] =
   slug: "space-struts"
   category: "spacefare"
   site: "411-source"
-  accepted: false
+  accepted: true
   index: false
   sourcePath: ""
   headlines: []

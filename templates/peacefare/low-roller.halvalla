@@ -9,7 +9,7 @@ demoMode = true
 Gravitas = ->
   window.demo = true
   #no-include console.coffee
-  #include tetra-motor.coffee
+  #include _tetra-motor.halvalla
   
 #Ignore = ->
   
