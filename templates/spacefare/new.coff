@@ -4,19 +4,11 @@ T=require "halvalla"
 B=require "backbone"
 _= require "underscore"
 
-rho = 50/1.618033  #set powers[0] to 50
-powers = for i in [0..10]
+rho = 50
+powers = for i in [0..100]
   rho = rho * 1.61803398
-dumpText= (text...)->
-  r="--"
-  for t in text
-    if _.isString t
-      r += t
-    else
-      r += JSON.stringify t
-    r+=" --"
-
-  $("#reference").append T.render T.p r
+dumpText= (text)->
+  $("#reference").append T.render T.p text
 rhoShow = T.render T.div =>
   for i in [0..10]
     T.p "rho^#{i}=#{powers[i]}. "
@@ -32,12 +24,10 @@ blades={}
 for basis,i in [ "groucho","harpo","chico","stan","babe"]
    color =  seen.Colors.hex colorScheme[i]
    color.a = 140
-   slope = i * 2 * Math.PI/5
    blades[basis] =
      angle: i*72
-     slope: slope
-     points: for v,k in powers
-       new seen.P().transform( new seen.Matrix().translate(v).rotz slope)
+     slope: i * 2 * Math.PI/5
+     points: []
      color: color
 
 fillColor = seen.Colors.rgb 255,5,5
@@ -51,19 +41,14 @@ latticePointCollection =B.Collection.extend
   model:latticePoint
 latticePoints = new latticePointCollection()
 addToLattice = (who,where,what,parent)->
-  try
-    pointFinal = seen.P(0,0,0).transform(what.m).round()
-    return null unless 1000 > pointFinal.magnitude()
-    sig= siggy parent, who, where
-    #dumpText "lattice sig", sig, who,parent
-    latticePoints.add
-      id:what.surfaces[0].id
-      blade: who
-      offset: where
-      pointFinal: pointFinal
-      signature: sig
-  catch badboy
-    alert "233 "+badboy
+  pointFinal = seen.P(0,0,0).transform(what.m).round()
+  return null unless 1000 > pointFinal.magnitude()
+  latticePoints.add
+    id:what.surfaces[0].id
+    blade: who
+    offset: where
+    pointFinal: pointFinal
+    signature: siggy parent, who, where
 
 latticeOrigin =new latticePoint
   id:"o0"
@@ -87,8 +72,7 @@ class Paths
     path= _.sortBy(t,(d)-> d)
     data= path.join '/'
     @p[v.x] ={} unless @p[v.x]
-    #dumpText JSON.stringify v
-    #dumpText data
+    data = validatePath data
     unless t= @p[v.x][v.y]
       @p[v.x][v.y] = [data]
       return true
@@ -96,16 +80,41 @@ class Paths
     t.unshift data
     return true
     
+  validatePath= (data)->
+    t= data.split '/'
+    p=new seen.Matrix()
+    for bl in t
+      continue if bl == '_'
+      m= bl.match /^(\w+)-(\d+)\.(\d)+$/
+      alert bl unless m
+      bl = blades[bl]
+      p.translate(rho[m[3]],0,0).rotz(slope)
+    o = new seen.P()
+    o.multiply(p).round()
+    str = "_#{o.x}|#{o.y}"+data
+    return str
+
   mostPaths: ()->
     max = []
     for x,byY of @p
       for y,byXY of byY
-        max.push byXY if byXY.length >max.length
+        max = byXY if byXY.length >max.length
     return {x:x, y:y, max: max}
 allPaths = new Paths()
 
-siggy = (p,blade,wp)->
-  "#{p.get "signature"}/#{blade}-#{blades[blade].angle}.#{wp}"
+siggy = (p,blade,exp)->
+  "#{p.get "signature"}/#{blade}-#{blades[blade].angle}.#{exp}"
+
+buildPoint = (i,parent)->
+    return unless parent
+    [blade1,blade2] = bladeScheme[i..i+1]
+    {x,y,z} = parent.get "pointFinal"
+    signature= "#{parent.get "signature"}/#{0}.#{blade1}"
+    dot = newDot(blades[blade1].color,signature).translate(powers[0],0,0).rotz(blades[blade1].slope).translate x, y, z
+    dot.bake().reset()
+    allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
+    bladeModel.add dot
+    return parent2 = addToLattice blade1,i,dot,parent
 
 Origin = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])])
 Origin.fill(new seen.Material('#880000')).scale 5
@@ -113,55 +122,51 @@ seenModels.add Origin
 
 createEmplace2 = (parent = latticeOrigin)->
   bladeModel = seenModels.append()
-  buildPoint = (blade,thePower,theParent)->
-    return unless theParent
-    try
-      {x,y,z} = theParent.get "pointFinal"
-      signature= siggy theParent, blade, thePower
-      #dumpText "build",signature
-      bb = blades[blade].points[thePower]
-      dot = newDot(blades[blade].color,signature).translate(bb.x,bb.y,0).translate x, y, z
-      dot.bake().reset()
-      #dumpText "dot", signature, dot
-      allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
-      bladeModel.add dot
-    catch badboy
-      alert badboy
-    return addToLattice blade,thePower,dot,theParent
-
-  pipeIt = ( s,d,color) ->
-    ln1 = seen.Shapes.pipe  (s.get "pointFinal"), d.get "pointFinal"
-    ln1.fill color
-    bladeModel.add ln1
-
   for i in [0..4]
-    [blade2,blade1] = bladeScheme[i..i+1]
-    #dumpText "first leg",blade1,blade2
-    parent2=buildPoint blade1,0,parent
+    [blade1,blade2] = bladeScheme[i..i+1]
+    {x,y,z} = parent.get "pointFinal"
+    signature= siggy parent, blade1, 0
+    #"#{parent.get "signature"}/#{0}.#{blade1}"
+    dot = newDot(blades[blade1].color,signature).translate(powers[0],0,0).rotz(blades[blade1].slope).translate x, y, z
+    dot.bake().reset()
+    allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
+    bladeModel.add dot
+    parent2 = addToLattice blade1,1,dot,parent
     continue unless parent2
-    #dumpText "parent2", parent2
-    pipeIt parent,parent2,'#123456'
-    destination = buildPoint blade2, 0, parent2
+    ln1 = seen.Shapes.pipe  (parent.get "pointFinal"), parent2.get "pointFinal"
+    ln1.fill "#123456"
+    bladeModel.add ln1
+    {x,y,z} = parent2.get "pointFinal"
+    signature= siggy parent2, blade2, 0
+    dot = newDot(blades[blade2].color,signature).translate(powers[0],0,0).rotz(blades[blade2].slope).translate x, y, z
+    dot.bake().reset()
+    allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
+    bladeModel.add dot
+    destination = addToLattice blade2,1,dot,parent2
     continue unless destination
-    #dumpText "destination",blade2,destination
-    pipeIt parent2,destination,'#345612'
+    ln1 = seen.Shapes.pipe  (parent2.get "pointFinal"), destination.get "pointFinal"
+    ln1.fill "#654321"
+    bladeModel.add ln1
 
   for i in [5..9]
     [blade1,blade2] = bladeScheme[i..i+1]
-    #dumpText blade1+","+blade2
-    parent2=buildPoint blade1,2,parent
-    #dumpText JSON.stringify parent2
-    pipeIt parent,parent2,'#456123'
+    {x,y,z} = parent.get "pointFinal"
+    signature= siggy parent, blade1, 1
+    dot = newDot(blades[blade1].color,signature).translate(powers[1],0,0).rotz(blades[blade1].slope).translate x, y, z
+    dot.bake().reset()
+    allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
+    bladeModel.add dot
+    parent2 = addToLattice blade1,2,dot,parent
     continue unless parent2
-    destination=buildPoint blade2,1,parent2
-    #dumpText JSON.stringify destination
-    pipeIt parent2,destination,'#5eee23'
+    {x,y,z} = parent2.get "pointFinal"
+    signature= siggy parent2, blade2, 1
+    dot = newDot(blades[blade2].color,signature).translate(powers[1],0,0).rotz(blades[blade2].slope).translate x, y, z
+    dot.bake().reset()
+    allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
+    bladeModel.add dot
+    addToLattice blade2,2,dot,parent2
 
-try
-  createEmplace2()
-catch badboy
-  alert '123 '+ badboy
-
+createEmplace2()
 primaryLatticePoints = latticePoints
 latticePoints = new latticePointCollection()
 primaryLatticePoints.forEach (l)-> createEmplace2 l
@@ -172,11 +177,14 @@ secondaryLatticePoints.forEach (l)-> createEmplace2 l
 dumpText "JAH here"
 dumpText latticePoints.length
 g= allPaths.mostPaths()
-dumpText "popular destination", g
+dumpText JSON.stringify {x:g.x, y:g.y}
+for t in _.sortBy g.max,(x)->x
+  dumpText t
 
-#latticePoints.forEach (l)->dumpText l.toJSON()
+#latticePoints.forEach (l)->dumpText JSON.stringify l.toJSON()
 #fillColor = seen.Colors.rgb 25,99,188,40
 dumpText "JAH where"
+dumpText latticePoints.length
 
 dumpText "JAH nowhere"
 
