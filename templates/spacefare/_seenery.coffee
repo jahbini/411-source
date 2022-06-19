@@ -92,8 +92,9 @@ class Paths
     unless t= @p[v.x][v.y]
       @p[v.x][v.y] = [data]
       return true
-    return false unless -1 == _.indexOf t, data
-    t.unshift data
+    #return false unless -1 == _.indexOf t, data
+    ## this adds more links to vertex lets just try the first in the class
+    #t.unshift data
     return true
     
   mostPaths: ()->
@@ -111,7 +112,7 @@ Origin = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -
 Origin.fill(new seen.Material('#880000')).scale 5
 seenModels.add Origin
 
-createEmplace2 = (parent = latticeOrigin)->
+createEmplace2 = (parent = latticeOrigin,inputPower=-1)->
   bladeModel = seenModels.append()
   buildPoint = (blade,thePower,theParent)->
     return unless theParent
@@ -119,55 +120,71 @@ createEmplace2 = (parent = latticeOrigin)->
       {x,y,z} = theParent.get "pointFinal"
       signature= siggy theParent, blade, thePower
       #dumpText "build",signature
-      bb = blades[blade].points[thePower]
-      dot = newDot(blades[blade].color,signature).translate(bb.x,bb.y,0).translate x, y, z
+      b = blades[blade]
+      bb = b.points[thePower]
+      dot = newDot(blades[blade].color,signature).rotz(b.slope).translate(bb.x,bb.y,0).translate x, y, z
       dot.bake().reset()
       #dumpText "dot", signature, dot
-      allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
       bladeModel.add dot
+      return null unless allPaths.addPath seen.P(0,0,0).transform(dot.m).round(),signature
     catch badboy
       alert badboy
     return addToLattice blade,thePower,dot,theParent
 
   pipeIt = ( s,d,color) ->
-    ln1 = seen.Shapes.pipe  (s.get "pointFinal"), d.get "pointFinal"
+    interpolatePoints = (a, b, t) ->
+      return seen.P(
+        a.x*(1.0 - t) + b.x*t
+        a.y*(1.0 - t) + b.y*t
+        a.z*(1.0 - t) + b.z*t
+      )
+    sp= s.get "pointFinal"
+    dp= d.get "pointFinal"
+    ln1 = seen.Shapes.pipe  (interpolatePoints sp, dp, .9),(interpolatePoints sp, dp, .2)
     ln1.fill color
     bladeModel.add ln1
 
-  for i in [0..4]
-    [blade2,blade1] = bladeScheme[i..i+1]
-    #dumpText "first leg",blade1,blade2
-    parent2=buildPoint blade1,0,parent
-    continue unless parent2
-    #dumpText "parent2", parent2
-    pipeIt parent,parent2,'#123456'
-    destination = buildPoint blade2, 0, parent2
-    continue unless destination
-    #dumpText "destination",blade2,destination
-    pipeIt parent2,destination,'#345612'
+  if inputPower >= 0
+    for i in [0..4]
+      blade = bladeScheme[i]
+      #dumpText "spoke",blade,inputPower
+      destination=buildPoint blade,inputPower,parent
+      continue unless destination
+      #dumpText "destination",destination
+      pipeIt parent,destination,colorScheme[inputPower+5]
+  else  # old tiling method generated multiple names
+    for i in [0..4]
+      [blade2,blade1] = bladeScheme[i..i+1]
+      #dumpText "first leg",blade1,blade2
+      parent2=buildPoint blade1,0,parent
+      continue unless parent2
+      #dumpText "parent2", parent2
+      pipeIt parent,parent2,'#123456'
+      destination = buildPoint blade2, 0, parent2
+      continue unless destination
+      #dumpText "destination",blade2,destination
+      pipeIt parent2,destination,'#345612'
 
-  for i in [5..9]
-    [blade1,blade2] = bladeScheme[i..i+1]
-    #dumpText blade1+","+blade2
-    parent2=buildPoint blade1,2,parent
-    #dumpText JSON.stringify parent2
-    pipeIt parent,parent2,'#456123'
-    continue unless parent2
-    destination=buildPoint blade2,1,parent2
-    #dumpText JSON.stringify destination
-    pipeIt parent2,destination,'#5eee23'
+    for i in [5..9]
+      [blade1,blade2] = bladeScheme[i..i+1]
+      #dumpText blade1+","+blade2
+      parent2=buildPoint blade1,2,parent
+      #dumpText JSON.stringify parent2
+      pipeIt parent,parent2,'#456123'
+      continue unless parent2
+      destination=buildPoint blade2,1,parent2
+      #dumpText JSON.stringify destination
+      pipeIt parent2,destination,'#5eee23'
 
+lx = [[latticeOrigin ]]
 try
-  createEmplace2()
+  #createEmplace2 lx[0],4
+  for ii in [4..0]
+    lx[0].forEach (l)-> createEmplace2 l,ii
+    lx.unshift latticePoints
+    latticePoints = new latticePointCollection()
 catch badboy
   alert '123 '+ badboy
-
-primaryLatticePoints = latticePoints
-latticePoints = new latticePointCollection()
-primaryLatticePoints.forEach (l)-> createEmplace2 l
-secondaryLatticePoints = latticePoints
-latticePoints = new latticePointCollection()
-secondaryLatticePoints.forEach (l)-> createEmplace2 l
 
 dumpText "JAH here"
 dumpText latticePoints.length
