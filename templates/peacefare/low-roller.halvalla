@@ -59,10 +59,10 @@ renderer = class  index extends siteTemplate
   #
   storyHeadMatter: ->
     T.script src:"https://aframe.io/releases/0.8.0/aframe.js"
-    T.script src:"draft/peacefare/rollerball-cog/aframe-physics-system.js"
+    T.script src:"peacefare/rollerball-cog/aframe-physics-system.js"
     #T.script src:"assets/seen.min.js"
-    #T.script src:"draft/peacefare/low-roller/cannon.js"
-    #T.script src:"draft/peacefare/rollerball/pid.js"
+    #T.script src:"peacefare/low-roller/cannon.js"
+    #T.script src:"peacefare/rollerball/pid.js"
     T.script src:"https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"
     T.script src:"https://unpkg.com/aframe-environment-component/dist/aframe-environment-component.min.js"
     T.script src:"https://unpkg.com/aframe-arrow-component@1.0.0/index.js"

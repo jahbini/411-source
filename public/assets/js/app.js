@@ -117,7 +117,6 @@
 
 (function() {
 var global = typeof window === 'undefined' ? this : window;
-var process;
 var __makeRelativeRequire = function(require, mappings, pref) {
   var none = {};
   var tryReq = function(name, pref) {
@@ -461,137 +460,135 @@ module.exports = T.bless(Fibonacci = (function() {
 });
 
 ;require.register("components/sidebar-view.coffee", function(exports, require, module) {
-var B, Sidebar, T, Template, error, sideStuff, template,
+var B, Sidebar, T, sideStuff, ss, template,
   boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
-T = require("halvalla");
+T = Pylon.Halvalla;
 
 B = require('backbone');
-
 
 //Panel = T.bless Panel
 //Link = T.bless Link
 //PanelHeader = T.bless PanelHeader
-Template = require("payload-/run-time-template.coffee");
+template = require("payload-/run-time-template.coffee");
 
-template = new Template(T);
+sideStuff = Sidebar = (function() {
+  class Sidebar extends B.Model {
+    constructor() {
+      super();
+      this.clickHandler = this.clickHandler.bind(this);
+      this.view = this.view.bind(this);
+      return;
+    }
 
-try {
-  sideStuff = Sidebar = (function() {
-    class Sidebar extends B.Model {
-      constructor() {
-        super(...arguments);
-        this.clickHandler = this.clickHandler.bind(this);
-        this.view = this.view.bind(this);
+    clickHandler(e) {
+      var targ;
+      boundMethodCheck(this, Sidebar);
+      targ = e.currentTarget.parentNode.childNodes[1];
+      if ("true" === targ.getAttribute("aria-expanded")) {
+        targ.setAttribute('aria-expanded', false);
+        targ.setAttribute('hidden', "hidden");
+      } else {
+        targ.setAttribute('aria-expanded', 'true');
+        targ.removeAttribute('hidden');
       }
+    }
 
-      clickHandler(e) {
-        var targ;
-        boundMethodCheck(this, Sidebar);
-        targ = e.currentTarget.parentNode.childNodes[1];
-        if ("true" === targ.getAttribute("aria-expanded")) {
-          targ.setAttribute('aria-expanded', false);
-          targ.setAttribute('hidden', "hidden");
-        } else {
-          targ.setAttribute('aria-expanded', 'true');
-          targ.removeAttribute('hidden');
-        }
-      }
-
-      view(vnode) {
-        var collection, data, filter, intermediate, teacupContent;
-        boundMethodCheck(this, Sidebar);
-        collection = vnode.attrs.collection;
-        filter = vnode.attrs.filter || function() {
-          return true;
-        };
-        intermediate = collection.filter(filter, this);
-        data = _(intermediate).sortBy(function(s) {
-          return s.get('category');
-        }).groupBy(function(s) {
-          return s.get('category');
-        });
-        teacupContent = template.widgetWrap({
-          title: "Contents"
-        }, () => {
-          var result;
-          result = data.each((allCrap, category, stuff) => {
-            var catPostfix, catPrefix, headliner, stories;
-            if (category === '-') {
-              return;
-            }
-            stories = stuff[category];
-            catPostfix = category.match(/\/?[^\/]+$/);
-            catPrefix = category.replace(/[^\/]/g, '');
-            catPrefix = catPrefix.replace(/\//g, ' -');
-            catPostfix = catPostfix.toString().replace(/\//g, '- ');
-            return headliner = _(stories).find((story) => { //find index for this category
-              var attrX, autoExpand;
-              autoExpand = Object.keys(stuff).length < 4; //start with open if number of elements in this category is small
-              attrX = {
-                'aria-expanded': autoExpand,
-                onclick: this.clickHandler,
-                role: 'heading'
+    view(vnode) {
+      var collection, data, filter, intermediate, teacupContent;
+      boundMethodCheck(this, Sidebar);
+      collection = vnode.collection;
+      filter = vnode.filter || function() {
+        return true;
+      };
+      intermediate = collection.filter(filter, this);
+      data = _.sortBy(intermediate, function(s) {
+        return s.get('category');
+      });
+      data = _.groupBy(data, function(s) {
+        return s.get('category');
+      });
+      teacupContent = template.widgetWrap({
+        title: "Contents"
+      }, () => {
+        var result;
+        result = _.each(data, (allCrap, category, stuff) => {
+          var catPostfix, catPrefix, headliner, stories;
+          if (category === '-') {
+            return;
+          }
+          stories = stuff[category];
+          catPostfix = category.match(/\/?[^\/]+$/);
+          catPrefix = category.replace(/[^\/]/g, '');
+          catPrefix = catPrefix.replace(/\//g, ' -');
+          catPostfix = catPostfix.toString().replace(/\//g, '- ');
+          return headliner = _(stories).find((story) => { //find index for this category
+            var attrX, autoExpand;
+            autoExpand = Object.keys(stuff).length < 4; //start with open if number of elements in this category is small
+            attrX = {
+              'aria-expanded': autoExpand,
+              onclick: this.clickHandler,
+              role: 'heading'
+            };
+            return T.div('.btn-group.btn-group-vertical', () => {
+              var attrY;
+              if (headliner) {
+                T.button(".btn.btn-group.btn-outline-light.btn-block", attrX, () => {
+                  return T.h5('', () => {
+                    T.text(`${category}: `);
+                    return T.em(".h6", _.sample(headliner.get('headlines')));
+                  });
+                });
+              } else {
+                T.button(".btn.btn-group.btn-outline-light.btn-block", attrX, () => {
+                  return T.h6('', `${catPrefix} ${catPostfix}`);
+                });
+              }
+              attrY = {
+                'aria-expanded': autoExpand
               };
-              return T.div('.btn-group.btn-group-vertical', () => {
-                var attrY;
-                if (headliner) {
-                  T.button(".btn.btn-group.btn-outline-light.btn-block", attrX, () => {
-                    return T.h5('', () => {
-                      T.text(`${category}: `);
-                      return T.em(".h6", _.sample(headliner.get('headlines')));
-                    });
-                  });
-                } else {
-                  T.button(".btn.btn-group.btn-outline-light.btn-block", attrX, () => {
-                    return T.h6('', `${catPrefix} ${catPostfix}`);
-                  });
-                }
-                attrY = {
-                  'aria-expanded': autoExpand
-                };
-                if (!autoExpand) {
-                  attrY.hidden = 'hidden';
-                }
-                return T.section(".pr1.btn-group.btn-outline-light", attrY, () => {
-                  return T.ul(".my-2", () => {
-                    return _(stuff[category]).each((story) => {
-                      if ('category' === story.get('className')) {
-                        return;
-                      }
-                      return T.li("", () => {
-                        return T.a("", {
-                          'color': 'white',
-                          //bg: 'gray.8'
-                          href: siteHandle === story.get('siteHandle') ? story.href() : story.href(story.get('siteHandle'))
-                        }, `${story.get('title')}`);
-                      });
+              if (!autoExpand) {
+                attrY.hidden = 'hidden';
+              }
+              return T.section(".pr1.btn-group.btn-outline-light", attrY, () => {
+                return T.ul(".my-2", () => {
+                  return _(stuff[category]).each((story) => {
+                    if ('category' === story.get('className')) {
+                      return;
+                    }
+                    return T.li("", () => {
+                      return T.a("", {
+                        'color': 'white',
+                        //bg: 'gray.8'
+                        href: siteHandle === story.get('siteHandle') ? story.href() : story.href(story.get('siteHandle'))
+                      }, `${story.get('title')}`);
                     });
                   });
                 });
               });
             });
           });
-          if (!result) {
-            return T.text("No Stories");
-          }
         });
-        return teacupContent;
-      }
+        if (!result) {
+          return T.text("No Stories");
+        }
+      });
+      return teacupContent;
+    }
 
-    };
+  };
 
-    Sidebar.prototype.displayName = 'Sidebar';
+  Sidebar.prototype.displayName = 'Sidebar';
 
-    return Sidebar;
+  return Sidebar;
 
-  }).call(this);
-} catch (error1) {
-  error = error1;
-  alert(error);
-}
+}).call(this);
+
+ss = new sideStuff();
 
 module.exports = T.bless(sideStuff);
+
+module.exports = ss.view;
 });
 
 ;require.register("components/storybar-view.coffee", function(exports, require, module) {
@@ -926,7 +923,7 @@ module.exports = PageController = class PageController extends BaseController {
 ;require.register("initialize.coffee", function(exports, require, module) {
 
 //routes = require 'routes'
-var Backbone, FontFaceObserver, Mithril, Pylon, PylonTemplate, Sidebar, T, allStories, baddy, dingodog, myStories, routes;
+var Backbone, FontFaceObserver, Halvalla, Mithril, Palx, Pylon, PylonTemplate, Sidebar, T, Underscore, Utils, allStories, badDog, dingodog, myStories, routes;
 
 window.$ = jQuery;
 
@@ -934,23 +931,30 @@ window._ = require('lodash');
 
 Backbone = require('backbone');
 
-try {
-  PylonTemplate = Backbone.Model.extend();
-  window.Pylon = Pylon = new PylonTemplate({
-    Mithril: require('mithril'),
-    //Mui: require 'mui'
-    //  Mss: require 'mss-js'
-    Halvalla: require('halvalla/lib/halvalla-mithril'),
-    Palx: require('palx'),
-    Utils: require('./lib/utils'),
-    Underscore: require('underscore'),
-    Backbone: Backbone
-  });
-  window._$_ = Pylon;
-} catch (error) {
-  baddy = error;
-  alert(baddy);
-}
+Mithril = require('mithril');
+
+//Mui = require 'mui'
+//  Mss = require 'mss-js'
+Halvalla = require('halvalla/lib/halvalla-mithril.js');
+
+Palx = require('palx');
+
+Utils = require('./lib/utils');
+
+Underscore = require('underscore');
+
+PylonTemplate = Backbone.Model.extend({
+  Mithril: Mithril,
+  Halvalla: Halvalla,
+  Palx: Palx,
+  Utils: Utils,
+  Underscore: Underscore,
+  Backbone: Backbone
+});
+
+window.Pylon = Pylon = new PylonTemplate();
+
+window._$_ = Pylon;
 
 Pylon.Button = require('./components/button'); // Pylon is assumed to be a global for this guy
 
@@ -970,40 +974,31 @@ try {
   FontFaceObserver = require('font-face-observer');
   T = Pylon.Halvalla;
   Mithril = Pylon.Mithril;
-  Sidebar = require('./components/sidebar-view');
   //Storybar = require './components/storybar-view'
   //Fibonacci = require './components/fibonacci'
   routes = require('./routes');
-} catch (error) {
   //Palx = Pylon.Palx
+  Sidebar = require('./components/sidebar-view');
+} catch (error) {
   dingodog = error;
   alert(dingodog);
 }
 
-//newColors = Palx document.styling.palx
-//newColors.black= document.styling.black
-//newColors.white= document.styling.white
+try {
+  //newColors = Palx document.styling.palx
+  //newColors.black= document.styling.black
+  //newColors.white= document.styling.white
 
-// gather the global JSONs into Backbone collections 
-({myStories, allStories} = require('./models/stories'));
+  // gather the global JSONs into Backbone collections 
+  ({myStories, allStories} = require('./models/stories.coffee'));
+} catch (error) {
+  badDog = error;
+  alert(badDog);
+}
 
-// suppress react styling
-/*
-styled= require   'styled-components'
-{ injectGlobal, keyframes } = styled
-styled = styled.default
-
-injectGlobal""" 
-  body {
-    * {box-sizing: border-box; }
-    body { margin: 0; }
-    font-family: sans-serif;
-  }
-"""
- */
 // Initialize the application on DOM ready event.
 $(function() {
-  var badDog, bloviation, divs, mine, realNode, sidebarContents, theirs;
+  var bloviation, divs, mine, realNode, sidebarContents, theirs;
   mine = {
     collection: myStories,
     filter: function(story) {
@@ -1018,12 +1013,11 @@ $(function() {
   };
   try {
     realNode = document.getElementById('sidebar');
-    //sidebarContents = T.Provider  theme: colors: newColors, Sidebar mine
     sidebarContents = Sidebar(mine);
     Mithril.render(realNode, sidebarContents);
   } catch (error) {
     badDog = error;
-    console.log(badDog);
+    alert(badDog);
   }
   divs = $('.siteInvitation');
   divs.each(function(key, div) {
@@ -1660,7 +1654,7 @@ module.exports = Navigation = (function() {
 
 ;require.register("models/stories.coffee", function(exports, require, module) {
   //allStories is global, as is myStories
-var Collection, Stories, Story, allStories, myStories,
+var Collection, Stories, Story,
   boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
 Collection = require('../models/base/collection.coffee', Story = require('../models/story.coffee'));
@@ -1687,17 +1681,11 @@ Stories = (function() {
 
   };
 
-  // Stories are local,, so no need to Mix in a SyncMachine
-  //_.extend @prototype, Chaplin.SyncMachine
   Stories.prototype.model = Story;
 
   return Stories;
 
 }).call(this);
-
-allStories = {};
-
-myStories = {};
 
 module.exports = {
   allStories: new Stories(allStories),
@@ -1768,7 +1756,7 @@ module.exports = routes;
 /*
 #global Pylon
  */
-var CelarienLook, T, _;
+var T, _;
 
 T = Pylon.Halvalla;
 
@@ -1801,8 +1789,8 @@ $(function() {
   }
 });
 
-module.exports = CelarienLook = class CelarienLook {
-  widgetWrap() {
+module.exports = {
+  widgetWrap: function() {
     var attrs, contents, id, title;
     ({attrs, contents} = T.normalizeArgs(arguments));
     id = attrs.id;
@@ -1818,12 +1806,10 @@ module.exports = CelarienLook = class CelarienLook {
       });
     });
   }
-
 };
 });
 
-;require.alias("buffer/index.js", "buffer");
-require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
+;require.register("___globals___", function(exports, require, module) {
   
 
 // Auto-loaded modules from config.npm.globals.

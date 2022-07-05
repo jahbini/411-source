@@ -1,177 +1,10 @@
-<!DOCTYPE html><html><head><base href="/" /><meta name="author" content="James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses" /><meta http-equiv="Content-Type" content="text/html" charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>A Fountainhead of Strategies, techniques and other stuff</title><meta name="description" content="Brainstorms, ideas and such" /><meta name="keywords" content="brain candy, ideas, strategies, techniques" /><script>document.styling = {"palx":"#03c","black":"#000","white":"#fff"}</script><link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png" /><link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png" /><link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png" /><link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png" /><link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png" /><link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png" /><link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png" /><link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png" /><link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png" /><link rel="icon" type="image/png" sizes="192x192" href="/assets/icons/android-icon-192x192.png" /><link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" /><link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png" /><link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" /><link rel="manifest" href="/assets/manifest.json" /><meta name="msapplication-TileColor" content="#ffffff" /><meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png" /><meta name="theme-color" content="#ffffff" /><link rel="stylesheet" href="assets/css/vendor.css" -content--encoding="gzip" /><link rel="stylesheet" href="assets/css/app.css" -content--encoding="gzip" /><link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" /><link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" /><script src="allstories.json"></script><script src="mystories.json"></script><script src="assets/js/vendor.js" -content--type="text/javascript" -content--encoding="gzip"></script><script src="assets/js/app.js" -content--type="text/javascript" -content--encoding="gzip"></script><script>siteHandle = '411-source'; topDomain = '411-source.com'; require('initialize');</script><style>#cover {
-top: 0;
-left: 0;
-position: fixed;
-background-repeat: no-repeat;
-background-size: cover;
-z-index: -1;
-height:100%;
-width:100%;
-}</style><script src="assets/seen.min.js"></script><script src="draft/peacefare/rollerball/cannon.js"></script><script src="draft/peacefare/rollerball/pid.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js"></script><style type="text/css">.console {
-  background: #fff;
-  color: #000;
-  padding: 0;
-  position: relative;
-}
-.console * {
-  border: 0;
-  font: normal 14px/1.3 Consolas,'Andale Mono','Courier New',Courier,monospace;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-}
-.console textarea {
-  background: transparent;
-  color: #000;
-  display: block;
-  overflow: hidden;
-  resize: none;
-  vertical-align: middle;
-  width: 100%;
-  word-wrap: normal;
-}
-.console-container {
-  max-height: 100%;
-  overflow: auto;
-}
-.console-container span.string {
-  color: #c00;
-}
-.console-container span.string::before,
-.console-container span.string::after {
-  color: #333;
-  content: '"';
-}
-.console-container span.number {
-  color: #00f;
-}
-.console-container span.null,
-.console-container span.undefined {
-  color: #999;
-}
-.console-container ol.array {
- display: inline-block;
-}
-.console-container ol.array::before {
-  color: #999;
-  content: '[';
-}
-.console-container ol.array::after {
-  color: #999;
-  content: ']';
-}
-.console-container ol.array li {
-  display: inline-block;
-}
-.console-container ol.array li::after {
-  color: #999;
-  content: ',';
-}
-.console-container ol.array li:last-child::after {
-  content: none;
-}
-.console-container dl.object::before {
-  color: #000;
-  content: '{';
-}
-.console-container dl.object::after {
-  color: #000;
-  content: '}';
-  margin-left: 0.5em;
-}
-.console-container dl {
-  display: inline-block;
-}
-.console-container dl.object dt, .console-container dl.object dd {
-  display: inline-block;
-}
-.console-container dl.object dt {
-  color: #909;
-  margin-left: 0.5em;
-}
-.console-container dl.object dt::after {
-  color: #000;
-  content: ':';
-  margin-right: 0.25em;
-}
-.console-container dl.object dd::after {
-  content: ',';
-}
-.console-container dl.object dd:last-child::after {
-  content: none;
-}
-.console-container div.element div.open,
-.console-container div.element div.close {
-  color: #909;
-  display: inline;
-}
-.console-container div.element div.open::before {
-  content: '<';
-}
-.console-container div.element div.close::before {
-  content: '</';
-}
-.console-container div.element div.open::after,
-.console-container div.element div.close::after {
-  content: '>';
-}
-.console-container div.element div.content {
-  display: none;
-}
-.console-container div.element dl,
-.console-container div.element dt,
-.console-container div.element dd {
-  display: inline;
-}
-.console-container div.element dt {
-  color: #c00;
-  margin-left: 0.5em;
-}
-.console-container div.element dt::after {
-  content: '=';
-}
-.console-container div.element dd {
-  color: #00f;
-}
-.console-container div.element dd::before,
-.console-container div.element dd::after {
-  color: #c00;
-  content: '"';
-}
-.console-container p {
-  padding-left: 15px;
-  position: relative;
-}
-.console-container p::before {
-  color: #ccc;
-  content: '>';
-  left: 0;
-  position: absolute;
-  text-align: center;
-  top: 0;
-  vertical-align: middle;
-  width: 15px;
-}
-.console-container p.console-input::before {
-  color: #39f;
-}
-.console-container p div.command {
-  color: #39f;
-  white-space: pre;
-}
-.console-container p.error div.result {
-  color: #f00;
-}</style></head><body><div class="fixed" style="background: url(/assets/images/hooray-fade2.jpg) no-repeat center fixed; -moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH "></div><div id="411-source-body" class="container-fluid bg-transparent"><div class="row"></div><div class="row" style="min-height:100vh"><div class="row"><div id="storybar" class="col col-12 col-md-9"><div id="mainline" class="bg-silver u-shadow"><header class="c-card__header"><h2 class="c-heading c-heading--small">Rollerball Spring<div class="c-heading__sub">---</div></h2></header><div class="c-card__body"><div class="m1 bg-darken-1"><h3>The LowRoller version of the RollerBall</h3><div id="bloviation" class="contents"><p>Did you ever see a Samuri movie where the police take down a rampaging samuri?</p><p>They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up.  we have nothing like that for a man with a gun.  Enter the LowRoller</p><p>The LowRoller rollerBall is about the size of a basketball or soccerball.  It is
-covered with a hard shell with a surface like leather.  It's mass is a few kilograms.
-It can alter it's center of gravity to roll, hop or bounce.  that's it.</p><p>Even with that limitation, it can gang up at the feet of a person causing a threat.
-The random motions of the balls will make the attacker lose balance and be unable to continue.</p><p>Press the spacebar to start and stop the simulation.  The large ball is a meter in diameter.
-press '.' to single step the simulation.</p></div><div id="bloviation" class="contents"><form id="sliders" class="flex-container"></form><canvas id="seen-canvas" width="400" height="400"></canvas><p>Press hjkl to change where these rollerballs take down an attacker.</p><p>Rotate the view with click and drag.  Zoom with fingers or mouse wheel.</p></div></div></div><footer class="c-card__footer"><p class="c-text--quiet">that's all--</p></footer></div></div><div class="col col-12 col-md-3"><aside id="sidebarx" class="o-grid__cell o-grid__cell--width-20 p2 bg-darken-2" style="min-width:240"></aside></div><div id="sidecar" class="flex-auto order-last bg-darken-2" style="min-width:240"><div class="fb-login-button" width="200" data-width="200" data-max-rows="1" data-size="medium" data-button-type="login_with" data-show-faces="true" data-auto-logout-link="true" data-use-continue-as="true"></div><div id="fb-status"></div></div></div></div><div id="console0" data-limit="10"></div><script type="text/javascript">(function() {
+<!DOCTYPE html><base href=/ ><meta content="James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses" name=author><meta content=text/html charset=UTF-8 http-equiv=Content-Type><meta content="width=device-width,initial-scale=1" name=viewport><title>A Fountainhead of Strategies, techniques and other stuff</title><meta content="Brainstorms, ideas and such" name=description><meta content="brain candy, ideas, strategies, techniques" name=keywords><script>document.styling={palx:"#03c",black:"#000",white:"#fff"}</script><link href=/assets/icons/apple-icon-57x57.png rel=apple-touch-icon sizes=57x57><link href=/assets/icons/apple-icon-60x60.png rel=apple-touch-icon sizes=60x60><link href=/assets/icons/apple-icon-72x72.png rel=apple-touch-icon sizes=72x72><link href=/assets/icons/apple-icon-76x76.png rel=apple-touch-icon sizes=76x76><link href=/assets/icons/apple-icon-114x114.png rel=apple-touch-icon sizes=114x114><link href=/assets/icons/apple-icon-120x120.png rel=apple-touch-icon sizes=120x120><link href=/assets/icons/apple-icon-144x144.png rel=apple-touch-icon sizes=144x144><link href=/assets/icons/apple-icon-152x152.png rel=apple-touch-icon sizes=152x152><link href=/assets/icons/apple-icon-180x180.png rel=apple-touch-icon sizes=180x180><link href=/assets/icons/android-icon-192x192.png rel=icon sizes=192x192 type=image/png><link href=/assets/icons/favicon-32x32.png rel=icon sizes=32x32 type=image/png><link href=/assets/icons/favicon-96x96.png rel=icon sizes=96x96 type=image/png><link href=/assets/icons/favicon-16x16.png rel=icon sizes=16x16 type=image/png><link href=/assets/manifest.json rel=manifest><meta content=#ffffff name=msapplication-TileColor><meta content=/assets/icons/ms-icon-144x144.png name=msapplication-TileImage><meta content=#ffffff name=theme-color><link href=assets/css/vendor.css rel=stylesheet -content--encoding=gzip><link href=assets/css/app.css rel=stylesheet -content--encoding=gzip><link href=assets/icons/favicon.ico rel="shortcut icon" type=image/x-icon><link href=assets/icons/favicon.ico rel=icon type=image/x-icon><script src=allstories.json></script><script src=mystories.json></script><script src=assets/js/vendor.js -content--encoding=gzip -content--type=text/javascript></script><script src=assets/js/app.js -content--encoding=gzip -content--type=text/javascript></script><script>siteHandle="411-source",topDomain="411-source.com",require("initialize")</script><style>#cover{top:0;left:0;position:fixed;background-repeat:no-repeat;background-size:cover;z-index:-1;height:100%;width:100%}</style><script src=assets/seen.min.js></script><script src=peacefare/rollerball/cannon.js></script><script src=peacefare/rollerball/pid.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/coffee-script.min.js></script><script type=text/coffeescript></script><style>.console{background:#fff;color:#000;padding:0;position:relative}.console *{border:0;font:normal 14px/1.3 Consolas,'Andale Mono','Courier New',Courier,monospace;margin:0;outline:0;padding:0}.console textarea{background:0 0;color:#000;display:block;overflow:hidden;resize:none;vertical-align:middle;width:100%;word-wrap:normal}.console-container{max-height:100%;overflow:auto}.console-container span.string{color:#c00}.console-container span.string::after,.console-container span.string::before{color:#333;content:'"'}.console-container span.number{color:#00f}.console-container span.null,.console-container span.undefined{color:#999}.console-container ol.array{display:inline-block}.console-container ol.array::before{color:#999;content:'['}.console-container ol.array::after{color:#999;content:']'}.console-container ol.array li{display:inline-block}.console-container ol.array li::after{color:#999;content:','}.console-container ol.array li:last-child::after{content:none}.console-container dl.object::before{color:#000;content:'{'}.console-container dl.object::after{color:#000;content:'}';margin-left:.5em}.console-container dl{display:inline-block}.console-container dl.object dd,.console-container dl.object dt{display:inline-block}.console-container dl.object dt{color:#909;margin-left:.5em}.console-container dl.object dt::after{color:#000;content:':';margin-right:.25em}.console-container dl.object dd::after{content:','}.console-container dl.object dd:last-child::after{content:none}.console-container div.element div.close,.console-container div.element div.open{color:#909;display:inline}.console-container div.element div.open::before{content:'<'}.console-container div.element div.close::before{content:'</'}.console-container div.element div.close::after,.console-container div.element div.open::after{content:'>'}.console-container div.element div.content{display:none}.console-container div.element dd,.console-container div.element dl,.console-container div.element dt{display:inline}.console-container div.element dt{color:#c00;margin-left:.5em}.console-container div.element dt::after{content:'='}.console-container div.element dd{color:#00f}.console-container div.element dd::after,.console-container div.element dd::before{color:#c00;content:'"'}.console-container p{padding-left:15px;position:relative}.console-container p::before{color:#ccc;content:'>';left:0;position:absolute;text-align:center;top:0;vertical-align:middle;width:15px}.console-container p.console-input::before{color:#39f}.console-container p div.command{color:#39f;white-space:pre}.console-container p.error div.result{color:red}</style><div class=fixed style="background:url(/assets/images/hooray-fade2.jpg) no-repeat center fixed;-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH"></div><div class="bg-transparent container-fluid" id=411-source-body><div class=row></div><div class=row style=min-height:100vh><div class=row><div class="col col-12 col-md-9" id=storybar><div class="bg-silver u-shadow" id=mainline><header class=c-card__header><h2 class="c-heading c-heading--small">rollerball-control<div class=c-heading__sub>---</div></h2></header><div class=c-card__body><div class="bg-darken-1 m1"><h3>The LowRoller version of the RollerBall</h3><div class=contents id=bloviation><p>Did you ever see a Samuri movie where the police take down a rampaging samuri?<p>They simply surrounded the samuri with wooden staffs to keep him farther than swords length, and poked him until he gave up. we have nothing like that for a man with a gun. Enter the LowRoller<p>The LowRoller rollerBall is about the size of a basketball or soccerball. It is covered with a hard shell with a surface like leather. It's mass is a few kilograms. It can alter it's center of gravity to roll around. that's it.<p>Even with that limitation, it can gang up at the feet of a person causing a threat. The random motions of the balls will make the attacker lose balance and be unable to continue.<p>Press the spacebar to start and stop the simulation. The large ball is a meter in diameter. press '.' to single step the simulation.</p><canvas height=400 id=seen-canvas width=400></canvas><p>Press hjkl to change where these rollerballs take down an attacker.<p>Rotate the view with click and drag. Zoom with fingers or mouse wheel.</div></div></div><footer class=c-card__footer><p class=c-text--quiet>that's all--</footer></div></div><div class="col col-12 col-md-3"><aside class="bg-darken-2 o-grid__cell o-grid__cell--width-20 p2" id=sidebarx style=min-width:240></aside></div><div class="bg-darken-2 flex-auto order-last" id=sidecar style=min-width:240><div class=fb-login-button data-auto-logout-link=true data-button-type=login_with data-max-rows=1 data-show-faces=true data-size=medium data-use-continue-as=true data-width=200 width=200></div><div id=fb-status></div></div></div></div><div id=console0 data-limit=10></div><script>(function() {
   var slice = [].slice,
     extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     hasProp = {}.hasOwnProperty,
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
   (function() {
-  var FLIPXZ, FLIPYZ, RollerBall, TetraForcer, allBall, avatar, balls, bind, console, context, dragger, dropTime, floor, groundBody, groundShape, height, j, leather, m, n, onceStop, scene, seenModel, simulateThem, startStop, timeStamp, width, world, x, xform, y, zoomer;
+  var FLIPXZ, FLIPYZ, RollerBall, TetraForcer, allBall, avatar, balls, bind, context, dragger, dropTime, floor, groundBody, groundShape, height, j, leather, m, n, onceStop, scene, seenModel, simulateThem, startStop, timeStamp, width, world, x, xform, y, zoomer;
   T = Pylon.Halvalla;
   bind = function(func, inst) {
     var args;
@@ -180,11 +13,9 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
       func.apply(inst || this, args.concat(toArray(arguments)));
     };
   };
-  (function() {    //include console
+  (function() {
     var Console, History, addClass, consoles, create, extend, listen, output, text, toArray, typeOf;
     consoles = {};
-    
-    //include console
     History = function() {
       var history, index;
       index = -1;
@@ -690,9 +521,7 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
         defaultOptions = {
           massRatio: 0.1,
           innerRatio: 0.1,
-          position: seen.P(),
-          detail: false,
-          sliders: false
+          position: seen.P()
         };
         this.config = Object.assign({}, defaultOptions, options);
         this.innerSphere = new CANNON.Body({
@@ -737,19 +566,15 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
         // end of physical simulation stuf
 
         //visual (avatar) stuff
-        // create seen model for outerHull & it's decorations
-        this.outerHull = new seen.Model();
-        //@.outerHull.add hull=seen.Shapes.sphere().scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
-        this.outerHull.add(hull = seen.Shapes.sphere().scale(this.radius * 10).fill(new seen.Material(seen.C(200, 200, 20, 200))));
-        this.outerHull.bake();
-        this.avatar.add(this.outerHull);
-        if (!this.config.detail) {
-          return;
-        }
         // scene model for the control force tetrahedron 
         this.avatar.add(this.innerHull = seen.Shapes.tetrahedron().scale(10 * this.radius * this.config.innerRatio).stroke(new seen.Material(seen.C(20, 200, 200, 200))));
         this.innerHull.fill(new seen.Material('hsla(0,0,0,1)'));
         this.innerHull.bake();
+        // create seen model for outerHull & it's decorations
+        this.outerHull = new seen.Model();
+        //@.outerHull.add hull=seen.Shapes.sphere().scale(@radius*10).fill new seen.Material seen.C 200,200,20,200
+        this.outerHull.add(hull = tetrahedralSphere(4).scale(this.radius * 10).fill(new seen.Material(seen.C(200, 200, 20, 200))));
+        this.outerHull.bake();
         tetraNames = ["orange", "blue", "green", "violet"];
         colorHex = ["#FDD459", "#46e1d4", "#24C52B", "#C31A96"];
         this.accessControlPoints(function(e) {
@@ -758,52 +583,39 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
             color: colorHex[e.index]
           };
         });
-        this.accessControlPoints((e) => { // creaate the four struts
-          var el, pInner, pOuter, rc, strut, what;
+        this.accessControlPoints((e) => {
+          var pInner, pOuter, rc, strut;
           pInner = e.p.copy().multiply(5 * this.radius * this.config.innerRatio);
           pOuter = e.p.copy().multiply(5 * this.radius);
           strut = seen.Shapes.pipe(pOuter, pInner, 0.1, 3);
           strut.name = e.viewAttributes.name;
+          //strutV = seen.Shapes.pipe pOuter,pInner,0.1,3
+          //strutV.name = e.viewAttributes.name + '-old'
           e.strut = strut;
+          //e.strutV = strutV
           rc = seen.Colors.parse(e.viewAttributes.color);
-          rc.a = 128;
           this.avatar.add(strut.fill(new seen.Material(rc)));
-          if (!this.config.sliders) {
-            return;
-          }
-          el = document.getElementById('sliders');
-          //debugger
-          what = document.createElement("div");
-          what.innerHTML = T.render(function() {
-            var ident;
-            ident = `slider-${e.index}`;
-            T.input(`#${ident}`, {
-              type: "range",
-              min: 0,
-              max: 255,
-              oninput: `Pylon.trigger('${ident}:jam',this);`
-            });
-            T.label({
-              for: ident
-            }, e.viewAttributes.name);
-            T.input(`#${ident}-watch.right`, {
-              type: "range",
-              min: 0,
-              max: 255
-            });
-            return T.input(`#${ident}-shift.right`, {
-              type: "range",
-              min: 0,
-              max: 255,
-              oninput: `Pylon.trigger('${ident}:shift',this);`
-            });
-          });
-          el.appendChild(what);
-          return Pylon.on(`slider-${e.index}:watch`, (f) => {
-            el = document.getElementById(`slider-${e.index}-watch`);
-            el.value = f * 7 - 128;
-          });
+          rc = seen.Colors.parse(e.viewAttributes.color);
+          return rc.a = 128;
         });
+        //@outerHull.add strutV.fill new seen.Material rc
+        /*
+        el = document.getElementById('sliders')
+        #debugger
+        what = document.createElement("div")
+        what.innerHTML= T.render ()->
+          ident = "slider-#{e.index}"
+          T.input "##{ident}",type:"range", min:0,max:255,oninput: "Pylon.trigger('#{ident}:jam',this);"
+          T.label for: ident,e.viewAttributes.name
+          T.input "##{ident}-watch.right",type:"range", min:0,max:255
+          T.input "##{ident}-shift.right",type:"range", min:0,max:255, oninput: "Pylon.trigger('#{ident}:shift',this);"
+        el.appendChild what
+        Pylon.on "slider-#{e.index}:watch",(f)=>
+          el=document.getElementById "slider-#{e.index}-watch"
+          el.value = f*7-128
+          return
+         */
+        this.avatar.add(this.outerHull);
         return;
       }
 
@@ -817,15 +629,12 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
         pr = this.outerSphere.quaternion;
         rotation = new seen.Quaternion(pr.x, pr.y, pr.z, pr.w);
         //console.log "outie",po
-        this.outerHull.reset().transform(rotation.toMatrix());
-        this.outerHull.translate(po.x, po.y, po.z);
-        if (!this.config.detail) {
-          return;
-        }
         pi = toPoint(this.innerSphere.position);
         //console.log "innie",pi
         this.innerHull.reset().transform(rotation.toMatrix());
         this.innerHull.translate(pi.x, pi.y, pi.z);
+        this.outerHull.reset().transform(rotation.toMatrix());
+        this.outerHull.translate(po.x, po.y, po.z);
         this.accessControlPoints((e) => {
           var angle, bottom, ls, obtuse, perp, r, size, top, vio, viol, vis, visl, vos, vosl, wi, wo, ws;
           // vio,vos,vis vector sides of triangles
@@ -951,12 +760,13 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
       }));
     };
 
-    window.bind1 = bind; //hack to make coffeeescript autogenerated bind1 equiv to bind
+    window.bind1 = bind; //hack
 
     return RollerBall;
 
   }).call(this);
-  console = Console("console0", window);
+  
+  //console=Console "console0",window
   // Setup our world
   world = new (CANNON.World)();
   // m/s²
@@ -982,8 +792,7 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
   // Create scene and add shape to model
   world.scene = scene = new seen.Scene({
     model: seen.Models.default(),
-    viewport: seen.Viewports.center(width, height),
-    shader: seen.Shaders.Flat
+    viewport: seen.Viewports.center(width, height)
   });
   avatar = world.scene.model;
   balls = [];
@@ -997,7 +806,6 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
     return results;
   };
   balls.push(new RollerBall("Biggie", world, 100, 0.50, {
-    detail: true,
     position: new CANNON.Vec3(1, 1, 0.75)
   }));
   //balls.push new RollerBall "mannie",world,10,0.30, position:new CANNON.Vec3 1,1.3,5
@@ -1034,8 +842,7 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
   onceStop = false;
   dropTime = 10000;
   simulateThem = function(t, dt) {
-    var again, fixedTimeStep, last, lastTime, maxSubSteps, now;
-    now = Date.now();
+    var fixedTimeStep, lastTime, maxSubSteps;
     fixedTimeStep = 1.0 / 60.0;
     // seconds
     maxSubSteps = 3;
@@ -1051,21 +858,19 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
       if (onceStop) {
         startStop = false;
         onceStop = false;
+        allBall(function(b) {
+          return console.log(b.A, b.outerSphere.position, b.innerSphere.position);
+        });
       }
-      //allBall (b)->console.log b.A,b.outerSphere.position,b.innerSphere.position
       //debugger
       world.step(fixedTimeStep, dt, maxSubSteps);
     }
-    //console.log fixedTimeStep,dt,t
-    again = Date.now();
     
     timeStamp += dt * 1e-2;
     allBall(function(b) {
       return b.update();
     });
-    last = Date.now();
   };
-  //console.log last-again, again-now
   m = Pylon.Mithril;
   seenModel = scene.model.append();
   // Add mouse-rotate
@@ -1121,4 +926,4 @@ press '.' to single step the simulation.</p></div><div id="bloviation" class="co
     }
   };
 })();
-})();</script><div id="cover" style="background-image:url(/assets/images/hooray-fade2.jpg);-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH"></div></div></body></html>
+})();</script><div id=cover style=background-image:url(/assets/images/hooray-fade2.jpg);-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH></div></div>

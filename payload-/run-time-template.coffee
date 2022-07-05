@@ -27,8 +27,7 @@ $ ->
     console.log "Font Loader Error-- OK for site-master build phase"
     console.log badDog
   
-module.exports =  class CelarienLook
- 
+module.exports = {
   widgetWrap: ->
     {attrs,contents} = T.normalizeArgs arguments
     id = attrs.id
@@ -38,4 +37,4 @@ module.exports =  class CelarienLook
     T.div '.container.widget-wrap.p-2.my-1',attrs , ->
       T.h3 title unless !title
       T.div '.btn-group.btn-group-vertical.widget',->contents
-  
+}
