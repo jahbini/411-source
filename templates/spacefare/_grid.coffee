@@ -76,19 +76,19 @@ class Point
 class Points extends Backbone.collection
   model: Point
   addToLattice: (who,where,what,parent)->
-  try
-    pointFinal = seen.P(0,0,0).transform(what.m).round()
-    return null unless 1000 > pointFinal.magnitude()
-    sig= siggy parent, who, where
-    dumpText "New Point", sig, who,parent
-    @add
-      id:what.surfaces[0].id
-      blade: who
-      offset: where
-      pointFinal: pointFinal
-      signature: sig
-  catch badboy
-    alert "233 "+badboy
+    try
+      pointFinal = seen.P(0,0,0).transform(what.m).round()
+      return null unless 1000 >= pointFinal.magnitude()
+      sig= siggy parent, who, where
+      dumpText "New Point", sig, who,parent
+      @add
+        id:what.surfaces[0].id
+        blade: who
+        offset: where
+        pointFinal: pointFinal
+        signature: sig
+    catch badboy
+      alert "233 "+badboy
 
 allPoints = new Points()
 
@@ -116,6 +116,9 @@ siggy = (p,blade,wp)->
 Origin = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])])
 Origin.fill(new seen.Material('#880000')).scale 5
 seenModels.add Origin
+#
+#createEmplace2 lx[0],4
+createEmplace=(parent,inputPower)->
   if inputPower >= 0
     for i in [0..4]
       blade = bladeScheme[i]
@@ -147,16 +150,6 @@ seenModels.add Origin
       destination=buildPoint blade2,1,parent2
       #dumpText JSON.stringify destination
       pipeIt parent2,destination,'#5eee23'
-
-lx = [[latticeOrigin ]]
-try
-  #createEmplace2 lx[0],4
-  for ii in [4..0]
-    lx[0].forEach (l)-> createEmplace2 l,ii
-    lx.unshift latticePoints
-    latticePoints = new latticePointCollection()
-catch badboy
-  alert '123 '+ badboy
 
 dumpText "JAH here"
 dumpText latticePoints.length

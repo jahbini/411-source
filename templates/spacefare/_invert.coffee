@@ -1,4 +1,4 @@
-seenInverse (m)->
+seenInverse= (m)->
   m.inverse = invert (new Array 16),m.slice
 ###*
 # Inverts a mat4

@@ -1,30 +1,6 @@
 # #-------- class start
 renderer = class index extends siteTemplate
   # 
-  # section html
-  # 
-  # 
-  # section site_body
-  # 
-  # 
-  # section cover
-  # 
-  # 
-  # section footer
-  # 
-  # 
-  # section sidecar
-  # 
-  # 
-  # section fb_status
-  # 
-  # 
-  # section sidebar
-  # 
-  # 
-  # section storyBar
-  # 
-  # 
   # section bloviation
   # 
   bloviation: =>
@@ -35,6 +11,17 @@ renderer = class index extends siteTemplate
       $ ()->
         try
           #include _invert.coffee
+          #
+          inputPath="harpo2chico2stan2babe2groucho2"
+          inputPath+="harpo3"
+          inputPath+="chico2stan2babe2groucho2harpo2"
+          inputPath+="chico3"
+          inputPath+="stan2babe2groucho2harpo2chico2"
+          inputPath+="stan3"
+          inputPath+="babe2groucho2harpo2chico2stan2"
+          inputPath+="babe3"
+          inputPath+="groucho2harpo2chico2stan2babe2"
+          inputPath+="groucho3"
           #include _seenery.coffee
         catch badScene
           alert "Seenery fail "+badScene

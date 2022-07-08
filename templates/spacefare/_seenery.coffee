@@ -4,7 +4,7 @@ T=require "halvalla"
 B=require "backbone"
 _= require "underscore"
 
-rho = 50/1.618033  #set powers[0] to 50
+rho = 15/1.618033  #set powers[0] to 15
 powers = for i in [0..10]
   rho = rho * 1.61803398
 dumpText= (text...)->
@@ -43,7 +43,7 @@ for basis,i in [ "groucho","harpo","chico","stan","babe"]
 fillColor = seen.Colors.rgb 255,5,5
 newDot =(theColor = fillColor, text="origin")->
   #shape = seen.Shapes.text(text, {font: '10px Roboto', cullBackfaces: false, anchor: 'left'}).fill('#000000')
-  shape = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])])
+  shape = new seen.Shape('tri', [new seen.Surface([seen.P(4, 0, 0), seen.P(0, -1, 0), seen.P(0, 1, 0)])])
   shape.fill(new seen.Material(theColor)).scale 5
 
 latticePoint = B.Model.extend()
@@ -108,11 +108,15 @@ allPaths = new Paths()
 siggy = (p,blade,wp)->
   "#{p.get "signature"}/#{blade}-#{blades[blade].angle}.#{wp}"
 
-Origin = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])])
+Origin = new seen.Shape('tri', [new seen.Surface([seen.P(0, 4, 0), seen.P(1, 0, 0), seen.P(-1,0, 0)])])
 Origin.fill(new seen.Material('#880000')).scale 5
 seenModels.add Origin
 
-createEmplace2 = (parent = latticeOrigin,inputPower=-1)->
+createEmplace = (parent = latticeOrigin,blade,inputPower=0)->
+  direction=1
+  if inputPower<0
+    direction=-1
+    inputPower=-inputPower
   bladeModel = seenModels.append()
   buildPoint = (blade,thePower,theParent)->
     return unless theParent
@@ -122,7 +126,7 @@ createEmplace2 = (parent = latticeOrigin,inputPower=-1)->
       #dumpText "build",signature
       b = blades[blade]
       bb = b.points[thePower]
-      dot = newDot(blades[blade].color,signature).rotz(b.slope).translate(bb.x,bb.y,0).translate x, y, z
+      dot = newDot(blades[blade].color,signature).rotz(b.slope).translate(bb.x*direction,bb.y*direction,0).translate x, y, z
       dot.bake().reset()
       #dumpText "dot", signature, dot
       bladeModel.add dot
@@ -143,48 +147,20 @@ createEmplace2 = (parent = latticeOrigin,inputPower=-1)->
     ln1 = seen.Shapes.pipe  (interpolatePoints sp, dp, .9),(interpolatePoints sp, dp, .2)
     ln1.fill color
     bladeModel.add ln1
+  
+  #alert "in create #{blade} #{inputPower}"
+  newPoint = buildPoint blade,inputPower,parent
+  pipeIt parent,newPoint,colorScheme[inputPower+5]
+  newPoint
 
-  if inputPower >= 0
-    for i in [0..4]
-      blade = bladeScheme[i]
-      #dumpText "spoke",blade,inputPower
-      destination=buildPoint blade,inputPower,parent
-      continue unless destination
-      #dumpText "destination",destination
-      pipeIt parent,destination,colorScheme[inputPower+5]
-  else  # old tiling method generated multiple names
-    for i in [0..4]
-      [blade2,blade1] = bladeScheme[i..i+1]
-      #dumpText "first leg",blade1,blade2
-      parent2=buildPoint blade1,0,parent
-      continue unless parent2
-      #dumpText "parent2", parent2
-      pipeIt parent,parent2,'#123456'
-      destination = buildPoint blade2, 0, parent2
-      continue unless destination
-      #dumpText "destination",blade2,destination
-      pipeIt parent2,destination,'#345612'
+start= latticeOrigin
 
-    for i in [5..9]
-      [blade1,blade2] = bladeScheme[i..i+1]
-      #dumpText blade1+","+blade2
-      parent2=buildPoint blade1,2,parent
-      #dumpText JSON.stringify parent2
-      pipeIt parent,parent2,'#456123'
-      continue unless parent2
-      destination=buildPoint blade2,1,parent2
-      #dumpText JSON.stringify destination
-      pipeIt parent2,destination,'#5eee23'
+while inputPath
+  result = inputPath.match /(harpo|groucho|chico|stan|babe)(-?[0-9]*)(.*)$/
+  inputPath= result[3]
+  #dumpText result
+  start = createEmplace start,result[1],result[2]
 
-lx = [[latticeOrigin ]]
-try
-  #createEmplace2 lx[0],4
-  for ii in [4..0]
-    lx[0].forEach (l)-> createEmplace2 l,ii
-    lx.unshift latticePoints
-    latticePoints = new latticePointCollection()
-catch badboy
-  alert '123 '+ badboy
 
 dumpText "JAH here"
 dumpText latticePoints.length

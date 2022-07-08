@@ -12,11 +12,11 @@
            * @param {ReadonlyMat4} a the source matrix
            * @returns {mat4} out
            */
-          var B, Origin, Paths, Ratios, _, addToLattice, allPaths, badScene, badboy, basis, bigM, bladeScheme, blades, color, colorScheme, context, createEmplace2, dot, dumpText, fillColor, g, height, i, ii, invert, j, k, latticeOrigin, latticePoint, latticePointCollection, latticePoints, len, lx, n, newDot, powers, ref, rho, rhoShow, scene, seenModels, siggy, slope, v;
+          var B, Origin, Paths, Ratios, _, addToLattice, allPaths, badScene, basis, bigM, bladeScheme, blades, color, colorScheme, context, createEmplace, dot, dumpText, fillColor, g, height, i, inputPath, invert, j, k, latticeOrigin, latticePoint, latticePointCollection, latticePoints, len, newDot, powers, ref, result, rho, rhoShow, scene, seenInverse, seenModels, siggy, slope, start, v;
           try {
-            seenInverse(function(m) {
+            seenInverse = function(m) {
               return m.inverse = invert(new Array(16), m.slice);
-            });
+            };
             invert = function(out, a) {
               var a00, a01, a02, a03, a10, a11, a12, a13, a20, a21, a22, a23, a30, a31, a32, a33, b00, b01, b02, b03, b04, b05, b06, b07, b08, b09, b10, b11, det;
               a00 = a[0];
@@ -71,11 +71,22 @@
               out[15] = (a20 * b03 - (a21 * b01) + a22 * b00) * det;
               return out;
             };
+            
+            inputPath = "harpo2chico2stan2babe2groucho2";
+            inputPath += "harpo3";
+            inputPath += "chico2stan2babe2groucho2harpo2";
+            inputPath += "chico3";
+            inputPath += "stan2babe2groucho2harpo2chico2";
+            inputPath += "stan3";
+            inputPath += "babe2groucho2harpo2chico2stan2";
+            inputPath += "babe3";
+            inputPath += "groucho2harpo2chico2stan2babe2";
+            inputPath += "groucho3";
             height = 800;
             T = require("halvalla");
             B = require("backbone");
             _ = require("underscore");
-            rho = 50 / 1.618033; //set powers[0] to 50
+            rho = 15 / 1.618033; //set powers[0] to 15
             powers = (function() {
               var j, results;
               results = [];
@@ -134,7 +145,7 @@
             newDot = function(theColor = fillColor, text = "origin") {
               var shape;
               //shape = seen.Shapes.text(text, {font: '10px Roboto', cullBackfaces: false, anchor: 'left'}).fill('#000000')
-              shape = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])]);
+              shape = new seen.Shape('tri', [new seen.Surface([seen.P(4, 0, 0), seen.P(0, -1, 0), seen.P(0, 1, 0)])]);
               return shape.fill(new seen.Material(theColor)).scale(5);
             };
             latticePoint = B.Model.extend();
@@ -227,11 +238,16 @@
             siggy = function(p, blade, wp) {
               return `${p.get("signature")}/${blade}-${blades[blade].angle}.${wp}`;
             };
-            Origin = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])]);
+            Origin = new seen.Shape('tri', [new seen.Surface([seen.P(0, 4, 0), seen.P(1, 0, 0), seen.P(-1, 0, 0)])]);
             Origin.fill(new seen.Material('#880000')).scale(5);
             seenModels.add(Origin);
-            createEmplace2 = function(parent = latticeOrigin, inputPower = -1) {
-              var blade, blade1, blade2, bladeModel, buildPoint, destination, n, o, parent2, pipeIt, q, results, results1;
+            createEmplace = function(parent = latticeOrigin, blade, inputPower = 0) {
+              var bladeModel, buildPoint, direction, newPoint, pipeIt;
+              direction = 1;
+              if (inputPower < 0) {
+                direction = -1;
+                inputPower = -inputPower;
+              }
               bladeModel = seenModels.append();
               buildPoint = function(blade, thePower, theParent) {
                 var b, badboy, bb, signature, x, y, z;
@@ -244,7 +260,7 @@
                   //dumpText "build",signature
                   b = blades[blade];
                   bb = b.points[thePower];
-                  dot = newDot(blades[blade].color, signature).rotz(b.slope).translate(bb.x, bb.y, 0).translate(x, y, z);
+                  dot = newDot(blades[blade].color, signature).rotz(b.slope).translate(bb.x * direction, bb.y * direction, 0).translate(x, y, z);
                   dot.bake().reset();
                   //dumpText "dot", signature, dot
                   bladeModel.add(dot);
@@ -268,66 +284,18 @@
                 ln1.fill(color);
                 return bladeModel.add(ln1);
               };
-              if (inputPower >= 0) {
-                results = [];
-                for (i = n = 0; n <= 4; i = ++n) {
-                  blade = bladeScheme[i];
-                  //dumpText "spoke",blade,inputPower
-                  destination = buildPoint(blade, inputPower, parent);
-                  if (!destination) {
-                    continue;
-                  }
-                  //dumpText "destination",destination
-                  results.push(pipeIt(parent, destination, colorScheme[inputPower + 5]));
-                }
-                return results;
-              } else {
-                for (i = o = 0; o <= 4; i = ++o) {
-                  [blade2, blade1] = bladeScheme.slice(i, +(i + 1) + 1 || 9e9);
-                  //dumpText "first leg",blade1,blade2
-                  parent2 = buildPoint(blade1, 0, parent);
-                  if (!parent2) {
-                    continue;
-                  }
-                  //dumpText "parent2", parent2
-                  pipeIt(parent, parent2, '#123456');
-                  destination = buildPoint(blade2, 0, parent2);
-                  if (!destination) {
-                    continue;
-                  }
-                  //dumpText "destination",blade2,destination
-                  pipeIt(parent2, destination, '#345612');
-                }
-                results1 = [];
-                for (i = q = 5; q <= 9; i = ++q) {
-                  [blade1, blade2] = bladeScheme.slice(i, +(i + 1) + 1 || 9e9);
-                  //dumpText blade1+","+blade2
-                  parent2 = buildPoint(blade1, 2, parent);
-                  //dumpText JSON.stringify parent2
-                  pipeIt(parent, parent2, '#456123');
-                  if (!parent2) {
-                    continue;
-                  }
-                  destination = buildPoint(blade2, 1, parent2);
-                  //dumpText JSON.stringify destination
-                  results1.push(pipeIt(parent2, destination, '#5eee23'));
-                }
-                return results1;
-              }
+              
+              //alert "in create #{blade} #{inputPower}"
+              newPoint = buildPoint(blade, inputPower, parent);
+              pipeIt(parent, newPoint, colorScheme[inputPower + 5]);
+              return newPoint;
             };
-            lx = [[latticeOrigin]];
-            try {
-            //createEmplace2 lx[0],4
-              for (ii = n = 4; n >= 0; ii = --n) {
-                lx[0].forEach(function(l) {
-                  return createEmplace2(l, ii);
-                });
-                lx.unshift(latticePoints);
-                latticePoints = new latticePointCollection();
-              }
-            } catch (error) {
-              badboy = error;
-              alert('123 ' + badboy);
+            start = latticeOrigin;
+            while (inputPath) {
+              result = inputPath.match(/(harpo|groucho|chico|stan|babe)(-?[0-9]*)(.*)$/);
+              inputPath = result[3];
+              //dumpText result
+              start = createEmplace(start, result[1], result[2]);
             }
             dumpText("JAH here");
             dumpText(latticePoints.length);

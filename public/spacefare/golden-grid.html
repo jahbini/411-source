@@ -5,7 +5,7 @@
     indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
   (() => {
         return $(function() {
-          var B, Origin, Paths, Ratios, _, addToLattice, allPaths, badScene, badboy, basis, bigM, bladeScheme, blades, color, colorScheme, context, createEmplace2, dot, dumpText, fillColor, g, height, i, ii, j, k, latticeOrigin, latticePoint, latticePointCollection, latticePoints, len, lx, m, newDot, powers, ref, rho, rhoShow, scene, seenModels, siggy, slope, v;
+          var B, Edge, Edges, Origin, Point, Points, Ratios, Triangle, Triangles, _, allEdges, allPoints, allTriangles, badScene, basis, bigM, bladeScheme, blades, color, colorScheme, context, createEmplace, dot, dumpText, fillColor, g, height, i, j, k, latticeOrigin, len, newDot, powers, ref, rho, rhoShow, scene, seenModels, siggy, slope, v;
           try {
             height = 800;
             T = require("halvalla");
@@ -66,38 +66,94 @@
                 color: color
               };
             }
+            Triangle = class Triangle extends Backbone.Model {
+              constructor() {}
+
+            };
+            Triangles = (function() {
+              class Triangles extends Backbone.Collection {
+                constructor() {}
+
+              };
+
+              Triangles.prototype.model = Triangle;
+
+              return Triangles;
+
+            }).call(this);
+            allTriangles = new Triangles();
+            
+              //prototype for new edge
+            //allEdges.pipeIt parent,destination,colorScheme[inputPower+5]
+            Edge = class Edge extends Backbone.Model {
+              constructor() {}
+
+            };
+            Edges = (function() {
+              class Edges extends Backbone.Collection {
+                pipeIt(s, d, color) {
+                  var dp, interpolatePoints, ln1, sp;
+                  interpolatePoints = function(a, b, t) {
+                    return seen.P(a.x * (1.0 - t) + b.x * t, a.y * (1.0 - t) + b.y * t, a.z * (1.0 - t) + b.z * t);
+                  };
+                  sp = s.get("pointFinal");
+                  dp = d.get("pointFinal");
+                  this.add(sp, dp);
+                  ln1 = seen.Shapes.pipe(interpolatePoints(sp, dp, .9), interpolatePoints(sp, dp, .2));
+                  ln1.fill(color);
+                  return bladeModel.add(ln1);
+                }
+
+              };
+
+              Edges.prototype.model = Edge;
+
+              return Edges;
+
+            }).call(this);
+            allEdges = new Edges();
+            Point = class Point {
+              constructor() {}
+
+            };
+            Points = (function() {
+              class Points extends Backbone.collection {
+                addToLattice(who, where, what, parent) {
+                  var badboy, pointFinal, sig;
+                  try {
+                    pointFinal = seen.P(0, 0, 0).transform(what.m).round();
+                    if (!(1000 >= pointFinal.magnitude())) {
+                      return null;
+                    }
+                    sig = siggy(parent, who, where);
+                    dumpText("New Point", sig, who, parent);
+                    return this.add({
+                      id: what.surfaces[0].id,
+                      blade: who,
+                      offset: where,
+                      pointFinal: pointFinal,
+                      signature: sig
+                    });
+                  } catch (error) {
+                    badboy = error;
+                    return alert("233 " + badboy);
+                  }
+                }
+
+              };
+
+              Points.prototype.model = Point;
+
+              return Points;
+
+            }).call(this);
+            allPoints = new Points();
             fillColor = seen.Colors.rgb(255, 5, 5);
             newDot = function(theColor = fillColor, text = "origin") {
               var shape;
               //shape = seen.Shapes.text(text, {font: '10px Roboto', cullBackfaces: false, anchor: 'left'}).fill('#000000')
               shape = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])]);
               return shape.fill(new seen.Material(theColor)).scale(5);
-            };
-            latticePoint = B.Model.extend();
-            latticePointCollection = B.Collection.extend({
-              model: latticePoint
-            });
-            latticePoints = new latticePointCollection();
-            addToLattice = function(who, where, what, parent) {
-              var badboy, pointFinal, sig;
-              try {
-                pointFinal = seen.P(0, 0, 0).transform(what.m).round();
-                if (!(1000 > pointFinal.magnitude())) {
-                  return null;
-                }
-                sig = siggy(parent, who, where);
-                //dumpText "lattice sig", sig, who,parent
-                return latticePoints.add({
-                  id: what.surfaces[0].id,
-                  blade: who,
-                  offset: where,
-                  pointFinal: pointFinal,
-                  signature: sig
-                });
-              } catch (error) {
-                badboy = error;
-                return alert("233 " + badboy);
-              }
             };
             latticeOrigin = new latticePoint({
               id: "o0",
@@ -106,104 +162,20 @@
               pointFinal: seen.P(0, 0, 0),
               signature: "_"
             });
-            //latticePoints.add latticeOrigin
+            allPoints.add(latticeOrigin);
             dot = null;
             seenModels = new seen.Models.default();
             bladeScheme = ["groucho", "harpo", "chico", "stan", "babe", "groucho", "chico", "babe", "harpo", "stan", "groucho"];
-            Paths = class Paths {
-              // local p accumulates all Paths to a specific vertex from the origin
-              constructor() {
-                this.p = {};
-              }
-
-              addPath(v, data) {
-                var bladesInPath, path, t;
-                bladesInPath = t = data.split('/');
-                path = _.sortBy(t, function(d) {
-                  return d;
-                });
-                data = path.join('/');
-                if (!this.p[v.x]) {
-                  this.p[v.x] = {};
-                }
-                //dumpText JSON.stringify v
-                //dumpText data
-                if (!(t = this.p[v.x][v.y])) {
-                  this.p[v.x][v.y] = [data];
-                  return true;
-                }
-                //return false unless -1 == _.indexOf t, data
-                //# this adds more links to vertex lets just try the first in the class
-                //t.unshift data
-                return true;
-              }
-
-              mostPaths() {
-                var byXY, byY, max, ref1, x, y;
-                max = [];
-                ref1 = this.p;
-                for (x in ref1) {
-                  byY = ref1[x];
-                  for (y in byY) {
-                    byXY = byY[y];
-                    if (byXY.length > max.length) {
-                      max.push(byXY);
-                    }
-                  }
-                }
-                return {
-                  x: x,
-                  y: y,
-                  max: max
-                };
-              }
-
-            };
-            allPaths = new Paths();
             siggy = function(p, blade, wp) {
               return `${p.get("signature")}/${blade}-${blades[blade].angle}.${wp}`;
             };
             Origin = new seen.Shape('tri', [new seen.Surface([seen.P(-1, -1, 0), seen.P(1, -1, 0), seen.P(0, 4, 0)])]);
             Origin.fill(new seen.Material('#880000')).scale(5);
             seenModels.add(Origin);
-            createEmplace2 = function(parent = latticeOrigin, inputPower = -1) {
-              var blade, blade1, blade2, bladeModel, buildPoint, destination, m, n, o, parent2, pipeIt, results, results1;
-              bladeModel = seenModels.append();
-              buildPoint = function(blade, thePower, theParent) {
-                var b, badboy, bb, signature, x, y, z;
-                if (!theParent) {
-                  return;
-                }
-                try {
-                  ({x, y, z} = theParent.get("pointFinal"));
-                  signature = siggy(theParent, blade, thePower);
-                  //dumpText "build",signature
-                  b = blades[blade];
-                  bb = b.points[thePower];
-                  dot = newDot(blades[blade].color, signature).rotz(b.slope).translate(bb.x, bb.y, 0).translate(x, y, z);
-                  dot.bake().reset();
-                  //dumpText "dot", signature, dot
-                  bladeModel.add(dot);
-                  if (!allPaths.addPath(seen.P(0, 0, 0).transform(dot.m).round(), signature)) {
-                    return null;
-                  }
-                } catch (error) {
-                  badboy = error;
-                  alert(badboy);
-                }
-                return addToLattice(blade, thePower, dot, theParent);
-              };
-              pipeIt = function(s, d, color) {
-                var dp, interpolatePoints, ln1, sp;
-                interpolatePoints = function(a, b, t) {
-                  return seen.P(a.x * (1.0 - t) + b.x * t, a.y * (1.0 - t) + b.y * t, a.z * (1.0 - t) + b.z * t);
-                };
-                sp = s.get("pointFinal");
-                dp = d.get("pointFinal");
-                ln1 = seen.Shapes.pipe(interpolatePoints(sp, dp, .9), interpolatePoints(sp, dp, .2));
-                ln1.fill(color);
-                return bladeModel.add(ln1);
-              };
+            
+            //createEmplace2 lx[0],4
+            createEmplace = function(parent, inputPower) {
+              var blade, blade1, blade2, destination, m, n, o, parent2, results, results1;
               if (inputPower >= 0) {
                 results = [];
                 for (i = m = 0; m <= 4; i = ++m) {
@@ -214,7 +186,7 @@
                     continue;
                   }
                   //dumpText "destination",destination
-                  results.push(pipeIt(parent, destination, colorScheme[inputPower + 5]));
+                  results.push(allEdges.pipeIt(parent, destination, colorScheme[inputPower + 5]));
                 }
                 return results;
               } else {
@@ -251,20 +223,6 @@
                 return results1;
               }
             };
-            lx = [[latticeOrigin]];
-            try {
-            //createEmplace2 lx[0],4
-              for (ii = m = 4; m >= 0; ii = --m) {
-                lx[0].forEach(function(l) {
-                  return createEmplace2(l, ii);
-                });
-                lx.unshift(latticePoints);
-                latticePoints = new latticePointCollection();
-              }
-            } catch (error) {
-              badboy = error;
-              alert('123 ' + badboy);
-            }
             dumpText("JAH here");
             dumpText(latticePoints.length);
             g = allPaths.mostPaths();
