@@ -117,7 +117,6 @@
 
 (function() {
 var global = typeof window === 'undefined' ? this : window;
-var process;
 var __makeRelativeRequire = function(require, mappings, pref) {
   var none = {};
   var tryReq = function(name, pref) {
@@ -461,28 +460,25 @@ module.exports = T.bless(Fibonacci = (function() {
 });
 
 ;require.register("components/sidebar-view.coffee", function(exports, require, module) {
-var B, Sidebar, T, Template, template,
+var B, Sidebar, T, sideStuff, ss, template,
   boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
 T = Pylon.Halvalla;
 
 B = require('backbone');
 
-//{  Panel, PanelHeader, Link } = Pylon.Rebass
-
 //Panel = T.bless Panel
 //Link = T.bless Link
 //PanelHeader = T.bless PanelHeader
-Template = require("payload-/run-time-template.coffee");
+template = require("payload-/run-time-template.coffee");
 
-template = new Template(T);
-
-module.exports = T.bless(Sidebar = (function() {
+sideStuff = Sidebar = (function() {
   class Sidebar extends B.Model {
     constructor() {
-      super(...arguments);
+      super();
       this.clickHandler = this.clickHandler.bind(this);
       this.view = this.view.bind(this);
+      return;
     }
 
     clickHandler(e) {
@@ -501,21 +497,22 @@ module.exports = T.bless(Sidebar = (function() {
     view(vnode) {
       var collection, data, filter, intermediate, teacupContent;
       boundMethodCheck(this, Sidebar);
-      collection = vnode.attrs.collection;
-      filter = vnode.attrs.filter || function() {
+      collection = vnode.collection;
+      filter = vnode.filter || function() {
         return true;
       };
       intermediate = collection.filter(filter, this);
-      data = _(intermediate).sortBy(function(s) {
+      data = _.sortBy(intermediate, function(s) {
         return s.get('category');
-      }).groupBy(function(s) {
+      });
+      data = _.groupBy(data, function(s) {
         return s.get('category');
       });
       teacupContent = template.widgetWrap({
         title: "Contents"
       }, () => {
         var result;
-        result = data.each((allCrap, category, stuff) => {
+        result = _.each(data, (allCrap, category, stuff) => {
           var catPostfix, catPrefix, headliner, stories;
           if (category === '-') {
             return;
@@ -585,7 +582,13 @@ module.exports = T.bless(Sidebar = (function() {
 
   return Sidebar;
 
-}).call(this));
+}).call(this);
+
+ss = new sideStuff();
+
+module.exports = T.bless(sideStuff);
+
+module.exports = ss.view;
 });
 
 ;require.register("components/storybar-view.coffee", function(exports, require, module) {
@@ -920,7 +923,7 @@ module.exports = PageController = class PageController extends BaseController {
 ;require.register("initialize.coffee", function(exports, require, module) {
 
 //routes = require 'routes'
-var Backbone, Fibonacci, FontFaceObserver, Mithril, Palx, Pylon, PylonTemplate, Sidebar, Storybar, T, allStories, myStories, newColors, routes;
+var Backbone, FontFaceObserver, Halvalla, Mithril, Palx, Pylon, PylonTemplate, Sidebar, T, Underscore, Utils, allStories, badDog, dingodog, myStories, routes;
 
 window.$ = jQuery;
 
@@ -928,19 +931,28 @@ window._ = require('lodash');
 
 Backbone = require('backbone');
 
+Mithril = require('mithril');
+
+//Mui = require 'mui'
+//  Mss = require 'mss-js'
+Halvalla = require('halvalla/lib/halvalla-mithril.js');
+
+Palx = require('palx');
+
+Utils = require('./lib/utils');
+
+Underscore = require('underscore');
+
 PylonTemplate = Backbone.Model.extend({
-  //  state: (require './models/state.coffee').state
-  Mithril: require('mithril'),
-  //Mui: require 'mui'
-  Mss: require('mss-js'),
-  Halvalla: require('halvalla/lib/halvalla-mithril'),
-  Palx: require('palx'),
-  Utils: require('./lib/utils'),
-  Underscore: require('underscore'),
+  Mithril: Mithril,
+  Halvalla: Halvalla,
+  Palx: Palx,
+  Utils: Utils,
+  Underscore: Underscore,
   Backbone: Backbone
 });
 
-window.Pylon = Pylon = new PylonTemplate;
+window.Pylon = Pylon = new PylonTemplate();
 
 window._$_ = Pylon;
 
@@ -958,48 +970,35 @@ Pylon.on('all', function(event, ...rest) {
   return null;
 });
 
-FontFaceObserver = require('font-face-observer');
+try {
+  FontFaceObserver = require('font-face-observer');
+  T = Pylon.Halvalla;
+  Mithril = Pylon.Mithril;
+  //Storybar = require './components/storybar-view'
+  //Fibonacci = require './components/fibonacci'
+  routes = require('./routes');
+  //Palx = Pylon.Palx
+  Sidebar = require('./components/sidebar-view');
+} catch (error) {
+  dingodog = error;
+  alert(dingodog);
+}
 
-T = Pylon.Halvalla;
+try {
+  //newColors = Palx document.styling.palx
+  //newColors.black= document.styling.black
+  //newColors.white= document.styling.white
 
-Mithril = Pylon.Mithril;
+  // gather the global JSONs into Backbone collections 
+  ({myStories, allStories} = require('./models/stories.coffee'));
+} catch (error) {
+  badDog = error;
+  alert(badDog);
+}
 
-Sidebar = require('./components/sidebar-view');
-
-Storybar = require('./components/storybar-view');
-
-Fibonacci = require('./components/fibonacci');
-
-routes = require('./routes');
-
-Palx = Pylon.Palx;
-
-newColors = Palx(document.styling.palx);
-
-newColors.black = document.styling.black;
-
-newColors.white = document.styling.white;
-
-// gather the global JSONs into Backbone collections 
-({myStories, allStories} = require('./models/stories'));
-
-// suppress react styling
-/*
-styled= require   'styled-components'
-{ injectGlobal, keyframes } = styled
-styled = styled.default
-
-injectGlobal""" 
-  body {
-    * {box-sizing: border-box; }
-    body { margin: 0; }
-    font-family: sans-serif;
-  }
-"""
- */
 // Initialize the application on DOM ready event.
 $(function() {
-  var badDog, bloviation, divs, mine, realNode, sidebarContents, theirs;
+  var bloviation, divs, mine, realNode, sidebarContents, theirs;
   mine = {
     collection: myStories,
     filter: function(story) {
@@ -1014,12 +1013,11 @@ $(function() {
   };
   try {
     realNode = document.getElementById('sidebar');
-    //sidebarContents = T.Provider  theme: colors: newColors, Sidebar mine
     sidebarContents = Sidebar(mine);
     Mithril.render(realNode, sidebarContents);
   } catch (error) {
     badDog = error;
-    console.log(badDog);
+    alert(badDog);
   }
   divs = $('.siteInvitation');
   divs.each(function(key, div) {
@@ -1655,13 +1653,11 @@ module.exports = Navigation = (function() {
 });
 
 ;require.register("models/stories.coffee", function(exports, require, module) {
+  //allStories is global, as is myStories
 var Collection, Stories, Story,
   boundMethodCheck = function(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new Error('Bound instance method accessed before binding'); } };
 
 Collection = require('../models/base/collection.coffee', Story = require('../models/story.coffee'));
-
-//allStories is global, as is myStories
-'use strict';
 
 Stories = (function() {
   class Stories extends Collection {
@@ -1685,8 +1681,6 @@ Stories = (function() {
 
   };
 
-  // Stories are local,, so no need to Mix in a SyncMachine
-  //_.extend @prototype, Chaplin.SyncMachine
   Stories.prototype.model = Story;
 
   return Stories;
@@ -1762,7 +1756,7 @@ module.exports = routes;
 /*
 #global Pylon
  */
-var CelarienLook, T, _;
+var T, _;
 
 T = Pylon.Halvalla;
 
@@ -1795,8 +1789,8 @@ $(function() {
   }
 });
 
-module.exports = CelarienLook = class CelarienLook {
-  widgetWrap() {
+module.exports = {
+  widgetWrap: function() {
     var attrs, contents, id, title;
     ({attrs, contents} = T.normalizeArgs(arguments));
     id = attrs.id;
@@ -1812,12 +1806,10 @@ module.exports = CelarienLook = class CelarienLook {
       });
     });
   }
-
 };
 });
 
-;require.alias("buffer/index.js", "buffer");
-require.alias("process/browser.js", "process");process = require('process');require.register("___globals___", function(exports, require, module) {
+;require.register("___globals___", function(exports, require, module) {
   
 
 // Auto-loaded modules from config.npm.globals.
