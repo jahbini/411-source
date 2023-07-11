@@ -1,0 +1,19 @@
+{
+  "name": "rollerball",
+  "version": "1.0.0",
+  "description": "asset files for 3D physics engie for rollerball",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cp node_modules/cannon/build/cannon.js .; cp node_modules/pid-coffee/pid.js ."
+  },
+  "keywords": [
+    "bullet"
+  ],
+  "author": "James A. Hinds",
+  "license": "ISC",
+  "dependencies": {
+    "cannon": "github:schteppe/cannon.js",
+    "pid-coffee": "https://github.com/jahbini/PID.git"
+  }
+}

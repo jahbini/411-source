@@ -1,5 +1,6 @@
 # #-------- class start
-renderer = class index extends _411SourceTemplate
+doHtml = true
+renderer = class index extends siteTemplate
   # 
   # section html
   # 
@@ -28,8 +29,11 @@ renderer = class index extends _411SourceTemplate
   # section bloviation
   # 
   bloviation: =>
-    T.div "#bloviation.contents", =>
-      T.p "put your content here"
+    if doHtml
+      @html()
+      doHtml = false
+    else
+      T.raw "<slot:bloviation>"
   # 
   # section header
   # 
@@ -40,3 +44,29 @@ renderer = class index extends _411SourceTemplate
 
 # ------- db start
 db = {} unless db
+
+#
+db[id="411-source/app/app"] =
+  title: "app"
+  slug: "app"
+  category: "app"
+  site: "411-source"
+  accepted: false
+  index: false
+  sourcePath: ""
+  headlines: []
+  tags: []
+  snippets: "{\"first name\":\"first name\"}"
+  memberOf: []
+  created: "2023-07-11T14:57:14.696Z"
+  lastEdited: "2023-07-11T14:57:14.696Z"
+  published: "2023-07-11T14:57:14.696Z"
+  embargo: "2023-07-11T14:57:14.696Z"
+  captureDate: "2023-07-11T14:57:14.696Z"
+  TimeStamp: 1689087434696
+  debug: ""
+  author: "James A. Hinds: The 411-source's best friend.  I'm not him, I wear glasses"
+  id: "411-source/app/app"
+  name: "app"
+#
+#end of story

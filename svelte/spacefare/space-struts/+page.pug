@@ -1,0 +1,326 @@
+#bloviation.contents
+  canvas#seen-canvas(width='800', height='800')
+  #reference
+script(type='text/javascript').
+  (function() {
+    var slice = [].slice,
+      extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+      hasProp = {}.hasOwnProperty,
+      indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+    (function() {
+            return $(function() {
+              var B, Origin, Paths, Ratios, _, addToLattice, allPaths, badScene, basis, bigM, bladeScheme, blades, color, colorScheme, context, createEmplace, dot, dumpText, fillColor, g, height, i, inputPath, invert, j, k, latticeOrigin, latticePoint, latticePointCollection, latticePoints, len, newDot, powers, ref, result, rho, rhoShow, scene, seenInverse, seenModels, siggy, slope, start, v;
+              try {
+                seenInverse = function(m) {
+                  return m.inverse = invert(new Array(16), m.slice);
+                };
+  
+                /**
+                 * Inverts a mat4
+                 *
+                 * @param {mat4} out the receiving matrix
+                 * @param {ReadonlyMat4} a the source matrix
+                 * @returns {mat4} out
+                 */
+                invert = function(out, a) {
+                  var a00, a01, a02, a03, a10, a11, a12, a13, a20, a21, a22, a23, a30, a31, a32, a33, b00, b01, b02, b03, b04, b05, b06, b07, b08, b09, b10, b11, det;
+                  a00 = a[0];
+                  a01 = a[1];
+                  a02 = a[2];
+                  a03 = a[3];
+                  a10 = a[4];
+                  a11 = a[5];
+                  a12 = a[6];
+                  a13 = a[7];
+                  a20 = a[8];
+                  a21 = a[9];
+                  a22 = a[10];
+                  a23 = a[11];
+                  a30 = a[12];
+                  a31 = a[13];
+                  a32 = a[14];
+                  a33 = a[15];
+                  b00 = a00 * a11 - (a01 * a10);
+                  b01 = a00 * a12 - (a02 * a10);
+                  b02 = a00 * a13 - (a03 * a10);
+                  b03 = a01 * a12 - (a02 * a11);
+                  b04 = a01 * a13 - (a03 * a11);
+                  b05 = a02 * a13 - (a03 * a12);
+                  b06 = a20 * a31 - (a21 * a30);
+                  b07 = a20 * a32 - (a22 * a30);
+                  b08 = a20 * a33 - (a23 * a30);
+                  b09 = a21 * a32 - (a22 * a31);
+                  b10 = a21 * a33 - (a23 * a31);
+                  b11 = a22 * a33 - (a23 * a32);
+                  det = b00 * b11 - (b01 * b10) + b02 * b09 + b03 * b08 - (b04 * b07) + b05 * b06;
+                  if (!det) {
+                    return null;
+                  }
+                  det = 1.0 / det;
+                  out[0] = (a11 * b11 - (a12 * b10) + a13 * b09) * det;
+                  out[1] = (a02 * b10 - (a01 * b11) - (a03 * b09)) * det;
+                  out[2] = (a31 * b05 - (a32 * b04) + a33 * b03) * det;
+                  out[3] = (a22 * b04 - (a21 * b05) - (a23 * b03)) * det;
+                  out[4] = (a12 * b08 - (a10 * b11) - (a13 * b07)) * det;
+                  out[5] = (a00 * b11 - (a02 * b08) + a03 * b07) * det;
+                  out[6] = (a32 * b02 - (a30 * b05) - (a33 * b01)) * det;
+                  out[7] = (a20 * b05 - (a22 * b02) + a23 * b01) * det;
+                  out[8] = (a10 * b10 - (a11 * b08) + a13 * b06) * det;
+                  out[9] = (a01 * b08 - (a00 * b10) - (a03 * b06)) * det;
+                  out[10] = (a30 * b04 - (a31 * b02) + a33 * b00) * det;
+                  out[11] = (a21 * b02 - (a20 * b04) - (a23 * b00)) * det;
+                  out[12] = (a11 * b07 - (a10 * b09) - (a12 * b06)) * det;
+                  out[13] = (a00 * b09 - (a01 * b07) + a02 * b06) * det;
+                  out[14] = (a31 * b01 - (a30 * b03) - (a32 * b00)) * det;
+                  out[15] = (a20 * b03 - (a21 * b01) + a22 * b00) * det;
+                  return out;
+                };
+                inputPath = "harpo2chico2stan2babe2groucho2";
+                inputPath += "harpo3";
+                inputPath += "chico2stan2babe2groucho2harpo2";
+                inputPath += "chico3";
+                inputPath += "stan2babe2groucho2harpo2chico2";
+                inputPath += "stan3";
+                inputPath += "babe2groucho2harpo2chico2stan2";
+                inputPath += "babe3";
+                inputPath += "groucho2harpo2chico2stan2babe2";
+                inputPath += "groucho3";
+                height = 800;
+                T = require("halvalla");
+                B = require("backbone");
+                _ = require("underscore");
+                rho = 15 / 1.618033;
+                powers = (function() {
+                  var j, results;
+                  results = [];
+                  for (i = j = 0; j <= 10; i = ++j) {
+                    results.push(rho = rho * 1.61803398);
+                  }
+                  return results;
+                })();
+                dumpText = function() {
+                  var j, len, r, t, text;
+                  text = 1 <= arguments.length ? slice.call(arguments, 0) : [];
+                  r = "--";
+                  for (j = 0, len = text.length; j < len; j++) {
+                    t = text[j];
+                    if (_.isString(t)) {
+                      r += t;
+                    } else {
+                      r += JSON.stringify(t);
+                    }
+                    r += " --";
+                  }
+                  return $("#reference").append(T.render(T.p(r)));
+                };
+                rhoShow = T.render(T.div((function(_this) {
+                  return function() {
+                    var j;
+                    for (i = j = 0; j <= 10; i = ++j) {
+                      T.p("rho^" + i + "=" + powers[i] + ". ");
+                    }
+                    return null;
+                  };
+                })(this)));
+                Ratios = [2, 1, 0, -1];
+                colorScheme = ['#e6194B', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#42d4f4', '#f032e6', '#bfef45', '#fabed4', '#469990', '#dcbeff', '#9A6324', '#fffac8', '#800000', '#aaffc3', '#808000', '#ffd8b1', '#000075', '#a9a9a9', '#ffffff', '#000000'];
+                blades = {};
+                ref = ["groucho", "harpo", "chico", "stan", "babe"];
+                for (i = j = 0, len = ref.length; j < len; i = ++j) {
+                  basis = ref[i];
+                  color = seen.Colors.hex(colorScheme[i]);
+                  color.a = 140;
+                  slope = i * 2 * Math.PI / 5;
+                  blades[basis] = {
+                    angle: i * 72,
+                    slope: slope,
+                    points: (function() {
+                      var len1, n, results;
+                      results = [];
+                      for (k = n = 0, len1 = powers.length; n < len1; k = ++n) {
+                        v = powers[k];
+                        results.push(new seen.P().transform(new seen.Matrix().translate(v).rotz(slope)));
+                      }
+                      return results;
+                    })(),
+                    color: color
+                  };
+                }
+                fillColor = seen.Colors.rgb(255, 5, 5);
+                newDot = function(theColor, text) {
+                  var shape;
+                  if (theColor == null) {
+                    theColor = fillColor;
+                  }
+                  if (text == null) {
+                    text = "origin";
+                  }
+                  shape = new seen.Shape('tri', [new seen.Surface([seen.P(4, 0, 0), seen.P(0, -1, 0), seen.P(0, 1, 0)])]);
+                  return shape.fill(new seen.Material(theColor)).scale(5);
+                };
+                latticePoint = B.Model.extend();
+                latticePointCollection = B.Collection.extend({
+                  model: latticePoint
+                });
+                latticePoints = new latticePointCollection();
+                addToLattice = function(who, where, what, parent) {
+                  var badboy, pointFinal, sig;
+                  try {
+                    pointFinal = seen.P(0, 0, 0).transform(what.m).round();
+                    if (!(1000 > pointFinal.magnitude())) {
+                      return null;
+                    }
+                    sig = siggy(parent, who, where);
+                    return latticePoints.add({
+                      id: what.surfaces[0].id,
+                      blade: who,
+                      offset: where,
+                      pointFinal: pointFinal,
+                      signature: sig
+                    });
+                  } catch (error) {
+                    badboy = error;
+                    return alert("233 " + badboy);
+                  }
+                };
+                latticeOrigin = new latticePoint({
+                  id: "o0",
+                  blade: "origin",
+                  offset: 0,
+                  pointFinal: seen.P(0, 0, 0),
+                  signature: "_"
+                });
+                dot = null;
+                seenModels = new seen.Models["default"]();
+                bladeScheme = ["groucho", "harpo", "chico", "stan", "babe", "groucho", "chico", "babe", "harpo", "stan", "groucho"];
+                Paths = (function() {
+                  function Paths() {
+                    this.p = {};
+                  }
+  
+                  Paths.prototype.addPath = function(v, data) {
+                    var bladesInPath, path, t;
+                    bladesInPath = t = data.split('/');
+                    path = _.sortBy(t, function(d) {
+                      return d;
+                    });
+                    data = path.join('/');
+                    if (!this.p[v.x]) {
+                      this.p[v.x] = {};
+                    }
+                    if (!(t = this.p[v.x][v.y])) {
+                      this.p[v.x][v.y] = [data];
+                      return true;
+                    }
+                    return true;
+                  };
+  
+                  Paths.prototype.mostPaths = function() {
+                    var byXY, byY, max, ref1, x, y;
+                    max = [];
+                    ref1 = this.p;
+                    for (x in ref1) {
+                      byY = ref1[x];
+                      for (y in byY) {
+                        byXY = byY[y];
+                        if (byXY.length > max.length) {
+                          max.push(byXY);
+                        }
+                      }
+                    }
+                    return {
+                      x: x,
+                      y: y,
+                      max: max
+                    };
+                  };
+  
+                  return Paths;
+  
+                })();
+                allPaths = new Paths();
+                siggy = function(p, blade, wp) {
+                  return (p.get("signature")) + "/" + blade + "-" + blades[blade].angle + "." + wp;
+                };
+                Origin = new seen.Shape('tri', [new seen.Surface([seen.P(0, 4, 0), seen.P(1, 0, 0), seen.P(-1, 0, 0)])]);
+                Origin.fill(new seen.Material('#880000')).scale(5);
+                seenModels.add(Origin);
+                createEmplace = function(parent, blade, inputPower) {
+                  var bladeModel, buildPoint, direction, newPoint, pipeIt;
+                  if (parent == null) {
+                    parent = latticeOrigin;
+                  }
+                  if (inputPower == null) {
+                    inputPower = 0;
+                  }
+                  direction = 1;
+                  if (inputPower < 0) {
+                    direction = -1;
+                    inputPower = -inputPower;
+                  }
+                  bladeModel = seenModels.append();
+                  buildPoint = function(blade, thePower, theParent) {
+                    var b, badboy, bb, ref1, signature, x, y, z;
+                    if (!theParent) {
+                      return;
+                    }
+                    try {
+                      ref1 = theParent.get("pointFinal"), x = ref1.x, y = ref1.y, z = ref1.z;
+                      signature = siggy(theParent, blade, thePower);
+                      b = blades[blade];
+                      bb = b.points[thePower];
+                      dot = newDot(blades[blade].color, signature).rotz(b.slope).translate(bb.x * direction, bb.y * direction, 0).translate(x, y, z);
+                      dot.bake().reset();
+                      bladeModel.add(dot);
+                      if (!allPaths.addPath(seen.P(0, 0, 0).transform(dot.m).round(), signature)) {
+                        return null;
+                      }
+                    } catch (error) {
+                      badboy = error;
+                      alert(badboy);
+                    }
+                    return addToLattice(blade, thePower, dot, theParent);
+                  };
+                  pipeIt = function(s, d, color) {
+                    var dp, interpolatePoints, ln1, sp;
+                    interpolatePoints = function(a, b, t) {
+                      return seen.P(a.x * (1.0 - t) + b.x * t, a.y * (1.0 - t) + b.y * t, a.z * (1.0 - t) + b.z * t);
+                    };
+                    sp = s.get("pointFinal");
+                    dp = d.get("pointFinal");
+                    ln1 = seen.Shapes.pipe(interpolatePoints(sp, dp, .9), interpolatePoints(sp, dp, .2));
+                    ln1.fill(color);
+                    return bladeModel.add(ln1);
+                  };
+                  newPoint = buildPoint(blade, inputPower, parent);
+                  pipeIt(parent, newPoint, colorScheme[inputPower + 5]);
+                  return newPoint;
+                };
+                start = latticeOrigin;
+                while (inputPath) {
+                  result = inputPath.match(/(harpo|groucho|chico|stan|babe)(-?[0-9]*)(.*)$/);
+                  inputPath = result[3];
+                  start = createEmplace(start, result[1], result[2]);
+                }
+                dumpText("JAH here");
+                dumpText(latticePoints.length);
+                g = allPaths.mostPaths();
+                dumpText("popular destination", g);
+                dumpText("JAH where");
+                dumpText("JAH nowhere");
+                scene = new seen.Scene({
+                  model: bigM = seenModels,
+                  viewport: seen.Viewports.center(height, height),
+                  camera: new seen.Camera({
+                    projection: seen.Projections.perspective()
+                  })
+                });
+                context = seen.Context('seen-canvas', scene);
+                return context.render();
+              } catch (error) {
+                badScene = error;
+                return alert("Seenery fail " + badScene);
+              }
+            });
+          })();
+  })();
