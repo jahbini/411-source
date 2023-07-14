@@ -1,0 +1,25 @@
+{
+  "id": "411-source/peacefare/rollerball-control",
+  "name": "rollerball-control",
+  "fields": {
+    "title": "rollerball-control",
+    "slug": "rollerball-control",
+    "category": "peacefare",
+    "site": "411-source",
+    "accepted": false,
+    "index": false,
+    "sourcePath": "",
+    "headlines": [],
+    "tags": [],
+    "snippets": "{\"first name\":\"first name\"}",
+    "memberOf": [],
+    "created": "2018-04-25T21:53:41.402Z",
+    "lastEdited": "2018-04-25T21:53:41.403Z",
+    "published": "2018-04-25T21:53:41.403Z",
+    "embargo": "2018-04-25T21:53:41.403Z",
+    "captureDate": "2018-04-25T21:53:41.403Z",
+    "TimeStamp": 1524693221403,
+    "debug": "",
+    "author": "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Celarien -- The tools of the spiritual bodyguard",
+    "slug": "index",
+    "category": "-",
+    "site": "411-source",
+    "accepted": true,
+    "index": true,
+    "headlines": [
+      "A better way",
+      "Wisdom starts here",
+      "There are Diamonds at your feet if you only look",
+      "Western Metaphysical NLP"
+    ],
+    "tags": [],
+    "snippets": "{}",
+    "memberOf": [],
+    "published": "2016-03-11T12:40:04.000Z",
+    "embargo": "2016-03-11T12:40:04.000Z",
+    "author": "Copyright 2010-2018 James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses",
+    "debug": "",
+    "id": "411-source/-/index",
+    "name": "Celarien -- The tools of the spiritual bodyguard"
+  },
+  {
+    "title": "space-struts",
+    "slug": "space-struts",
+    "category": "spacefare",
+    "site": "411-source",
+    "accepted": true,
+    "index": false,
+    "sourcePath": "",
+    "headlines": [],
+    "tags": [],
+    "snippets": "{\"first name\":\"first name\"}",
+    "memberOf": [],
+    "published": "2022-05-29T03:47:35.208Z",
+    "embargo": "2020-05-29T03:47:35.208Z",
+    "debug": "",
+    "author": "James A. Hinds: The 411-source's best friend.  I'm not him, I wear glasses",
+    "id": "411-source/spacefare/space-struts",
+    "name": "space-struts"
+  }
+]

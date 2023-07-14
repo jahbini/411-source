@@ -1,0 +1,73 @@
+<script>
+//app/app
+</script>
+
+<template lang="pug">
+base(href='/')
+meta(name='author', content='James A. Hinds: The Celarien\'s best friend.  I\'m not him, I wear glasses')
+meta(http-equiv='Content-Type', content='text/html', charset='UTF-8')
+meta(name='viewport', content='width=device-width,initial-scale=1')
+title A Fountainhead of Strategies, techniques and other stuff
+meta(name='description', content='Brainstorms, ideas and such')
+meta(name='keywords', content='brain candy, ideas, strategies, techniques')
+script document.styling = {"palx":"#03c","black":"#000","white":"#fff"}
+link(rel='apple-touch-icon', sizes='57x57', href='/assets/icons/apple-icon-57x57.png')
+link(rel='apple-touch-icon', sizes='60x60', href='/assets/icons/apple-icon-60x60.png')
+link(rel='apple-touch-icon', sizes='72x72', href='/assets/icons/apple-icon-72x72.png')
+link(rel='apple-touch-icon', sizes='76x76', href='/assets/icons/apple-icon-76x76.png')
+link(rel='apple-touch-icon', sizes='114x114', href='/assets/icons/apple-icon-114x114.png')
+link(rel='apple-touch-icon', sizes='120x120', href='/assets/icons/apple-icon-120x120.png')
+link(rel='apple-touch-icon', sizes='144x144', href='/assets/icons/apple-icon-144x144.png')
+link(rel='apple-touch-icon', sizes='152x152', href='/assets/icons/apple-icon-152x152.png')
+link(rel='apple-touch-icon', sizes='180x180', href='/assets/icons/apple-icon-180x180.png')
+link(rel='icon', type='image/png', sizes='192x192', href='/assets/icons/android-icon-192x192.png')
+link(rel='icon', type='image/png', sizes='32x32', href='/assets/icons/favicon-32x32.png')
+link(rel='icon', type='image/png', sizes='96x96', href='/assets/icons/favicon-96x96.png')
+link(rel='icon', type='image/png', sizes='16x16', href='/assets/icons/favicon-16x16.png')
+link(rel='manifest', href='/assets/manifest.json')
+meta(name='msapplication-TileColor', content='#ffffff')
+meta(name='msapplication-TileImage', content='/assets/icons/ms-icon-144x144.png')
+meta(name='theme-color', content='#ffffff')
+link(rel='stylesheet', href='assets/css/vendor.css', -content--encoding='gzip')
+link(rel='stylesheet', href='assets/css/app.css', -content--encoding='gzip')
+link(rel='shortcut icon', href='assets/icons/favicon.ico', type='image/x-icon')
+link(rel='icon', href='assets/icons/favicon.ico', type='image/x-icon')
+script(src='allstories.json')
+script(src='mystories.json')
+script(src='assets/js/vendor.js', -content--type='text/javascript', -content--encoding='gzip')
+script(src='assets/js/app.js', -content--type='text/javascript', -content--encoding='gzip')
+script siteHandle = '411-source'; topDomain = '411-source.com'; require('initialize');
+style.
+  #cover {
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  height:100%;
+  width:100%;
+  }
+.fixed(style='background: url(/assets/images/hooray-fade2.jpg) no-repeat center fixed; -moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH')
+#411-source-body.container-fluid.bg-transparent
+  .row
+    header#header.d-flex.d-row.justify-content-around.align-items-center.w-100(style='height:250px')
+      div
+        img.rounded-circle(style='-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH', src='http://www.gravatar.com/avatar/c105eda1978979dfb13059b8878ef95d?s=120')
+      div
+  .row(style='min-height:100vh')
+    .row
+      #storybar.col.col-12.col-md-9
+        slot:storybar
+      .col.col-12.col-md-3
+        aside#sidebar(style='min-width:240')
+      #sidecar.flex-auto.order-last.bg-darken-2(style='min-width:240')
+        .fb-login-button(width='200', data-width='200', data-max-rows='1', data-size='medium', data-button-type='login_with', data-show-faces='true', data-auto-logout-link='true', data-use-continue-as='true')
+        #fb-status
+  #footer.panel(bg='white')
+    h2 All contents copyright 2015, James A. Hinds
+  #cover(style='background-image:url(/assets/images/hooray-fade2.jpg);-moz-transform:scaleX(-1);-o-transform:scaleX(-1);-webkit-transform:scaleX(-1);transform:scaleX(-1);filter:FlipH;ms-filter:FlipH')
+</template>
+
+<style>
+</style>

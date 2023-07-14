@@ -1,0 +1,25 @@
+{
+  "id": "411-source/spacefare/space-struts",
+  "name": "space-struts",
+  "fields": {
+    "title": "space-struts",
+    "slug": "space-struts",
+    "category": "spacefare",
+    "site": "411-source",
+    "accepted": true,
+    "index": false,
+    "sourcePath": "",
+    "headlines": [],
+    "tags": [],
+    "snippets": "{\"first name\":\"first name\"}",
+    "memberOf": [],
+    "created": "2022-05-29T03:47:35.207Z",
+    "lastEdited": "2022-05-29T03:47:35.208Z",
+    "published": "2022-05-29T03:47:35.208Z",
+    "embargo": "2020-05-29T03:47:35.208Z",
+    "captureDate": "2022-05-29T03:47:35.208Z",
+    "TimeStamp": 1653796055208,
+    "debug": "",
+    "author": "James A. Hinds: The 411-source's best friend.  I'm not him, I wear glasses"
+  }
+}

@@ -24,15 +24,18 @@ renderer = class index extends siteTemplate
   # 
   # 
   # section storyBar
+  storyBar: =>
+    if doHtml
+      doHtml=false
+      @html()
+    else
+      T.raw "<slot:storyBar/>"
+  # 
   # 
   # 
   # section bloviation
   # 
   bloviation: =>
-    if doHtml
-      @html()
-      doHtml = false
-    else
       T.raw "<slot:bloviation>"
   # 
   # section header

@@ -1,0 +1,19 @@
+{
+  "id": "411-source/spacefare/golden-grid",
+  "name": "space-struts",
+  "fields": {
+    "title": "golden-grid",
+    "slug": "golden-grid",
+    "category": "spacefare",
+    "site": "411-source",
+    "accepted": true,
+    "index": false,
+    "sourcePath": "",
+    "headlines": [],
+    "tags": [],
+    "snippets": "{\"first name\":\"first name\"}",
+    "memberOf": [],
+    "debug": "",
+    "author": "James A. Hinds: The 411-source's best friend.  I'm not him, I wear glasses"
+  }
+}

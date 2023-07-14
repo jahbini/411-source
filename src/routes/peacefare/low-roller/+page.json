@@ -1,0 +1,25 @@
+{
+  "id": "411-source/peacefare/low-roller",
+  "name": "low-roller",
+  "fields": {
+    "title": "low-roller",
+    "slug": "low-roller",
+    "category": "peacefare",
+    "site": "411-source",
+    "accepted": false,
+    "index": false,
+    "sourcePath": "",
+    "headlines": [],
+    "tags": [],
+    "snippets": "{\"first name\":\"first name\"}",
+    "memberOf": [],
+    "created": "2018-06-29T01:37:44.693Z",
+    "lastEdited": "2018-06-29T01:37:44.694Z",
+    "published": "2018-06-29T01:37:44.694Z",
+    "embargo": "2018-06-29T01:37:44.694Z",
+    "captureDate": "2018-06-29T01:37:44.694Z",
+    "TimeStamp": 1530236264694,
+    "debug": "",
+    "author": "James A. Hinds: The Celarien's best friend.  I'm not him, I wear glasses"
+  }
+}
